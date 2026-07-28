@@ -11,13 +11,21 @@ THE POINT
   impossible to take: there is exactly one send function, and it is this one.
 
 THREE LAYERS, IN ORDER
-  1) budget gate      — is this account still under today's cap (we run 3-5/day)?
+  1) budget slot      — RESERVE one of today's slots (we run 3-5/day per account)
   2) human jitter     — 40-110s random pause, so the pattern isn't machine-flat
   3) FloodWait respect— when the platform says "wait N", wait exactly N, once
 
-  Then the send is recorded: counted against the budget and written to an audit log.
-  The log is the thing that lets a human ask "what did you send today" and get a
-  real answer instead of a reassurance.
+  Then the send is confirmed: the reservation becomes a logged dispatch. The log is
+  the thing that lets a human ask "what did you send today" and get a real answer
+  instead of a reassurance.
+
+  Note the order: the slot is taken BEFORE dispatch, not checked before dispatch.
+  An external reviewer broke the obvious `if can_send(): send()` design twice — a
+  race (two processes both see room, both send) and a crash window (platform
+  accepted, process died before the log was written, retry double-sends at a real
+  human). Reserving first closes both: see the header of budget.py. The failure
+  mode is now "we send one message fewer than allowed", which is the right way for
+  an outbound agent to be wrong.
 
 WHAT THIS MODULE DOES NOT DO
   It never writes the message. Copy is authored upstream (by the strongest model,
@@ -56,15 +64,16 @@ async def safe_send(client, entity, text, acc, lead_slug=None, kind="drip",
     expected blocked/flood cases — a caller looping over 40 leads must not die on one."""
     acc = (acc or "").strip().upper()
 
-    # Layer 1: budget gate (the anti-ban knob a human can turn without reading code)
-    if not budget.can_send(acc):
+    if dry_run:
+        return {"ok": True, "dry_run": True, "remaining": budget.remaining(acc),
+                "would_record": "%s -> %s (%s)" % (acc, lead_slug, kind)}
+
+    # Layer 1: TAKE a slot (atomic). None = cap reached; nothing is dispatched.
+    tok = budget.reserve(acc, lead_slug, kind)
+    if tok is None:
         return {"ok": False, "reason": "budget",
                 "msg": "%s already at today's cap (%d/%d)" % (
-                    acc, budget.sent_today(acc), budget.get_limit(acc))}
-
-    if dry_run:
-        return {"ok": True, "dry_run": True,
-                "would_record": "%s -> %s (%s)" % (acc, lead_slug, kind)}
+                    acc, budget.taken_today(acc), budget.get_limit(acc))}
 
     # Layer 2: human jitter
     if pause:
@@ -82,14 +91,25 @@ async def safe_send(client, entity, text, acc, lead_slug=None, kind="drip",
             secs = getattr(e, "seconds", 0)
             if secs and secs <= FLOOD_GIVEUP:
                 await asyncio.sleep(secs + 1)
-                await client.send_message(entity, text)  # one retry after the wait
+                try:
+                    await client.send_message(entity, text)  # one retry after the wait
+                except Exception as e2:
+                    # Retry failed. We do NOT know whether the first attempt landed,
+                    # so the slot stays consumed — under-send beats double-send.
+                    return {"ok": False, "reason": "error", "msg": repr(e2), "slot": "held"}
             else:
+                # A rate limit is refusal BEFORE delivery: nothing went out, give it back.
+                budget.release(tok)
                 return {"ok": False, "reason": "floodwait", "seconds": secs}
         else:
-            return {"ok": False, "reason": "error", "msg": repr(e)}
+            # Unknown failure = unknown delivery. Keep the slot; a human sees it via
+            # budget.stale_reservations().
+            return {"ok": False, "reason": "error", "msg": repr(e), "slot": "held"}
 
-    n = budget.record_send(acc, lead_slug, kind, text)
-    return {"ok": True, "n_today": n}
+    # Dispatch accepted. If the process dies right here, the slot is already spent,
+    # so a retry cannot send this message to the same person twice.
+    budget.confirm(tok, text)
+    return {"ok": True, "n_today": budget.sent_today(acc)}
 
 
 if __name__ == "__main__":

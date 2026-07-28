@@ -52,11 +52,14 @@ ARCHIVE_STATUS = {"lost", "declined", "refund"}
 
 
 def days_since(date_str, now):
-    """'2026-07-27' | '2026-07-27T21:13:36' -> whole days ago, or None."""
+    """'2026-07-27' | '2026-07-27T21:13:36' | '2026-07' -> whole days ago, or None.
+
+    Month-only input is accepted (and read as the 1st) so that privacy-generalized
+    exports like sample-leads.json stay scoreable — see PIPELINE.md §4."""
     if not date_str:
         return None
     s = str(date_str)[:19].replace("T", " ")
-    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d", "%Y/%m/%d"):
+    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d", "%Y/%m/%d", "%Y-%m"):
         try:
             return (now - datetime.datetime.strptime(s, fmt)).days
         except ValueError:
@@ -77,8 +80,9 @@ def score(lead, now=None):
     lead fields used:
       status          str   free-text CRM status (only 'lost/declined/refund' matter)
       n_calls         int   how many real calls happened
+      last_call       date  when the last call happened  <- NOT the same as last_contact
       first_contact   date  first time we ever touched
-      last_contact    date  last touch of any kind
+      last_contact    date  last touch of any kind, including our own unanswered DM
       last_inbound    date  last time THEY wrote/called us
       last_outbound   date  last time WE wrote them
       n_lead_msgs     int   messages authored by them
@@ -94,10 +98,17 @@ def score(lead, now=None):
     d_first = days_since(lead.get("first_contact"), now)
     d_in = days_since(lead.get("last_inbound"), now)
     d_out = days_since(lead.get("last_outbound"), now)
+    d_call = days_since(lead.get("last_call"), now)
 
     # --- decayed raw signals ---
     reply_rec = decay(d_in, HL_REPLY)
-    call_rec = decay(d_contact, HL_CALL) if n_calls > 0 else 0.0
+    # A call counts as recent engagement only if the CALL was recent. Using
+    # last_contact here is the trap: our own unanswered DM yesterday would make a
+    # two-year-old call look fresh, and the lead would surface as Hot. When the
+    # call date is unknown, fall back to the last INBOUND signal (conservative:
+    # something they did), never to last_contact (which we control).
+    call_anchor = d_call if d_call is not None else d_in
+    call_rec = decay(call_anchor, HL_CALL) if n_calls > 0 else 0.0
     lead_init = decay(d_in, HL_LEAD_INIT) if n_lead > 0 else 0.0
     known = [d for d in (d_first, d_contact) if d is not None]
     memory = decay(min(known), HL_MEMORY) if known else 0.0
@@ -127,11 +138,17 @@ def score(lead, now=None):
     else:
         rband = "Park"
 
-    # temperature band = live engagement, independent of the reactivation queue
+    # temperature band = live MUTUAL engagement, independent of the reactivation queue.
+    # The penalty belongs here too: a relationship where only we are talking is not
+    # Hot, however recently we talked. Without this term a lead we keep DMing into
+    # silence climbs the board and gets chased — the exact behaviour the penalty was
+    # invented to stop. (Found by an external reviewer; the priority formula had it,
+    # the band formula did not.)
     if st in ARCHIVE_STATUS:
         band = "Archived"
     else:
-        engagement = 0.50 * recency + 0.30 * depth + 0.20 * frequency
+        engagement = max(0.0, 0.50 * recency + 0.30 * depth + 0.20 * frequency
+                         - W_PEN * penalty)
         if engagement >= 0.50:
             band = "Hot"
         elif engagement >= 0.30:
@@ -164,8 +181,8 @@ def _selftest():
         return (now - datetime.timedelta(days=days)).strftime("%Y-%m-%d")
 
     live = score({"status": "negotiating", "n_calls": 2, "first_contact": d(43),
-                  "last_contact": d(0), "last_inbound": d(0), "last_outbound": d(1),
-                  "n_lead_msgs": 11, "n_our_msgs": 14}, now)
+                  "last_contact": d(0), "last_call": d(0), "last_inbound": d(0),
+                  "last_outbound": d(1), "n_lead_msgs": 11, "n_our_msgs": 14}, now)
     assert live["temperature_band"] == "Hot", live
     assert live["reactivation_band"] in ("Now", "This week"), live
 
@@ -187,8 +204,31 @@ def _selftest():
     pushy = score(dict(base, last_outbound=d(2)), now)
     assert pushy["reactivation_priority"] < quiet["reactivation_priority"], (pushy, quiet)
 
+    # THE GHOST (external reviewer, 2026-07-28): one call long ago, they never wrote,
+    # and we DM'd them yesterday. last_contact is fresh — but nothing mutual is.
+    # This must NOT read Hot, or the agent chases someone who has gone silent.
+    ghost = score({"status": "contacted", "n_calls": 1, "first_contact": d(700),
+                   "last_contact": d(1), "last_call": d(690), "last_inbound": d(690),
+                   "last_outbound": d(1), "n_lead_msgs": 0, "n_our_msgs": 12}, now)
+    assert ghost["temperature_band"] in ("Cold", "Lukewarm"), ghost
+    assert ghost["reactivation_band"] == "Park", ghost
+
+    # and the same lead, if the call really were recent, IS legitimately warm
+    real = score({"status": "contacted", "n_calls": 1, "first_contact": d(700),
+                  "last_contact": d(1), "last_call": d(3), "last_inbound": d(3),
+                  "last_outbound": d(1), "n_lead_msgs": 4, "n_our_msgs": 12}, now)
+    assert real["temperature_band"] in ("Hot", "Warm"), real
+
+    # month-granularity dates (privacy-generalized exports) still score
+    coarse = score({"status": "interested", "n_calls": 1, "first_contact": "2026-05",
+                    "last_contact": "2026-07", "last_call": "2026-07",
+                    "last_inbound": "2026-07", "n_lead_msgs": 5, "n_our_msgs": 6}, now)
+    assert coarse["reactivation_priority"] > 0, coarse
+
     print("SELFTEST OK — decay ranks fresh over ancient, archived is archived, "
-          "and unanswered outbound lowers priority instead of raising it.")
+          "unanswered outbound lowers priority instead of raising it, a ghost lead "
+          "(old call + our fresh DM + their silence) stays cold, and month-only "
+          "dates still score.")
 
 
 if __name__ == "__main__":

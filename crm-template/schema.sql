@@ -21,11 +21,18 @@ CREATE TABLE IF NOT EXISTS leads (
     status      TEXT,               -- new / contacted / qualifying / interested /
                                     -- negotiating / won / lost / no-show / refund / stale
     category    TEXT,               -- founder / investor / vc / fund / b2b / kol / service
-    first_contact TEXT,             -- ISO date
-    last_contact  TEXT,
+
+    -- behaviour: the only inputs the scoring model actually reads (PIPELINE.md §2)
+    first_contact TEXT,             -- ISO date, first touch ever
+    last_contact  TEXT,             -- last touch of ANY kind, incl. our own unanswered DM
     last_inbound  TEXT,             -- last time THEY reached us — the honest signal
+    last_outbound TEXT,             -- last time WE reached them  -> drives the PENALTY
+    last_call     TEXT,             -- date of the last call. NOT interchangeable with
+                                    -- last_contact: substituting it makes an ancient call
+                                    -- look fresh and surfaces silent people as Hot.
     n_calls       INTEGER DEFAULT 0,
-    lead_msgs     INTEGER DEFAULT 0,
+    lead_msgs     INTEGER DEFAULT 0,-- messages authored by THEM
+    our_msgs      INTEGER DEFAULT 0,-- messages authored by US -> frequency term
 
     -- COMPUTED nightly by reference/temperature.py — never typed by a human
     temperature_band      TEXT,     -- Hot / Warm / Lukewarm / Cold / Archived
@@ -75,23 +82,32 @@ CREATE INDEX IF NOT EXISTS ix_people_key ON people(name_key);
 -- ---------------------------------------------------------------------------
 -- outbound safety — see reference/budget.py
 -- ---------------------------------------------------------------------------
+-- Only the cap lives here. The COUNT is never stored: a stored counter and a log
+-- are two sources of truth and they drift. The count is derived from send_log.
 CREATE TABLE IF NOT EXISTS send_budget (
     account     TEXT NOT NULL,
     day         TEXT NOT NULL,
-    sent        INTEGER NOT NULL DEFAULT 0,
     daily_limit INTEGER NOT NULL,
     PRIMARY KEY (account, day)
 );
 
--- Every single message the agent sent, with a preview. This table is the reason
--- a human can ask "what did you send today" and get an answer instead of a promise.
+-- Every slot the agent took, with a preview of what went out. This table is the
+-- reason a human can ask "what did you send today" and get an answer, not a promise.
+--
+-- `state` is what makes the cap safe under concurrency and crashes:
+--   pending  = slot reserved, dispatch in flight or the process died mid-send
+--   sent     = dispatch confirmed by the platform
+--   released = dispatch provably did NOT happen, slot returned
+-- The cap counts pending + sent, so a crash costs one slot and never double-sends.
 CREATE TABLE IF NOT EXISTS send_log (
     id        INTEGER PRIMARY KEY AUTOINCREMENT,
     account   TEXT NOT NULL,
     day       TEXT NOT NULL,
-    ts        TEXT NOT NULL,
+    ts        TEXT NOT NULL,        -- when the slot was RESERVED
+    sent_ts   TEXT,                 -- when dispatch was confirmed (NULL while pending)
+    state     TEXT NOT NULL,        -- pending | sent | released
     lead_slug TEXT,
     kind      TEXT,                 -- drip / reply / intro / reactivation
     preview   TEXT
 );
-CREATE INDEX IF NOT EXISTS ix_sendlog_day ON send_log(day);
+CREATE INDEX IF NOT EXISTS ix_sendlog_day ON send_log(account, day, state);
