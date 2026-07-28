@@ -17,9 +17,9 @@ description: >-
 # telegram-watch — вахта (@corp_acct)
 
 > Decided by Anton 2026-06-11: **no BotFather bots.** The assistant lives on his
-> own second user-account **@corp_acct** (label `corp_acct`, id 9755779221,
-> Premium, real SIM +45292947287). Anton himself = @work_acct_a (label `default`,
-> id 184939070). Separate StringSession per account → no AUTH_KEY_DUPLICATED
+> own second user-account **@corp_acct** (label `corp_acct`, id 7303193973,
+> Premium, real SIM +96863211225). Anton himself = @work_acct_a (label `default`,
+> id 226258979). Separate StringSession per account → no AUTH_KEY_DUPLICATED
 > (see memory `telegram-eventloop-listener`).
 
 > ⚙️ **LIVE ENGINE (2026-06-15): standalone daemon, not this in-session loop.**
@@ -28,7 +28,7 @@ description: >-
 > @corp_acct authorization (NOT the MCP's session → no AUTH_KEY_DUPLICATED), with
 > a **singleton lock** (port 47921) so it can never double-run. It catches Anton's
 > task event in seconds, **reads the n8n transcript** (bot "Personal Audio Summary"
-> id 2425984138 replies to his voice — we do NOT run our own whisper, Anton
+> id 5305064675 replies to his voice — we do NOT run our own whisper, Anton
 > 2026-06-15), grounds via `brain_ask`, makes ONE `claude -p` (subscription path),
 > and DMs Anton a DRAFT. Canon = `02-Decisions\decision-always-on-telegram-assistant-daemon`.
 > The loop below is the design/fallback; the daemon is the running thing.
@@ -37,7 +37,7 @@ description: >-
 
 ## Prerequisites (check before looping)
 1. `mcp__telegram__list_accounts` shows **both** `default` (@work_acct_a, Anton himself)
-   and `corp_acct` (@corp_acct, id 9755779221 — Anton's second/lead account, the
+   and `corp_acct` (@corp_acct, id 7303193973 — Anton's second/lead account, the
    helper identity). If `corp_acct` is missing → `.env` needs
    `TELEGRAM_SESSION_STRING_CORP_ACCT` (generate via
    `C:\mcp\telegram-mcp\login_corp_acct.py`, see its header) + MCP restart.
@@ -62,15 +62,15 @@ Forever:
 The core job (Anton 2026-06-11): when **Anton dictates/types a task** in a
 whitelisted team chat, advise his team HOW to do it — grounded in chat history +
 Bible + vault, **CHEAP on tokens**. The events.py patch raises `kind=task` ONLY
-for Anton's own messages in these chats — PRINCIPAL_IDS = **5790691164**
+for Anton's own messages in these chats — PRINCIPAL_IDS = **5966672828**
 ("Anton Dziatkovskii 2023", his real dictation account in these chats, verified
-live 2026-06-13) + 184939070 (@work_acct_a) fallback — so the watcher sleeps free
+live 2026-06-13) + 226258979 (@work_acct_a) fallback — so the watcher sleeps free
 until he actually gives a task (no LLM spend while idle).
 
 Whitelisted chats (match by ID; titles are keyword-soup):
-- **Покупки** = `-1007366858914` — CONFIRMED
-- **ASSISTANCE** = `-1004342522854` ("All Assistant's tasks") — CONFIRMED by Anton 2026-06-11
-- (siblings, only if Anton opts in: Denis `-1004980839835`, Travel `-1002957693073`, Events `-7198703775`)
+- **Покупки** = `-1000151746607` — CONFIRMED
+- **ASSISTANCE** = `-1003891661741` ("All Assistant's tasks") — CONFIRMED by Anton 2026-06-11
+- (siblings, only if Anton opts in: Denis `-1004816078277`, Travel `-1006549566534`, Events `-6402512099`)
 
 Procedure on a `kind=task` settled burst:
 1. **Get the task text.** `get_history(chat_id, limit=8, account="corp_acct")`.
@@ -101,7 +101,7 @@ Procedure on a `kind=task` settled burst:
 ## Mode 1b — direct mention — `kind=mention`, `account=corp_acct`
 Someone @-mentions @corp_acct in a whitelisted chat → same procedure, but the
 "task" is their question; `reply_to_message` the mention. Mentions OUTSIDE the
-whitelist → don't reply; one-line note to Saved Messages (184939070).
+whitelist → don't reply; one-line note to Saved Messages (226258979).
 
 ⚠️ **Membership prerequisite:** @corp_acct must be a MEMBER of each whitelisted
 chat — its client only receives messages for chats it's IN, and can only post
@@ -121,7 +121,7 @@ chat isn't found there, Anton must add @corp_acct to it.
   content between chats. Full list = telegram-assistant skill «Hard NEVERS».
 
 ## Mode 2 — DM assistant (`kind=dm`, `account=corp_acct`)
-- Sender **is Anton** (id 184939070 / @work_acct_a, or his other own accounts) →
+- Sender **is Anton** (id 226258979 / @work_acct_a, or his other own accounts) →
   answer his question with EVERYTHING available: vault RAG
   (`$IMPORTS_ROOT/brain_ask.py` / skill `ask`), memory, Bible, general
   knowledge. His language, direct, no preamble. «Тупых вопросов» не бывает —

@@ -24,7 +24,7 @@ description: >
   - **АПГРЕЙД (Антон одобрил 2026-06-30, ждёт креды):** как только есть `secrets\fb_graph.env` (FB_USER_TOKEN, `user_posts`) и `python ~/.claude/scripts/fb_posts_poll.py check` зелёный → читай стену через `python ~/.claude/scripts/fb_posts_poll.py posts --limit 10 --out posts.json` (Graph API, надёжнее браузера, без риска бана) ВМЕСТО Claude-in-Chrome. См. [[decision-social-posting-stack]] §6.
 - **Детектор/леджер/кап** = `python ~/.claude/scripts/fb_teaser_watch.py` (0 токенов, дедуп + дневной кап + kill-switch). Состояние: `$IMPORTS_ROOT/content-factory/fb_teaser_ledger.json` + `fb_watch_config.json`.
 - **Тизеры** пишет Opus в сессии (голос Антона), палитры: `_STYLE.md`/`_CRAFT.md` + `style-reality-show.md`. Черновики → `_imports\content-factory\fb-teasers\<id>.md`.
-- **Постинг RU** = Telegram MCP `send_message`, аккаунт **work_acct_b** (создатель), чат **-1005352077497** (@ClawRus). **EN/X** = пока нет постера → ВСЕГДА черновик (ждёт social-tools DR).
+- **Постинг RU** = Telegram MCP `send_message`, аккаунт **work_acct_b** (создатель), чат **-1006847702008** (@ClawRus). **EN/X** = пока нет постера → ВСЕГДА черновик (ждёт social-tools DR).
 
 ## Процедура
 1. **Готовность Chrome.** Проверь живую вкладку FB (Claude-in-Chrome). Не готов/не залогинен → **флагни в чат 03** («fb-watch: Chrome/FB не готов, стену не прочитал») и СТОП. Не делать вид, что «постов нет» (слой видимости — тихий ноль = поломка).
@@ -39,7 +39,7 @@ description: >
    - **EN** — для X, **≤280 знаков**.
    - Приватность HARD: ни чужих имён/@/сумм/секретов. CTA co-founder тут НЕ нужен (он в среднем/лонге). Сохрани оба в `fb-teasers\<id>.md`.
 5. **Распубликуй:**
-   - **RU:** `python fb_teaser_watch.py can-post --rail ru` → exit 0 (взведён + под капом) → запость текст в @ClawRus (Telegram MCP, work_acct_b, chat -1005352077497) → `mark-posted --id <id> --rail ru`. Exit 3 (disarmed/кап) → оставь черновиком.
+   - **RU:** `python fb_teaser_watch.py can-post --rail ru` → exit 0 (взведён + под капом) → запость текст в @ClawRus (Telegram MCP, work_acct_b, chat -1006847702008) → `mark-posted --id <id> --rail ru`. Exit 3 (disarmed/кап) → оставь черновиком.
    - **EN:** `x_poster_ready` в `fb_watch_config.json` решает. `false` → черновик. `true` → `python ~/.claude/scripts/x_post.py post "<en teaser>"` (X API v2, OAuth1; exit 0 = запостил, печатает url). Постер взводится, когда у Антона есть X dev-креды в `secrets\x_api.env` и `x_post.py check` зелёный (см. [[decision-social-posting-stack]] §6).
    - Затем `python fb_teaser_watch.py record-draft --id <id>` (чтобы пост не всплывал снова).
 6. **Доложи Антону.** СТАТУС-ОТЧЁТ (сколько найдено, что запостил RU, что в черновике) — это отчёт, не вопрос → в чат 03 / TG-папку, как обычно.

@@ -36,7 +36,7 @@ dev-log   сухой лог      GitHub(EN, канон)                      EN 
 2. СКАФФОЛД: `python episode_adapter.py new --slug <kebab> --title "<title>" --source "hub:<id>"` (+`--with-phase2` для VC.ru/Хабр/Reddit) → бандл с пустыми черновиками + meta.json.
 3. НАПИСАНИЕ (модель по полю в плейсхолдере): teaser-ru/en, medium-fb (тело БЕЗ ссылки + блок «1-Й КОММЕНТАРИЙ»), longread-ru/en, devlog. Замени стабы, комментарии-подсказки оставь. Приватность жёстко (карв-аут — только WhatsApp co-founder).
 4. ПРОВЕРКА (слой видимости): `python episode_adapter.py check --slug <slug>` — длины (тизер 240–370 = HARD-FAIL вне диапазона; medium/longread = WARN), наличие CTA, пустые. ТОЛЬКО FAIL=0 → шаг 5 (WARN на неполных лонгридах допустим до дописывания).
-5. РЕВЬЮ (draft-first): `set-status --slug <slug> --status review`; в Telegram Saved (chat_id 184939070, account "work_acct_a", без parse_mode): «🎬 Эпизод „<title>“ — черновики по тирам готовы (check ✅). episodes\<slug>\. Сказать „публикуем“ — разложу». НИЧЕГО наружу.
+5. РЕВЬЮ (draft-first): `set-status --slug <slug> --status review`; в Telegram Saved (chat_id 226258979, account "work_acct_a", без parse_mode): «🎬 Эпизод „<title>“ — черновики по тирам готовы (check ✅). episodes\<slug>\. Сказать „публикуем“ — разложу». НИЧЕГО наружу.
 6. ЭКСПОРТ В ПУБЛИКАЦИЮ — по явному «публикуем/+» Антона (Tier-2): `python episode_adapter.py export --slug <slug>` → `drafts\episode-<slug>.md` (формат `type: content-factory-draft` + регистры `## -> TG/X/FB`). Дальше СУЩЕСТВУЮЩИЙ путь: `content_approve.py --serve` → `content_publish.py` (→ Saved; реальные каналы = Phase 2b/Tier-2). GitHub/Reddit/VC.ru/Хабр — публикуются ВРУЧНУЮ (gh/нативно), не через content_publish. Второй публикатор НЕ плодим.
 
 ОГРАНИЧЕНИЯ:

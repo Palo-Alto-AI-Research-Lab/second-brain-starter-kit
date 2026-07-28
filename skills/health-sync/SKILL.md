@@ -7,13 +7,13 @@ OBJECTIVE: Pull fresh messages from Anton's 7 Telegram health chats and incremen
 
 CONTEXT:
 - 7 source chats (registry: $IMPORTS_ROOT/health/chats.json). ALWAYS pull with the Telegram MCP using account="default" (@work_acct_a); the other account errors (GEN-ERR-862) on these basic groups.
-  - -478530670  medicine-health-main
-  - -193011312  blood-pressure
-  - -763988113  longevity-weightloss-fasting
-  - -435683565  vitamins-bads
-  - -409618713  healing-head
-  - -176986713  medicine-for-mind
-  - -5957604166 fasting-community
+  - -713270622  medicine-health-main
+  - -278366896  blood-pressure
+  - -771718625  longevity-weightloss-fasting
+  - -656827278  vitamins-bads
+  - -260984215  healing-head
+  - -175731578  medicine-for-mind
+  - -8169212160 fasting-community
 - Vault home: $OBSIDIAN_VAULT/01-Conversations/Telegram/Health/ (per-chat folders + posts\ + _Health-MOC.md). Dashboard: _Dashboards\Health-Dashboard.html. Scripts + watermarks + raw: $IMPORTS_ROOT/health/.
 - Watermark per chat (last imported msg id) = $IMPORTS_ROOT/health/watermarks.json (keyed by chat_id as string).
 - Provenance: health data is NOT private (Anton's explicit instruction) — do NOT tag #private. Anton's own messages -> origin: anton (+ #anton-original); forwarded -> origin: external (+ forwarded_from); community members (fasting-community) -> origin: external.

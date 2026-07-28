@@ -28,7 +28,7 @@ patch it the same way before relying on `--apply` for FAAA.
 ## assistants-ops — «All Assistant's tasks 777…» (messages*.html)
 
 - **Deterministic:** `parse_assistants_ops.py` rebuilds Layer-2 day-ledgers (idempotent by date; it skips a ledger already carrying "Регламенты этого дня") and emits a fresh `rule_candidates.json`.
-- **LLM curation (the prize is the Bible):** curate the NEW `rule_candidates.json` rows in batches → `{is_rule, statement, theme, applies_to, origin, authored_by}` → `build_rules2.py` (merges, regenerates `_Operations-Bible-MOC.md`, **guarded so it won't clobber the fleshed `concept-bible-*` sub-concepts**). Dedup new statement-hashes vs existing `reglament-*`. Provenance: relay-footer `Перевела:/Делегировано:` = Anton's voice (`origin: anton`, poster→`transcribed_by`); Pavel only by her own name-marker; team SOP → `mixed`; conservative `#anton-original`.
+- **LLM curation (the prize is the Bible):** curate the NEW `rule_candidates.json` rows in batches → `{is_rule, statement, theme, applies_to, origin, authored_by}` → `build_rules2.py` (merges, regenerates `_Operations-Bible-MOC.md`, **guarded so it won't clobber the fleshed `concept-bible-*` sub-concepts**). Dedup new statement-hashes vs existing `reglament-*`. Provenance: relay-footer `Перевела:/Делегировано:` = Anton's voice (`origin: anton`, poster→`transcribed_by`); Alina only by her own name-marker; team SOP → `mixed`; conservative `#anton-original`.
 
 ## arhiv-golosa — content-team voice archive (messages*.html)
 

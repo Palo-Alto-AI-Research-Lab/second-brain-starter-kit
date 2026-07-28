@@ -16,10 +16,10 @@ Deterministic-first (Anton's token law): RAG retrieves the smallest relevant sli
 **Wrong lane?** /ask = semantic MEANING over the curated vault. For exact WORDS inside chats → `/search`; an exact PERSON name → `/find`; a CHAT by name → `/chat` (all 0 tokens, deterministic). Use those when the question isn't conceptual.
 
 ## 🖥️ Визуальный поиск (живой сервер — Антон работает глазами)
-Для интерактивного поиска глазами: `python "$IMPORTS_ROOT\ask_server.py"` (или `start_ask.bat`) → открой `http://127.0.0.1:8770`. Грузит e5+reranker ОДИН раз, дальше каждый запрос ~3с. Поле поиска + чипы-фильтры (только моё / концепты / инсайты / лиды / люди / разговоры / заметки), карточки с rerank-скором, типом, датой и ⏳-флагом свежести. По умолчанию CPU (не дерётся с GPU-флотом, держит 0 VRAM); `--gpu` если GPU свободен. Это GUI для самого Антона; `--ask` ниже — для синтеза ответа мной в чате.
+Для интерактивного поиска глазами: `python "$IMPORTS_ROOT/ask_server.py"` (или `start_ask.bat`) → открой `http://127.0.0.1:8770`. Грузит e5+reranker ОДИН раз, дальше каждый запрос ~3с. Поле поиска + чипы-фильтры (только моё / концепты / инсайты / лиды / люди / разговоры / заметки), карточки с rerank-скором, типом, датой и ⏳-флагом свежести. По умолчанию CPU (не дерётся с GPU-флотом, держит 0 VRAM); `--gpu` если GPU свободен. Это GUI для самого Антона; `--ask` ниже — для синтеза ответа мной в чате.
 
 ## Run (CLI — для синтеза ответа в чате)
-`python "$IMPORTS_ROOT\brain_ask.py" "<question>"`
+`python "$IMPORTS_ROOT/brain_ask.py" "<question>"`
 Scope with filters (cheaper + sharper):
 - `--anton` (only Anton's own writing) · `--concepts` (distilled "что я думаю о X") · `--insights`
 - `--person <name>` · `--conv` (conversations) · `--leads` (CRM)

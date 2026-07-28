@@ -2,7 +2,7 @@
 """skill_guard.py — детерминированный привратник скиллов флота (0-LLM).
 
 Реализует рельсы безопасности из decision-2026-07-14-fleet-skill-autonomy-local-namespace
-+ DR26-07-14-MAC-1-01 (3 вендора). Вызывается вручную, из /skill-promote и (позже) из хука.
++ DR26-07-14-MAC1-01 (3 вендора). Вызывается вручную, из /skill-promote и (позже) из хука.
 
 Проверки:
   РЕЛЬС 1  collision   local-X И shared-X одновременно → HARD FAIL (анти-shadowing).

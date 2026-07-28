@@ -75,7 +75,7 @@ After phase 3, **report how many new items need curation and offer to run that p
 
 ## Provenance & the voice gap (carry over, don't re-derive)
 
-Provenance defaults are fixed per source in `source-adapters.md` — relay-footer `Перевела:/Делегировано:` = Anton's voice (`origin: anton`, poster→`transcribed_by`); Pavel only by her own name-marker; team SOPs → `mixed`. The **voice gap persists**: Telegram exports omit `.ogg` voice notes, so most of Anton's reasoning still isn't recoverable from text. If this export was made **with media**, that's the moment to Whisper-transcribe and enrich by `msg_id` (idempotent) — flag it. (A Telegram MCP that downloads voice by msg_id would close this — see the connector guide.)
+Provenance defaults are fixed per source in `source-adapters.md` — relay-footer `Перевела:/Делегировано:` = Anton's voice (`origin: anton`, poster→`transcribed_by`); Alina only by her own name-marker; team SOPs → `mixed`. The **voice gap persists**: Telegram exports omit `.ogg` voice notes, so most of Anton's reasoning still isn't recoverable from text. If this export was made **with media**, that's the moment to Whisper-transcribe and enrich by `msg_id` (idempotent) — flag it. (A Telegram MCP that downloads voice by msg_id would close this — see the connector guide.)
 
 ## Windows / Cyrillic gotchas (same as obsidian-ingest)
 

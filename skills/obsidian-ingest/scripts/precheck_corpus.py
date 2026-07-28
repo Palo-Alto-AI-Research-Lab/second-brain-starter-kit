@@ -3,7 +3,7 @@ precheck_corpus.py — RE-IMPORT GATE for obsidian-ingest.
 
 Before ANY "import this corpus" task runs, this script asks:
     "Did I already import this exact byte-stream?"
-by comparing the source's sha256 against everything under E:\\Obsidian\\_originals\\
+by comparing the source's sha256 against everything under %VAULT_ROOT%\_originals\\
 (Rule 0's permanent archive).
 
 USAGE:

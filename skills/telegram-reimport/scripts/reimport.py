@@ -224,7 +224,7 @@ def main():
         p("To MERGE (adds new files only, never overwrites/deletes):")
         p(f'  robocopy "{st}" "{vb}" /E /XC /XN /XO')
         if cfg.get("post_merge"):
-            p("Then deterministic reconcile (post-merge, in E:\\Obsidian\\_imports):")
+            p("Then deterministic reconcile (post-merge, in %IMPORTS%):")
             for step in cfg["post_merge"]:
                 p("   ", step)
         p("Then LLM curation for the new items:")

@@ -50,7 +50,7 @@ PYTHONIOENCODING=utf-8 python "$USERPROFILE/.claude/scripts/tg_channels_check.py
 - **MCP RED + `TypeNotFound`** → устаревшая telethon в `C:\mcp\telegram-mcp\.venv` → обновить.
 - **MCP «не загружен в сессию»** → перезапустить Claude Code (или открыть сессию, что грузит MCP).
 - **Telethon-рельс RED** → нет/битая `REFRESH_*` в `$IMPORTS_ROOT/dialogs/.env` на этой машине,
-  либо группа недоступна → проверить `.env`/доступ к группе `-815238009`.
+  либо группа недоступна → проверить `.env`/доступ к группе `-996940094`.
 - **Шина всё равно жива через рельс** (если он 🟢): `tg_bus_read.py` / `tg_bus_send.py` — MCP не нужен.
 
 ## На рутину? (предложить, не навязывать — правило «recurring → routine»)

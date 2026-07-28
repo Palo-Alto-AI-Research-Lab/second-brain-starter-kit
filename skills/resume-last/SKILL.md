@@ -30,11 +30,11 @@ description: >
 
 Последняя сессия этой машины:
 ```
-python "$IMPORTS_ROOT\claude_sessions\continue_session.py" --last
+python "$IMPORTS_ROOT/claude_sessions/continue_session.py" --last
 ```
 Конкретная сессия (id из каталога `Sessions-Catalog.html` или из шапки `/resume-last`):
 ```
-python "$IMPORTS_ROOT\claude_sessions\continue_session.py" <cliSessionId>
+python "$IMPORTS_ROOT/claude_sessions/continue_session.py" <cliSessionId>
 ```
 
 (Маки: `python3`, и при нестандартном пути волта — env `CLAUDE_VAULT_ROOT=<...>`.)

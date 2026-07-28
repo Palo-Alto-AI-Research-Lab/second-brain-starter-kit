@@ -8,7 +8,7 @@ description: >
   синкаемую папку → доезжает на нужную машину; плюс выдаётся короткий seed-промпт "Прочитай X и
   продолжай". Триггеры: "/handoff", "приготовь хэндофф", "передай это <кому/на какую машину>",
   "точка с запятой", "передай сессию", "hand this off", "prepare a handoff". Канон: память
-  cowork-vs-cc-division (формат), session-machine-tagging (межмашинная передача), retro (compact-слой).
+  session-machine-tagging (межмашинная передача), retro (compact-слой).
 ---
 
 # /handoff — передать работу другой сессии / человеку / машине
@@ -25,10 +25,10 @@ description: >
 - **➤ ПРОДОЛЖАЙ ОТСЮДА** — один явный первый шаг для принимающего.
 
 ## Куда класть (синкаемое → доедет само)
-- Межмашинно (Claude→Claude): `$OBSIDIAN_VAULT\_machine-bus\_transit\handoffs\HANDOFF-<latin-slug>.md`
+- Межмашинно (Claude→Claude): `$OBSIDIAN_VAULT/_machine-bus/_transit/handoffs/HANDOFF-<latin-slug>.md`
   (создать папку, если нет). Имя файла ВСЕГДА латиницей (vault-conventions).
 - Для человека-ассистента, который смотрит дашборды (Рита/Нина): продублировать/положить в
-  `$OBSIDIAN_VAULT\_Dashboards\HANDOFF-<slug>.md` (пример: `_Dashboards\HANDOFF-booking-session.md`).
+  `$OBSIDIAN_VAULT/_Dashboards/HANDOFF-<slug>.md` (пример: `_Dashboards\HANDOFF-booking-session.md`).
 - СРОЧНО и адресно другой машине → плюс пинг через шину:
   `python "$USERPROFILE/.claude/scripts/machine_bus.py" send <ИМЯ-КОМПА> "хэндофф готов: <путь>, продолжай оттуда"`.
 

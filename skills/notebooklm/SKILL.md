@@ -25,7 +25,7 @@ Programmatic CLI `teng-lin/notebooklm-py` (17k⭐, MIT). No Chrome window, no DO
 1. **RECALL + curate a NARROW packet** ([[vault-data-architecture]]): `brain_ask.py`/`/ask` + grep to pull ONLY the relevant slice. Write it to a clean `.txt`/`.md` packet.
 2. **Create + add source + generate (CLI):**
    ```bash
-   NB="C:\\Users\\Anton\\notebooklm-cli\\venv\\Scripts\\notebooklm.exe"
+   NB="%USERPROFILE%\\notebooklm-cli\\venv\\Scripts\\notebooklm.exe"
    "$NB" create "<Title>" --use                       # --use sets current context (don't parse --json 'id' — key differs)
    "$NB" source add "<packet.md>" --type file          # uses current context; or --type text "<inline>", or a URL. Wait for Status=ready.
    "$NB" generate audio "<style hint>" --length short --wait   # uses current; or generate mind-map / report / flashcards…

@@ -19,12 +19,12 @@ description: >
 ## Что поднять (дёшево → дорого; останавливаюсь, как нашёл)
 
 1. **Журнал отклонённого (первым — самое частое попадание):** память
-   `$USERPROFILE\.claude\projects\C--Users----CLAUDE-HP17-May26\memory\declined-decisions.md` —
+   `$USERPROFILE/.claude/projects/C--Users----CLAUDE-HP17-May26/memory/declined-decisions.md` —
    что уже отвергали/откладывали, почему словами Антона, и `Revisit-if` (при каком условии можно вернуть).
-2. **Журнал принятых решений (волт):** grep по `$OBSIDIAN_VAULT\02-Decisions\`
+2. **Журнал принятых решений (волт):** grep по `$OBSIDIAN_VAULT/02-Decisions/`
    (подпапки по доменам) и по файлам `decision-*` в волте.
    ```bash
-   grep -rinl "<тема/ключевые слова>" "E:/Obsidian/Owner-Knowledge/02-Decisions"
+   grep -rinl "<тема/ключевые слова>" "$OBSIDIAN_VAULT/02-Decisions"
    ```
 3. **Библия (правила для всех акторов):** grep по `reglament-*` / `protocol-*` в волте — нет ли
    уже нормы, закрывающей вопрос.

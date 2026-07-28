@@ -1,15 +1,15 @@
 ---
 name: n8n
-description: Health-check, audit and (on approval) fix Anton's self-hosted n8n automation stack (n8n.palo-alto.ai, 89 workflows). Trigger on "/n8n", "/n8n health", "/n8n fix <id>", "/n8n dashboard", "проверь n8n", "что сломалось в n8n", "какие воркфлоу падают", "почини воркфлоу", "n8n health", "audit n8n". THIN WRAPPER over $IMPORTS_ROOT/n8n/ scripts + the live n8n MCP — health is READ-ONLY; any workflow edit is backup-first + Anton's explicit "+". Canon = memory [[n8n-stack]].
+description: Health-check, audit and (on approval) fix Anton's self-hosted n8n automation stack (n8n.example.com, 89 workflows). Trigger on "/n8n", "/n8n health", "/n8n fix <id>", "/n8n dashboard", "проверь n8n", "что сломалось в n8n", "какие воркфлоу падают", "почини воркфлоу", "n8n health", "audit n8n". THIN WRAPPER over $IMPORTS_ROOT/n8n/ scripts + the live n8n MCP — health is READ-ONLY; any workflow edit is backup-first + Anton's explicit "+". Canon = memory [[n8n-stack]].
 ---
 
 # /n8n — automation-stack health & repair
 
 > 🧒 When reporting to Anton end with a child-simple "Простыми словами" recap. (memory `eli5-always`)
 
-Anton's operational nervous system = self-hosted **n8n at `https://n8n.palo-alto.ai`** (v2.14.2, 89 workflows). n8n = event bus, NOT the brain. Full state + every gotcha = memory [[n8n-stack]] (read it first). Workflows fail SILENTLY → this skill makes failure visible and fixes it safely.
+Anton's operational nervous system = self-hosted **n8n at `https://n8n.example.com`** (v2.14.2, 89 workflows). n8n = event bus, NOT the brain. Full state + every gotcha = memory [[n8n-stack]] (read it first). Workflows fail SILENTLY → this skill makes failure visible and fixes it safely.
 
-**Access:** REST `https://n8n.palo-alto.ai/api/v1/`, header `X-N8N-API-KEY`; key in `$USERPROFILE/.claude/secrets/n8n.env` ⚠️ **expires 2026-07-15** (recreate non-expiring; warn if near). API needs a browser **User-Agent** header or returns 403 (WAF). The **n8n MCP** (`mcp__n8n__*`) is wired BUT can drop mid-session (it disconnected 2026-07-04) — do NOT depend on it.
+**Access:** REST `https://n8n.example.com/api/v1/`, header `X-N8N-API-KEY`; key in `$USERPROFILE/.claude/secrets/n8n.env` ⚠️ **expires 2026-07-15** (recreate non-expiring; warn if near). API needs a browser **User-Agent** header or returns 403 (WAF). The **n8n MCP** (`mcp__n8n__*`) is wired BUT can drop mid-session (it disconnected 2026-07-04) — do NOT depend on it.
 
 **MCP-down fallback = build/edit straight over REST (proven 2026-07-04):** `$IMPORTS_ROOT/n8n\n8n_build.py` — `create_workflow(name,nodes,connections)`, `post_webhook(path,payload)` (fire a webhook for /tt), `set_active(id,on)`; and `n8n_edit.py` — `get_workflow/update_workflow` (backup-before-PUT), `list_workflows`, `_req`. Both reuse the WAF User-Agent. The resilience workflows built this way — **WATCHDOG** `IdSRNxfOT9Mo7Qse` (dead-man's-switch), **ERROR CATCHER** `5X7xsGlwz44AO8Wf` (set as `settings.errorWorkflow` to make a workflow's failures scream in chat 03), **INBOUND DOOR** `5e8JGjnVSvnkrRSX`, **bus-bridge** `U96y7qLDLufGpbUf` — plus their builders (`watchdog_build.py`/`catcher_build.py`/`inbound_build.py`) live in `_imports\n8n\`. Full map = memory [[n8n-watchdog]].
 

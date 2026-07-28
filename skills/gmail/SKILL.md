@@ -27,7 +27,7 @@ python gmail_check.py read bb <message_id>    # full body of one message
   `python gmail_check.py search "is:unread -category:promotions -category:social -category:forums newer_than:1d" --max 25`
   Keep: real people, money (invoice/receipt/contract/банк/налоги), meetings (Calendly/Fireflies/Zoom/планерка), leads/investors/deals, legal/visa, fresh OTP. Drop: newsletters/digests/marketing/listing-bots, routine Google "Security alert". Doubt → include with "(?)".
 - **"найди письмо про X"** → `search "X"` (add `--label` if Anton named a box); show sender · subject · date · msg-id, then offer to `read` the top hit.
-- **"сделай дайджест"** → same as the morning routine `gmail-digest-morning`, but reported here (and/or send to Telegram Saved `184939070`, account `"default"`, only if Anton asks).
+- **"сделай дайджест"** → same as the morning routine `gmail-digest-morning`, but reported here (and/or send to Telegram Saved `226258979`, account `"default"`, only if Anton asks).
 
 ## Hard safety gates
 - **READ-ONLY by default.** Never mark-read, archive, delete, or send unless Anton explicitly approves THAT action/message (Tier-2 outbound, [[operating-agreement]]).

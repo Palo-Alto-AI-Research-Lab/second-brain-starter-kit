@@ -24,7 +24,7 @@
 | [`/03`](03/SKILL.md) | Запуск АВТОНОМНОГО МЕЖМАШИННОГО КОНСЕНСУСА — Антон говорит «03» (имя TG-чата согласования) или «теперь вы сами / дальше сами / договоритесь сами / реш… |
 | [`/health-sync`](health-sync/SKILL.md) | On-demand pull of FRESH messages from Anton's 7 Telegram HEALTH chats (medicine, blood/pressure, vitamins/БАДы, nootropics/mind, healing-head, longevi… |
 | [`/tt-probe`](tt-probe/SKILL.md) | E2E-проба конвейера fleet-skill-autonomy (создан на MAC-1 2026-07-16 для verify #41ac669a). Не вызывать - это тестовый маркер, после верификации писат… |
-| [`/n8n`](n8n/SKILL.md) | Health-check, audit and (on approval) fix Anton's self-hosted n8n automation stack (n8n.palo-alto.ai, 89 workflows) |
+| [`/n8n`](n8n/SKILL.md) | Health-check, audit and (on approval) fix Anton's self-hosted n8n automation stack (n8n.example.com, 89 workflows) |
 
 ## Качество и ревью
 

@@ -13,7 +13,7 @@ description: Mine ANY Telegram channel/chat for alpha in one command — scrape 
 
 **0. RECALL (не дублируй).** Канал уже майнили? Проверь `$IMPORTS_ROOT/alpha/<slug>\` и память (`*-mine`, `sostav-community-import`). Если да — это ДОЗАБОР: тот же slug, инкремент.
 
-**1. Резолв канала.** Юзернейм (`@prompt_design` / `prompt_design`) или числовой id (`-1004137127508`). Если не знаешь id — `mcp__telegram__search_dialogs` или `/chat <имя>`. Выбери короткий латинский **slug** (напр. `silmeshok`).
+**1. Резолв канала.** Юзернейм (`@prompt_design` / `prompt_design`) или числовой id (`-1000800842092`). Если не знаешь id — `mcp__telegram__search_dialogs` или `/chat <имя>`. Выбери короткий латинский **slug** (напр. `silmeshok`).
 
 **2. Скрейп + детектор (0 токенов, 0 GPU):**
 ```

@@ -10,12 +10,12 @@ INTENTION_LANE_RUN
 ЦЕЛЬ: превратить сегодняшние НАМЕРЕНИЯ Антона (каждая боль / вопрос «как сделать X» / «нужен человек, кто…» в сессиях дня) в 2-3+ честных поста-намерения с явной ПРОСЬБОЙ, чтобы аудитория вернула АЛЬФУ (решение, тёплое интро, предупреждение, соавтора). Draft-first: ничего не публикуется, черновики уходят Антону в Telegram.
 
 ## Пути и движок
-- Майнер+копилка: `python $IMPORTS_ROOT\content-factory\intention\intention_mine.py <cmd>` (0 токенов).
+- Майнер+копилка: `python $IMPORTS_ROOT/content-factory/intention/intention_mine.py <cmd>` (0 токенов).
 - Копилка: `intentions.db` (никогда не теряет; дедуп по контент-хэшу).
 - Кандидаты: `candidates\cand-<DAY>.md`. Черновики: `drafts\intentions-<DAY>.md`.
-- Решение/канон: `$OBSIDIAN_VAULT\02-Decisions\decision-intention-lane-content-factory-2026-07-02.md`.
-- Telegram Saved Messages владельца: numeric chat_id из локального конфига (НЕ "me", без parse_mode).
-- ⚠️ FALLBACK доставки (если Telegram MCP недоступен/connecting — он штатно отваливается): Telethon-рельс, MCP-независимый. Текст: `TG_BUS_GROUP=<your_saved_messages_id> python $USERPROFILE\.claude\scripts\tg_bus_send.py --raw "…"`; файл: `… --raw --file "<путь>" "<caption>"`. Проверено 2026-07-02.
+- Решение/канон: `$OBSIDIAN_VAULT/02-Decisions/decision-intention-lane-content-factory-2026-07-02.md`.
+- Telegram Saved (аккаунт @work_acct_a): numeric chat_id `226258979` (НЕ "me", без parse_mode).
+- ⚠️ FALLBACK доставки (если Telegram MCP недоступен/connecting — он штатно отваливается): Telethon-рельс, MCP-независимый. Текст: `TG_BUS_GROUP=226258979 python $USERPROFILE/.claude/scripts/tg_bus_send.py --raw "…"`; файл: `… --raw --file "<путь>" "<caption>"`. Проверено 2026-07-02.
 
 ## Правила каналов (из Deep Research 2026-07-02) — ВАЖНО
 - Каналы для ask-постов по «альфе»: **Telegram** (RU) · **X** (EN, #buildinpublic) · **Indie Hackers** (EN) · **Ask HN** (EN, «Ask HN:»). Опц.: LinkedIn (деловой тон).
@@ -41,7 +41,7 @@ INTENTION_LANE_RUN
 6. ВЫБОР к постингу: возьми 2-3 самых «альфовых» СЕГОДНЯШНИХ намерения (сильная конкретная просьба, свежесть). Можно больше, если день богатый.
 7. НАПИСАНИЕ (Opus): для каждого выбранного намерения напиши посты по подходящим каналам (TG-RU + X-EN минимум; добавь IH/Ask HN где ask уместен). Формат + приватность выше. Разнообразь тип (просьба/выбор/понял-что-ошибался).
 8. Сохрани все черновики в `drafts\intentions-<DAY>.md` (UTF-8, no BOM; ТОЛЬКО добавление, не перезаписывай чужие правки — если файл есть, дозапиши секцией времени прогона). Пометь намерения: `intention_mine.py mark --id N --status drafted`.
-9. Отправь в Telegram (chat_id из локального конфига, без parse_mode) шапку «🎯 Намерения-черновики за <DAY> (отредактируй и запости сам):» + по каждому намерению блок «— <title> —» и версии по каналам. Длиннее ~4000 → бей по границам абзацев на «Часть N/M».
+9. Отправь в Telegram (chat_id 226258979, без parse_mode) шапку «🎯 Намерения-черновики за <DAY> (отредактируй и запости сам):» + по каждому намерению блок «— <title> —» и версии по каналам. Длиннее ~4000 → бей по границам абзацев на «Часть N/M».
 10. Отчёт Антону: сколько намерений намайнено/в копилке/в черновиках, какие каналы, что отложено. Заверши «что дальше».
 
 ## Мостик в эпизод (намерение → лонгрид/дев-лог на GitHub)

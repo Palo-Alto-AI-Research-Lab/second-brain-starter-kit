@@ -7,7 +7,7 @@ description: ACTIVE recovery when machines can't see each other over Syncthing �
 
 Активный runbook на ЧП «потеря синка» (полный канон + почему = Библия [[reglament-chp-poterya-sinka-mezhdu-mashinami]]). Принцип: **истину устанавливаем по ЖИВОМУ API хаба, а не по памяти и не по словам одного пира** (пир может держать устаревшую запись — так ноут однажды уверенно звал «верни 2KPYBY4», что сломало бы Нина).
 
-Аккаунт/группа шины и ключ — из `~/.claude/tg_bus.json` (Telegram) и env `STGUIAPIKEY` (Syncthing API). Хаб LAN = `192.168.1.140:22000`.
+Аккаунт/группа шины и ключ — из `~/.claude/tg_bus.json` (Telegram) и env `STGUIAPIKEY` (Syncthing API). Хаб LAN = `10.0.0.10:22000`.
 
 ## Шаг 0 — Детект (где болит)
 ```bash
@@ -32,7 +32,7 @@ curl -s -H "X-API-Key: $APIKEY" "http://127.0.0.1:8384/rest/config/folders" | py
 ## Шаг 3 — Опубликуй VERIFIED Device ID хаба в шину (out-of-band пруф)
 Через Telegram-MCP (`chat_id`/`account` из `tg_bus.json`):
 ```
-🤖 [<хаб> -> ALL] hub <имя> = <EEAETB6-полный-ID>, addr tcp://192.168.1.140:22000. VERIFIED живым API (серверит весь волт). Пиры: впишите этот ID, удалите устаревший, рестарт демона, рапорт connected.
+🤖 [<хаб> -> ALL] hub <имя> = <EEAETB6-полный-ID>, addr tcp://10.0.0.10:22000. VERIFIED живым API (серверит весь волт). Пиры: впишите этот ID, удалите устаревший, рестарт демона, рапорт connected.
 ```
 Это снимает Tier-2-гейт пира («вписать чужой ID = отдать волт») — пир получил доказательство со стороны самого хаба.
 

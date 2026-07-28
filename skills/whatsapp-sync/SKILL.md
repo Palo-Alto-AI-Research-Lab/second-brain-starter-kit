@@ -6,7 +6,7 @@ description: On-demand refresh of Anton's WhatsApp text into the Obsidian vault 
 OBJECTIVE: Refresh the WhatsApp slice of the Second Brain — pull the recent text the live bridge exposes, rebuild the SQLite+FTS5 data layer, re-resolve names, re-label active groups, rebuild the dashboard, and refresh the vault notes (MOC + groups + optionally contact notes). Fully deterministic except the group-label step (Sonnet). Idempotent: `build_db.py` is a full rebuild from `raw_train/`, so re-runs never duplicate.
 
 CONTEXT:
-- Live bridge = `@oss_maintainer/whatsapp-mcp` (Baileys), main number "Tony PaloAlto ResearchLab" (jid `82693526468@s.whatsapp.net`). Memory [[whatsapp-mcp-integration]] has the full setup + pairing playbook.
+- Live bridge = `@oss_maintainer/whatsapp-mcp` (Baileys), main number "Tony PaloAlto ResearchLab" (jid `16213388980@s.whatsapp.net`). Memory [[whatsapp-mcp-integration]] has the full setup + pairing playbook.
 - Pipeline home: `$IMPORTS_ROOT/whatsapp/`. Data: `whatsapp_train.db` (SQLite+FTS5) + `raw_train\` (JSON). Vault home: `$OBSIDIAN_VAULT/01-Conversations/WhatsApp/` (`_WhatsApp-MOC.md`, `_WhatsApp-Groups.md`, 9 contact notes). Dashboard: `_Dashboards\WhatsApp-Dashboard.html`.
 - SCOPE: **TEXT ONLY.** Never `download_media`; ignore the `hasMedia` flag.
 - Model routing: the group-label step is grunt classification → **Sonnet subagent** (per [[model-routing-sonnet-grunt]]). Contact-note summaries (CRM intel, not Anton's authorial voice) → Sonnet draft acceptable under the quality gate; escalate to Opus if weak.

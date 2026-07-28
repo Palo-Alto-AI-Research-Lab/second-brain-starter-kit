@@ -15,7 +15,7 @@ Reference for `obsidian-ingest`. Load when classifying notes, naming files, or w
 | `07-People/` | `person-*` notes | flat |
 | `08-Templates/` | templates | |
 
-Imports/checkpoints live **outside** the vault proper in `$IMPORTS_ROOT\` (JSONL, scripts, `staging/`).
+Imports/checkpoints live **outside** the vault proper in `$IMPORTS_ROOT/` (JSONL, scripts, `staging/`).
 
 ## Naming
 
@@ -54,7 +54,7 @@ aliases: [<translations / variants>]
 type: concept
 authored_by: human
 created: YYYY-MM-DD
-source_post: "<source-slug> [internal]"
+source_post: "[[<source-slug>]]"
 tags: [<domain>, <canonical subtags>]
 ---
 ```
@@ -99,7 +99,7 @@ msg_id: <id>
 session: <n>
 month: YYYY-MM
 is_transcript: true|false
-concept: "concept-<slug> [internal]"
+concept: "[[concept-<slug>]]"
 tags: [telegram, telegram-post, anton-original, ...]
 ---
 ```
@@ -116,7 +116,7 @@ date: YYYY-MM-DD
 year: YYYY
 msg_id: <original FB post number>
 word_count: N
-concept: "concept-<slug> [internal]"
+concept: "[[concept-<slug>]]"
 tags: [facebook-diary, anton-original]
 ---
 ```
@@ -126,11 +126,11 @@ tags: [facebook-diary, anton-original]
 ---
 title: "<Series Name> — Part N"
 type: transcript-episode
-parent: "<Series Name> [internal]"
+parent: "[[<Series Name>]]"
 episode: N
 origin: external
 authored_by: ai
-concept: "concept-<slug> [internal]"
+concept: "[[concept-<slug>]]"
 tags: [transcript, episode]
 ---
 ```

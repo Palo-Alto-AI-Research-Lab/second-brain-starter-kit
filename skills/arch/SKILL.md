@@ -41,7 +41,7 @@ python "$IMPORTS_ROOT/arch/arch_status.py" dead
 
 ## Грабли (из памяти)
 - Метрика покрытия должна ИЗМЕРЯТЬ артефакт, а не хардкодить вердикт (ложная тревога backup-строки, 2026-06-22).
-- `RED.flag` пишется только на critical/daily-fail (SRE: алертим на симптом). Phase-5 routine `system-architect-red-alert` (06:21) пингует Telegram Saved 184939070 при красном, молчит при зелёном.
+- `RED.flag` пишется только на critical/daily-fail (SRE: алертим на симптом). Phase-5 routine `system-architect-red-alert` (06:21) пингует Telegram Saved 226258979 при красном, молчит при зелёном.
 
 ## Канон
 Память [[system-architect]] · решение `decision-architect-system-platform` · Библия `reglament-pered-izmeneniem-sistemy-sverstis-s-kartoy-arch` (для людей-ассистентов и LLM тоже). Связано: [[verify-existing-before-proposing]], [[automation-inventory]], [[vault-data-architecture]].

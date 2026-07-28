@@ -1,12 +1,12 @@
 ---
 name: faaa-sync
-description: On-demand pull of FRESH FAAA follow-up call notes from Anton's Telegram group "CALLS 889 MAIN FA FAAAA follow up" (chat -1006938423189) into the Obsidian Platinum-CRM. Incremental + idempotent (dedup by Telegram message id) — safe to re-run, never makes duplicates. This is the MANUAL counterpart of the weekly scheduled task `faaa-weekly-sync`; both call the SAME scripts in $IMPORTS_ROOT/ (single source of truth, no logic duplication). Trigger on "/faaa-sync", "подтяни свежие FAAA", "забери свежие звонки", "обнови FAAA", "sync FAAA calls", or whenever Anton wants the latest call follow-ups in the vault without waiting for Monday's auto-run.
+description: On-demand pull of FRESH FAAA follow-up call notes from Anton's Telegram group "CALLS 889 MAIN FA FAAAA follow up" (chat -1006070720018) into the Obsidian Platinum-CRM. Incremental + idempotent (dedup by Telegram message id) — safe to re-run, never makes duplicates. This is the MANUAL counterpart of the weekly scheduled task `faaa-weekly-sync`; both call the SAME scripts in $IMPORTS_ROOT/ (single source of truth, no logic duplication). Trigger on "/faaa-sync", "подтяни свежие FAAA", "забери свежие звонки", "обнови FAAA", "sync FAAA calls", or whenever Anton wants the latest call follow-ups in the vault without waiting for Monday's auto-run.
 ---
 
 OBJECTIVE: Pull fresh FAAA follow-up call notes from Anton's Telegram group and incrementally ingest them into the Obsidian Platinum-CRM, on demand. Fully idempotent (dedup by Telegram message id) — safe to re-run, never creates duplicates. Identical pipeline to the weekly task `faaa-weekly-sync`; the only difference is that this fires when Anton asks.
 
 CONTEXT:
-- Source: Telegram supergroup "CALLS 889 MAIN FA FAAAA follow up MAIN (ТОЛЬКО итоги звонков и НИЧЕГО БОЛЬШЕ)", chat_id = -1006938423189 (read via the Telegram MCP; logged-in account @work_acct_a).
+- Source: Telegram supergroup "CALLS 889 MAIN FA FAAAA follow up MAIN (ТОЛЬКО итоги звонков и НИЧЕГО БОЛЬШЕ)", chat_id = -1006070720018 (read via the Telegram MCP; logged-in account @work_acct_a).
 - Each substantive message is a call follow-up summary (RU or EN): starts with "Follow-up of our call 👣" / "Фоллоуап нашего звонка 👣" / "Follow-Up 👣", has a "Participants:" / "Meeting participants:" / "Участники" line with the lead's @handle, bullets, and "Agreements 🤝" / "Договоренности 🤝". Spam/promos + voice-note ops messages also appear — the scripts' triage filters them out (only real follow-ups become lead cards).
 - CRM vault: $OBSIDIAN_VAULT/04-Projects/crypto/Platinum-CRM/leads/. Scripts + checkpoints: $IMPORTS_ROOT/.
 - Watermark (last imported msg id) = max integer id in $IMPORTS_ROOT/faaa-archive.jsonl.
@@ -15,10 +15,10 @@ STEPS:
 1. BACKUP FIRST (vault-backup-rule): run the vault backup (python $IMPORTS_ROOT/vault_backup.py, or the obsidian-backup skill) BEFORE any write. This step renders cards into the live vault — never skip the backup.
 2. Health-check the Telegram MCP: call get_me. If it errors, STOP and report "Telegram MCP is down — skipped" (do not proceed).
 3. Watermark: read the max integer message id in $IMPORTS_ROOT/faaa-archive.jsonl (python -c that loads the jsonl, prints max int id, ASCII only). Call it WM.
-4. Pull history: call the Telegram MCP get_new_messages_since for chat_id -1006938423189 with min_id = WM, limit 200 (or get_history limit 200 then filter id > WM). If the oldest returned id is still > WM, fetch again with a larger window to cover the whole gap.
+4. Pull history: call the Telegram MCP get_new_messages_since for chat_id -1006070720018 with min_id = WM, limit 200 (or get_history limit 200 then filter id > WM). If the oldest returned id is still > WM, fetch again with a larger window to cover the whole gap.
 5. If NO message has id > WM: STOP and report "No new FAAA follow-ups." Do nothing else.
 6. Write the new messages (id > WM) to $IMPORTS_ROOT/faaa/faaa-new-msgs.json as:
-   {"chat_id":-1006938423189,"watermark":WM,"results":[{"id":<int>,"sender":<from>,"date":<iso8601>,"text":<FULL verbatim text>,"media":<media type if any>}]}
+   {"chat_id":-1006070720018,"watermark":WM,"results":[{"id":<int>,"sender":<from>,"date":<iso8601>,"text":<FULL verbatim text>,"media":<media type if any>}]}
    Include the COMPLETE verbatim text of each message — never truncate or paraphrase (faithful raw import).
 7. Run: python $IMPORTS_ROOT/ingest_faaa_live.py
    (classifies follow-ups, regex-extracts the lead @handle from the Participants/Участники line, team-filters, dedups vs existing leads by handle → writes faaa\live_bundles.json [NEW leads] and faaa\live_appends.json [calls for EXISTING leads]; prints a summary).
@@ -32,7 +32,7 @@ CONSTRAINTS:
 - WINDOWS cp1252: never print Cyrillic to stdout in python (it crashes) — write results to UTF-8 files and Read them; keep all python stdout ASCII (counts/slugs only).
 - INCREMENTAL ONLY — do NOT trigger any full FAAA/CRM rebuild or re-render of the whole leads\ folder (that could change slugs and break the 07-People links).
 - Provenance on everything: origin: mixed, authored_by: hybrid — NEVER tag #anton-original (these are records of other people's pitches).
-- Team handles (@work_acct_a, @personal_acct, @corp_acct*, @antondz*, @Madina*) are NOT leads — the scripts already exclude them.
+- Team handles (@work_acct_a, @personal_acct, @corp_acct*, @owner_alt*, @Madina*) are NOT leads — the scripts already exclude them.
 
 OUTPUT / SUCCESS CRITERIA: Report: number of new lead cards created, calls appended to existing leads, the new watermark (max id in faaa-archive.jsonl), and confirm 0 broken links. If nothing was new, just report that. End every reply to Anton with a 🧒 Простыми словами recap.
 

@@ -44,7 +44,7 @@ Keep the synthesized recall as `recall_context` (Anton's prior notes/leanings on
 
 **Step 2 — run the swarm** via the Workflow tool (this skill IS your explicit opt-in to orchestrate):
 ```
-Workflow({ scriptPath: "C:\\Users\\_\\.claude\\skills\\research-swarm\\workflow.js",
+Workflow({ scriptPath: "%USERPROFILE%\.claude\\skills\\research-swarm\\workflow.js",
            args: { hypothesis: "<hypothesis>", recall_context: "<from step 1>" } })
 ```
 The script fans out the 5 lenses (parallel barrier — synthesis needs all), a synthesis agent merges them, then the **Verifier-Calibrator** audits the strongest claims and calibrates the tier (or abstains → `insufficient`). Returns the structured **argument map** object with a `calibration` block.

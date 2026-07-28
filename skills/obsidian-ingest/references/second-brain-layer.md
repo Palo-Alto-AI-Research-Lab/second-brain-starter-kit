@@ -1,6 +1,6 @@
 # Second-brain layer — distillation & retrieval (beyond ingest)
 
-Ingest fills the vault; this layer makes it a *thinking partner*. Build/refresh after a big import, or when Anton asks to "make it a second brain". Scripts live in `$IMPORTS_ROOT\`.
+Ingest fills the vault; this layer makes it a *thinking partner*. Build/refresh after a big import, or when Anton asks to "make it a second brain". Scripts live in `$IMPORTS_ROOT/`.
 
 The model: **Capture → Organize → Distill → Express**. Ingest = first two. This doc = last two.
 
@@ -14,7 +14,7 @@ Turn each concept from a definition into a living document of Anton's evolving t
 
 **Note structure:** `> [!abstract] Тезис (year)` · `## Как менялся мой взгляд (year→year)` · `## Ключевые повороты и уроки` · `## Открытые вопросы` · `## Связанные концепты` · `---` `## Legacy`. Frontmatter gains `type: concept, authored_by: hybrid, origin: anton, synthesis_built, synthesis_sources`.
 
-**Quality gates:** every `alias [internal]` must be a real package `stem`; every `concept-X [internal]` a real catalog slug. Agents self-validate; merge re-validates. Hallucination rate observed ~0.4% (auto-stripped).
+**Quality gates:** every `[[stem|alias]]` must be a real package `stem`; every `[[concept-X]]` a real catalog slug. Agents self-validate; merge re-validates. Hallucination rate observed ~0.4% (auto-stripped).
 
 ## 2. Identity layer — who Anton is, distilled
 Built ON TOP of the concept-syntheses (harvest their Тезис + повороты/уроки + evolution sections via `gather_beliefs.py`/`_timeline_material`). Five artifacts in `03-Insights/`, all cross-linked + on 00-HOME:
@@ -57,6 +57,6 @@ Once Platinum-CRM leads + person notes are imported, activate the relationship e
 After each new ingest: re-run `build_synth_packages.py` + merge only concepts whose source count grew; re-mine predictions; `brain_semantic.py --reindex`. Surface everything on `00-HOME` (dataview on `synthesis_built` + links to ledger + search usage).
 
 ## Gotchas (learned)
-- **Link validation:** capture target with `re.findall(r'\[\[([^\]\|#]+)', t)` then `.rstrip('\\')` — this is how Obsidian resolves (basename before `|`/`#`) and correctly handles escaped-pipe `b [internal]` table links. A naive `\[\[(.+?)\]\]` + split mis-handles aliases and produces massive false-positive "broken" counts.
+- **Link validation:** capture target with `re.findall(r'\[\[([^\]\|#]+)', t)` then `.rstrip('\\')` — this is how Obsidian resolves (basename before `|`/`#`) and correctly handles escaped-pipe `[[a\|b]]` table links. A naive `\[\[(.+?)\]\]` + split mis-handles aliases and produces massive false-positive "broken" counts.
 - **Merge once.** The graft treats current note body as Legacy; re-running nests it. Guard on `synthesis_built:`.
 - **Windows/Cyrillic:** never `print()` Cyrillic (cp1252 crash) — write UTF-8 files and Read them.

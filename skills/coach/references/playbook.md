@@ -67,4 +67,4 @@ When a signal shows up (from his message, the market, the day), surface the matc
 
 ## Seeding context for a fresh (scheduled) run
 A scheduled run starts with no memory. Before composing, the routine should:
-`python $IMPORTS_ROOT\coach_run.py --context "<тема или пусто>"` → writes `_coach_context.txt` (identity-layer slice + last journal + open commitment + a brain_ask hit). Compose the message from that, in the `tone` from state, then send + write back. Keep token use low: the context pack is a curated slice, not the whole layer.
+`python $IMPORTS_ROOT/coach_run.py --context "<тема или пусто>"` → writes `_coach_context.txt` (identity-layer slice + last journal + open commitment + a brain_ask hit). Compose the message from that, in the `tone` from state, then send + write back. Keep token use low: the context pack is a curated slice, not the whole layer.

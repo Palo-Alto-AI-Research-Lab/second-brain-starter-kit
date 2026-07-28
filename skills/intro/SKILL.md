@@ -28,7 +28,7 @@ Skip this gate ONLY if Anton explicitly says "без апрува" in the reques
 ### 3. CREATE the group
 - `create_group` from the chosen account, title = `LatinName1 <> LatinName2 <> Palo Alto Research Lab`.
 - The `<>` sign goes between ALL elements. Names are LATIN only, taken from the lead's own name. Pass the title with plain `<>` AT creation. Never HTML-escape it. Never rely on renaming afterward (see gotchas).
-- Account label "default" = @work_acct_a (id 184939070); "corp_acct" is the company voice. Pick the account with the warmest existing thread to each lead.
+- Account label "default" = @work_acct_a (id 226258979); "corp_acct" is the company voice. Pick the account with the warmest existing thread to each lead.
 
 ### 4. INTRO blurb in the group
 - Right after creating the group, get its invite link via `export_chat_invite`.

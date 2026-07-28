@@ -15,10 +15,10 @@ python "$USERPROFILE/.claude/scripts/_shared/social_guard.py" check tg --text "<
 
 ## 1. Канал — строго из реестра
 Истина = волт `00-System\Channels-Registry.md` (verified live, id + статус админки). Кратко (на 2026-07-14):
-- **@ClawRus** `-1005352077497` — RU teaser+longread ✅
-- **@ClawEng** `-1003117543271` — EN teaser ✅
+- **@ClawRus** `-1006847702008` — RU teaser+longread ✅
+- **@ClawEng** `-1006751373534` — EN teaser ✅
 - @openclaw_lab / @openclaw_hub — ⏳ нет админки, НЕ постить до выдачи прав
-- ⛔ **@clawrush** `-1007147126902` — ЧУЖОЙ, никогда
+- ⛔ **@clawrush** `-1003897257611` — ЧУЖОЙ, никогда
 Runtime-проверка: `get_chat` по id → username в ответе совпал с реестром → ок. Канала нет в реестре → блок, спроси Антона (и внеси в реестр после ответа).
 
 ## 2. Аккаунт — по машине и каналу

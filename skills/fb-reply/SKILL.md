@@ -26,6 +26,8 @@ python "$USERPROFILE/.claude/scripts/fb_guard.py" status
 > ⛔ IP-гейт (anton 16.07): комментинг FB — ТОЛЬКО с хаба `HUB-1` (постоянный IP). На другой машине НЕ отвечать — задачу текстом на хаб. Канон: `reglament-ip-sensitive-deystviya-tolko-s-haba`.
 
 1. Открой нужный пост Антона (он даёт ссылку, или идём по `facebook.com/<профиль>` → его последние посты).
+   ⛔ **ГРАБЛЯ 2026-07-28: стена профиля НЕ отдаёт пермалинки.** Скролл `facebook.com/OwnerProfile` даёт ноль `pfbid`-ссылок (FB populates href только по hover), а лента виртуализована — JS-скролл обгоняет ленивую загрузку и посты остаются скелетонами. **Рабочий вход = лента уведомлений** `facebook.com/notifications`: там каждая строка «X commented on your post» уже несёт готовый `/posts/pfbid…` и говорит, КТО и КОГДА написал. Один проход по ней заменяет весь скролл стены. Graph-API путь (`fb_posts_poll.py`) пока мёртв — нет `FB_USER_TOKEN`.
+   ⚠️ Открытое окно Messenger засоряет выдачу: его `div[role="article"]` = сообщения личек, не комменты. Закрой окно чата перед сбором.
 2. **Извлекай комментаторов В САМОЙ СТРАНИЦЕ** (имена/ссылки FB скрывает через MCP-границу → матчим и фильтруем внутри страницы, наружу отдаём только безопасный текст). Через `mcp__Claude_in_Chrome__javascript_tool`:
    ```js
    const out = [];
@@ -111,6 +113,13 @@ python "$USERPROFILE/.claude/scripts/fb_guard.py" status
 8. **Подтверди публикацию через JS:** появился `div[role="article"][aria-label^="Reply by <моё-имя> to <Имя>'s comment"]` с твоим текстом И поле ответа очистилось (`innerText===''`). Только это = «опубликовано».
 9. `python "$USERPROFILE/.claude/scripts/fb_guard.py" record reply`
 10. Guard держит паузу ≥5 мин до следующего — НЕ обходи ускорением (темп = главная причина бана).
+    Ждать паузу так (foreground `sleep` заблокирован харнесом, `Start-Sleep`+команда тоже):
+    ```bash
+    until python "$USERPROFILE/.claude/scripts/fb_guard.py" check reply >/dev/null 2>&1; do sleep 15; done; echo "GUARD OPEN"
+    ```
+    запускать через Bash с `run_in_background: true` — придёт уведомление ровно когда окно открылось.
+11. ⛔ **Проверь текст на длинное тире ПЕРЕД отправкой** (`/[—–]/`) — правило [[no-long-dashes]] действует и на комменты. Поймал в поле → не Backspace, а выделение назад на N символов + `insertText` (§3 грабля 3); проверь, что в выделение не попало @упоминание.
+12. Видимость элементов: `offsetParent` внутри модалки FB **всегда null** (position:fixed) → фильтр «видимый» строй на `getBoundingClientRect()` + `checkVisibility()`, иначе отсеешь ВСЁ и решишь, что комментов нет.
 
 ## 4. Доложи
 Что ответили, что в очереди (ждёт паузы/лимита), сколько сегодня `reply N/40`.

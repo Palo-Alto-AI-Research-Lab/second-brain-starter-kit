@@ -15,7 +15,7 @@ description: >-
 
 > 🧒 **When reporting to Anton:** end with a child-simple "Простыми словами" recap.
 
-**The principle (canon: [concept-creation-rules.md](E:/Obsidian/Owner-Knowledge/08-Templates/concept-creation-rules.md) §11):** an important new idea that only *exists* as a note is an island, not part of the Second Brain. It must be *integrated* into the knowledge graph. Mirror of no-orphan-notes-rule [internal] (passive "≥1 inbound"); this is the active "maximize meaningful connectivity for important nodes" side.
+**The principle (canon: [concept-creation-rules.md]($OBSIDIAN_VAULT/08-Templates/concept-creation-rules.md) §11):** an important new idea that only *exists* as a note is an island, not part of the Second Brain. It must be *integrated* into the knowledge graph. Mirror of [[no-orphan-notes-rule]] (passive "≥1 inbound"); this is the active "maximize meaningful connectivity for important nodes" side.
 
 **Architecture law (from the DR):** **retrieval first → judgment second → writing last.** The LLM never decides links by reading the whole vault; it gets a bounded, diverse candidate pool, then types relations and proposes edits. Less hallucination, explainable, repeatable.
 
@@ -23,7 +23,7 @@ description: >-
 A NEW: concept · mental model · framework · theory · term · project · philosophy · research cluster · personal principle · knowledge-organization system. Threshold = §1 of concept-creation-rules (≥3 recurrences, noun-entity, domain-bound). Routine notes → passive no-orphan check, not this.
 
 ## ⚠️ Token law — channels FIND, LLM JUDGES (never scan all 154k notes)
-Anton's law (vault-data-architecture [internal]): cheap tools first; the LLM judges only the top-K.
+Anton's law ([[vault-data-architecture]]): cheap tools first; the LLM judges only the top-K.
 
 ---
 
@@ -34,9 +34,9 @@ Input: the new note's path/name (or freshly pasted text → first save via obsid
 List: canonical concepts · aliases/acronyms · key claims · related domains · possible parent/child concepts · candidate MOCs. (LLM + the note's own frontmatter; no vault scan.)
 
 ### 2. Gather candidates from 3 channels (NOT scan-all)
-- **Lexical** — `python "$IMPORTS_ROOT\namesearch\find_name.py" "<each named entity>"` (exact/translit/typo, 0 tokens) + grep literal mentions + alias/unlinked-mention matches.
-- **Semantic** — `python "$IMPORTS_ROOT\brain_ask.py" "<node + its entities>"` (e5+reranker; finds hidden 2nd/3rd-order links: causality, analogy, shared mechanism, opposing view). e5 is multilingual → RU/EN drift is covered.
-- **Hub-awareness** — `incoming_counts` in `$IMPORTS_ROOT\orphan-scan\reverse-index.json` (basename→inbound count, free): mark which candidates are **hubs/MOCs** (high count) vs **orphans** (0). Used by the reverse-link + MOC policy below. *(Full 1/2-hop adjacency graph = deferred future enhancement; semantic channel already covers conceptual neighbours.)*
+- **Lexical** — `python "$IMPORTS_ROOT/namesearch/find_name.py" "<each named entity>"` (exact/translit/typo, 0 tokens) + grep literal mentions + alias/unlinked-mention matches.
+- **Semantic** — `python "$IMPORTS_ROOT/brain_ask.py" "<node + its entities>"` (e5+reranker; finds hidden 2nd/3rd-order links: causality, analogy, shared mechanism, opposing view). e5 is multilingual → RU/EN drift is covered.
+- **Hub-awareness** — `incoming_counts` in `$IMPORTS_ROOT/orphan-scan/reverse-index.json` (basename→inbound count, free): mark which candidates are **hubs/MOCs** (high count) vs **orphans** (0). Used by the reverse-link + MOC policy below. *(Full 1/2-hop adjacency graph = deferred future enhancement; semantic channel already covers conceptual neighbours.)*
 - Cross-check `06-Concepts/` + aliases + `09-Bridges/` so you don't propose a dupe (defer to concept-creation-rules §5).
 
 ### 3. Fuse + rank P0–P3
@@ -49,7 +49,7 @@ Fuse the channels (RRF-style — don't add raw scores from different rankers). S
 **No link without evidence.** Low confidence → defer, don't write.
 
 ### 4. Type each accepted link (closed vocabulary)
-`defines · defined_by · extends · depends_on · contrasts · example_of · evidence_for · method_for · same_cluster · moc_member · see_also`. Write it as a short gloss after the link: `- Target [internal] — method_for: <one phrase why>`.
+`defines · defined_by · extends · depends_on · contrasts · example_of · evidence_for · method_for · same_cluster · moc_member · see_also`. Write it as a short gloss after the link: `- [[Target]] — method_for: <one phrase why>`.
 
 ### 5. Build the change-set (PREVIEW — don't write yet)
 For each edit produce an internal record `{path, target_type: heading|frontmatter, target: "Связано", operation: append_once, text, dedupe_key: "source::target::relation"}`.
@@ -58,26 +58,26 @@ For each edit produce an internal record `{path, target_type: heading|frontmatte
 - **MOC/hub wiring — this is the real "old→new" that matters:** ensure the new node appears in the right MOC/hub (≤2 MOCs; new MOC only in `--deep`). Prefer MOC sections `Core/Related/Methods/Debates/Examples` over a dump.
 - **Missing notes** — propose; create concepts yourself per concept-creation-rules §1 (no-ask).
 - **Caps:** ≤5–7 new links per normal evergreen note per run (MOCs exempt), ≤3 per section.
-- Show the change-set as a ДО→ПОСЛЕ table on Anton's REAL notes (show-before-after [internal]). **Wait for his ОК.**
+- Show the change-set as a ДО→ПОСЛЕ table on Anton's REAL notes ([[show-before-after]]). **Wait for his ОК.**
 
 ### 6. Backup → apply (idempotent)
-- `python "$IMPORTS_ROOT\vault_backup.py"` BEFORE any write (vault-backup-rule [internal]; runbook = skill `obsidian-backup`).
+- `python "$IMPORTS_ROOT/vault_backup.py"` BEFORE any write ([[vault-backup-rule]]; runbook = skill `obsidian-backup`).
 - Apply each change-set record with `append_once` semantics: **before adding a link, check it isn't already in the section** (dedupe_key) — re-running /relink must be a no-op on already-done links.
 - Insert into the `## Связано` block; never mangle adjacent list lines (⚠️ dedup-skill grabli: never batch-Edit list deletions).
 - Optionally stamp `relink_last_run: <date>` in the new note's frontmatter (feeds the monthly audit).
 
 ### 7. QA → reindex → report
 - **Preflight/QA (blocking):** broken target, duplicate patch, missing evidence for a P0/P1, too many links in one section, MOC update without a relevance reason.
-- `python "$IMPORTS_ROOT\validate_links.py"` → 0 broken.
-- orphan re-check on touched notes; `python "$IMPORTS_ROOT\brain_embed_update.py"` → RAG sees the new edges (reindex-routine [internal]).
+- `python "$IMPORTS_ROOT/validate_links.py"` → 0 broken.
+- orphan re-check on touched notes; `python "$IMPORTS_ROOT/brain_embed_update.py"` → RAG sees the new edges ([[reindex-routine]]).
 - **Integration Memo** to Anton: importance reason · main bridges (typed) · notes updated · links added · MOCs touched · concepts created · deferred/rejected candidates · QA counts. End with 🧒 recap.
 
 ---
 
 ## Mode B — `--deep` (глубокая перелинковка: whole vault → islands)
 Monthly/on-command sweep over the ALREADY-COMPUTED orphan list (not a fresh full scan).
-1. `python "$IMPORTS_ROOT\orphan-scan\orphan_scan.py"` → refresh `orphans.csv` / `orphans-by-folder.csv` (vault-orphan-baseline [internal]).
-2. `python "$IMPORTS_ROOT\orphan-scan\build_dashboard.py"` → `$OBSIDIAN_VAULT\_Dashboards\Vault-Orphans.html` (Anton works by eye).
+1. `python "$IMPORTS_ROOT/orphan-scan/orphan_scan.py"` → refresh `orphans.csv` / `orphans-by-folder.csv` ([[vault-orphan-baseline]]).
+2. `python "$IMPORTS_ROOT/orphan-scan/build_dashboard.py"` → `$OBSIDIAN_VAULT/_Dashboards/Vault-Orphans.html` (Anton works by eye).
 3. Also surface: orphan clusters · missing MOC membership · alias gaps · high-centrality notes (high `incoming_counts`) without a hub · stale MOCs. Run top island clusters through Mode A steps 2–7. Loop-until-dry (stop at intentional orphans: archives, raw originals).
 4. Dupes/near-dupes found → hand to skill `dedup` (don't merge here).
 5. New MOC may be proposed here for a stable 5+ note cluster with no hub. Report what got woven in + what was deliberately left.
@@ -101,12 +101,12 @@ Between A and B: Anton names a TOPIC, not one note. Run **Mode A steps 2–7 wit
 
 ## Safety (hard gates)
 - Bidirectional = WRITING into old notes → **backup before, preview before, never auto-write** without Anton's ОК.
-- Never delete; never blanket-glob; never pattern-touch `concept-*`/`person-*` (operating-agreement [internal], [[vault-conventions]]).
+- Never delete; never blanket-glob; never pattern-touch `concept-*`/`person-*` ([[operating-agreement]], [[vault-conventions]]).
 - New concepts: create per concept-creation-rules (no-ask per §1); the LINK plan into old notes is shown for approval.
 
-## Rejected complications (don't re-pitch — see relink-mechanism [internal] / declined-decisions [internal])
+## Rejected complications (don't re-pitch — see [[relink-mechanism]] / [[declined-decisions]])
 The DR suggested, and we declined for AK-47: a Local REST API + MCP plugin (Edit targets sections fine), a new vector DB (have e5+reranker), spaCy 3-layer NER (LLM+namesearch suffice), a JSON-schema validation runtime, and a full link-adjacency graph engine (hub counts are enough for v1).
 
 ## See also
-- [concept-creation-rules.md](E:/Obsidian/Owner-Knowledge/08-Templates/concept-creation-rules.md) §1 (when) + §11 (integration) — the canon.
+- [concept-creation-rules.md]($OBSIDIAN_VAULT/08-Templates/concept-creation-rules.md) §1 (when) + §11 (integration) — the canon.
 - skill `ask` (RAG engine), `dedup` (dupes), `obsidian-ingest` (first-time save of a raw dump), `obsidian-backup` (backup runbook).

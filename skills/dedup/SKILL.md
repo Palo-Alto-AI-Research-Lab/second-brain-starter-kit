@@ -12,10 +12,10 @@ description: >-
 > 🧒 **When reporting to Anton:** end with a child-simple "Простыми словами" recap.
 
 ## 🖥️ Визуальный дашборд первым (Антон работает глазами)
-`python "$IMPORTS_ROOT\build_dedup_dashboard.py"` (сам гоняет скан) → открой `$OBSIDIAN_VAULT\_Dashboards\Dedup-Dashboard.html`: кандидаты-кластеры по темам, цвет = похожесть (🔴 ≥0.7 почти точно дубль), в каждом — какое оставить (новее) / какое superseded. ТОЛЬКО показ; склейка — вручную ниже (supersede, не delete). Комплементарные не трогаем.
+`python "$IMPORTS_ROOT/build_dedup_dashboard.py"` (сам гоняет скан) → открой `$OBSIDIAN_VAULT/_Dashboards/Dedup-Dashboard.html`: кандидаты-кластеры по темам, цвет = похожесть (🔴 ≥0.7 почти точно дубль), в каждом — какое оставить (новее) / какое superseded. ТОЛЬКО показ; склейка — вручную ниже (supersede, не delete). Комплементарные не трогаем.
 
 ## Step 1 — Scan (deterministic; AK-47, ~free; token law)
-`python "$IMPORTS_ROOT\dedup_scan.py"` → scans ACTIVE notes by theme, difflib similarity → candidate clusters in `$IMPORTS_ROOT\dedup_report.txt`. For a DIFFERENT folder, copy the script and change its `OPS` path. Start at similarity ≥0.5 (high-confidence), then ≥0.4 for the next tier — **loop-until-dry** (stop when remaining clusters are complementary/noise).
+`python "$IMPORTS_ROOT/dedup_scan.py"` → scans ACTIVE notes by theme, difflib similarity → candidate clusters in `$IMPORTS_ROOT/dedup_report.txt`. For a DIFFERENT folder, copy the script and change its `OPS` path. Start at similarity ≥0.5 (high-confidence), then ≥0.4 for the next tier — **loop-until-dry** (stop when remaining clusters are complementary/noise).
 
 ## Step 2 — Judge each cluster (NOT every look-alike is a dup)
 - **Identical** → keep the original (lowest msg_id), mark the echo superseded.
@@ -25,9 +25,9 @@ description: >-
 - **Money / sensitive / ambiguous** → do NOT merge; **FLAG for Anton**.
 
 ## Step 3 — Apply the merge (truth layer)
-- Canonical note: add `audience`, `supersedes: "loser [internal]"`, graft nuances into the body.
-- Loser note: `status: active` → `superseded`; add `superseded_by: "canonical [internal]"`; add body marker `> ⊘ Объединено в canonical [internal] — <reason>`. **NEVER delete** (git-reversible; nothing lost).
-- Record in the sidecar `$IMPORTS_ROOT\superseded_rules.json` (`"<msg_id>": {"by": "<canonical_fn>"}`) so the decision survives a pipeline rebuild.
+- Canonical note: add `audience`, `supersedes: "[[loser]]"`, graft nuances into the body.
+- Loser note: `status: active` → `superseded`; add `superseded_by: "[[canonical]]"`; add body marker `> ⊘ Объединено в [[canonical]] — <reason>`. **NEVER delete** (git-reversible; nothing lost).
+- Record in the sidecar `$IMPORTS_ROOT/superseded_rules.json` (`"<msg_id>": {"by": "<canonical_fn>"}`) so the decision survives a pipeline rebuild.
 
 ## Step 4 — Fix the index/MOC view
 - If a generator builds the list (e.g. `build_rules2.py`, superseded-aware) AND its inputs exist → re-run → deploy just the MOC file.

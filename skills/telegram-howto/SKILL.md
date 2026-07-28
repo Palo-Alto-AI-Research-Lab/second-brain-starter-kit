@@ -34,13 +34,13 @@ description: Operating manual for Anton's Telegram via the connected MCP (chigwe
 2. **Page the dialog list:** `get_chats(page=N, page_size≤100)` and match locally.
 
 ## 1) Resolved chat ids (this account; verify before destructive use)
-- **Saved Messages** = `184939070` (Anton's own user id, @work_acct_a). Use the NUMBER, not `"me"` (this MCP rejects "me"). Mixed clipboard: lead @handles, links, forwards, auto-reports, FB-diary drafts. Voice here is rare and NOT auto-transcribed.
+- **Saved Messages** = `226258979` (Anton's own user id, @work_acct_a). Use the NUMBER, not `"me"` (this MCP rejects "me"). Mixed clipboard: lead @handles, links, forwards, auto-reports, FB-diary drafts. Voice here is rare and NOT auto-transcribed.
 - **Telegram service** = `777000` — login codes / OTP land here. **Fetch the code YOURSELF**, don't ask Anton (you're already connected to the account): `get_history(777000, account=<acct>, limit=1)` → parse `Login code: NNNNN`. Codes are short-lived → fetch + use immediately. The **only** thing to ask for is the **2FA cloud password** (not message-fetchable; NEVER store it). Canon: vault `reglament-kody-vhoda-i-otp-assistent-dostaet-sam-iz-sluzhebnogo-chata`, memory `telegram-otp-self-fetch`.
-- **Content hub** = `-1005694821789` — "00 Архив ГОЛОСА и ТЕКСТА … для любых моих постов КОНТЕНТ мой посты" (Supergroup). Anton's personal dictation dump for content. **Auto-transcribed** (see §2).
+- **Content hub** = `-1000694191848` — "00 Архив ГОЛОСА и ТЕКСТА … для любых моих постов КОНТЕНТ мой посты" (Supergroup). Anton's personal dictation dump for content. **Auto-transcribed** (see §2).
 - (Distinct from the vault's `Arhiv-Golosa` = the *content-team* group — a different chat.)
 
 ## 2) The content hub already transcribes voice for you
-In `-1005694821789`, each Anton **voice** message gets two auto-replies from bot **"Personal Audio Summary"** (both `reply_to` the voice id):
+In `-1000694191848`, each Anton **voice** message gets two auto-replies from bot **"Personal Audio Summary"** (both `reply_to` the voice id):
 1. raw transcript — ends `Transcribed by whisper AI`
 2. cleaned summary — ends `Summary: GPT-5.5 + whisper`
 **So you do NOT download + Whisper this chat — just `get_history` and read the bot's text.** Only chats WITHOUT this bot (e.g. Saved Messages) need the manual download→faster-whisper path (`_imports/tg_voice/transcribe_pokupki_voice.py`, CUDA RTX A3000).
@@ -71,8 +71,8 @@ In `-1005694821789`, each Anton **voice** message gets two auto-replies from bot
 ## 5) Common recipes
 - **Find a chat by title:** `search_dialogs("name fragment")`.
 - **Read a chat's recent activity:** `get_history(chat_id, limit=N)` (newest-first).
-- **Pull today's content dictations:** `get_history(-1005694821789, limit~40)` → keep Anton's text msgs + "Personal Audio Summary" transcripts dated today.
-- **Send Anton a draft:** `send_message(184939070, "<text>")` (plain; no parse_mode for Cyrillic bodies).
+- **Pull today's content dictations:** `get_history(-1000694191848, limit~40)` → keep Anton's text msgs + "Personal Audio Summary" transcripts dated today.
+- **Send Anton a draft:** `send_message(226258979, "<text>")` (plain; no parse_mode for Cyrillic bodies).
 - **Get a login/OTP code (self-serve):** `get_history(777000, account=<acct>, limit=1)` → take `Login code: NNNNN`. Don't ask Anton; only the 2FA password is his to provide (and is never stored).
 - **Download a voice note (chat without the bot):** `download_media(chat_id, message_id, file_path)` → faster-whisper.
 

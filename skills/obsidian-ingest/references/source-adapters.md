@@ -144,7 +144,7 @@ year: YYYY
 tags: [facebook-diary, anton-original]
 msg_id: {original FB post number}
 word_count: N
-concept: "concept-... [internal]"      # filled in by LLM concept-mapping pass
+concept: "[[concept-...]]"      # filled in by LLM concept-mapping pass
 ---
 ```
 
@@ -221,16 +221,16 @@ Telegram content-team chat = all Anton (rule confirmed by Anton: "всё моё 
 ## Telegram — Assistants-Ops operational chat (MIXED, rules + Trello registry)
 
 **Source:** Telegram HTML export of Anton's working chat with household assistants ("All Assistant's tasks 777…"). 73 pages, ~70.5k messages, 2022→2026. Differs fundamentally from the content-team chat: it is **mixed** (a boss + a rotating assistant team), and its prize is the **Библия of регламенты** (durable SOPs).
-**Scripts:** `$IMPORTS_ROOT\parse_assistants_ops.py` (Layer 2 + rule candidates) → 8 curator subagents → `build_rules.py` (Layer 1). Checkpoints: `assistants-ops-sample.jsonl`, `rule_candidates.json`, `_rulebatch/curated_*.json`, `trello_rules.json`.
+**Scripts:** `$IMPORTS_ROOT/parse_assistants_ops.py` (Layer 2 + rule candidates) → 8 curator subagents → `build_rules.py` (Layer 1). Checkpoints: `assistants-ops-sample.jsonl`, `rule_candidates.json`, `_rulebatch/curated_*.json`, `trello_rules.json`.
 
 ### Two-layer output (Anton's choice)
 - **Layer 1 — Bible:** `03-Insights/Operations/` — one `reglament-<slug>.md` per full-text rule, `trello-cards/` (one note per formalized Trello rule-card), `_Operations-Bible-MOC.md` (grouped by theme, 🟢 anton / ⚪ team-SOP), `_Bible-Trello-Index.md` (MOC of the card notes).
 - **Layer 2 — archive:** `01-Conversations/Telegram/Assistants-Ops/sessions/Sessions-YYYY-MM-DD.md` — every message, day-bucketed, role-labelled, reply-threaded; `_Assistants-Ops-MOC.md` (month index). Cheap/deterministic; no LLM.
 
 ### Provenance model (the hard part — this chat has many speakers)
-- **`who()` roster:** Anton accounts (`Tony frm Palo Alto…`, `Anton Dziatkovskii 2023`, `Tony 📍Silicon Valley…`) → anton/principal. Pavel (`Pavel Dz`, `01 Pavel … Dziatkovskaia`) → Pavel/principal. ~25 rotating assistants (Helena Kondricheva, Oksana, Ekaterina Lavrenyuk, Yuliya, Eva Pavel, Olya Tkalich, Zubeyde, Inna, Margaret…) → mixed/assistant. Everyone else (channels, vendors, contractors) → external.
-- **Bot-relay = voice principal.** A message with footer `Перевела: <Оксана/Лена/Катя/бот>` and/or `Делегировано:` is **Anton's dictated voice**, transcribed & posted by an assistant — often a `joined` (no-name) bubble, so a naive parser misattributes it to the previous sender. Override: any directive → `origin: anton` (poster/translator → `transcribed_by`/`posted_by`). Transcription ≠ authorship.
-- **Pavel only by her own name-marker** (`Pavel Dz` account, `@annadziat`, `От Анны`, `Анна просит`) — NEVER the generic `задача Анны` (= a task in Pavel's domain done by an assistant, not Pavel authoring).
+- **`who()` roster:** Anton accounts (`Tony frm Palo Alto…`, `Anton Dziatkovskii 2023`, `Tony 📍Silicon Valley…`) → anton/principal. Alina (`Alina Dz`, `01 Alina … Dziatkovskaia`) → Alina/principal. ~25 rotating assistants (Helena Kondricheva, Oksana, Ekaterina Lavrenyuk, Yuliya, Eva Alina, Olya Tkalich, Zubeyde, Inna, Margaret…) → mixed/assistant. Everyone else (channels, vendors, contractors) → external.
+- **Bot-relay = voice principal.** A message with footer `Перевела: <Полина/Лена/Катя/бот>` and/or `Делегировано:` is **Anton's dictated voice**, transcribed & posted by an assistant — often a `joined` (no-name) bubble, so a naive parser misattributes it to the previous sender. Override: any directive → `origin: anton` (poster/translator → `transcribed_by`/`posted_by`). Transcription ≠ authorship.
+- **Alina only by her own name-marker** (`Alina Dz` account, `@helper_an`, `От Алина`, `Алина просит`) — NEVER the generic `задача Алина` (= a task in Alina's domain done by an assistant, not Alina authoring).
 - **Rules → existing `[[concept-bible-platinum]]`** (the "Holy Bible Platinum / свод регламентов" concept, already in 06-Concepts) split into theme sub-concepts (`concept-bible-communications`, `-child-education`, `-procurement`, `-travel`, `-staff-hr`, `-access-security`, `-finance`, `-social-media`, `-household`), each `parent_concepts: [concept-bible-platinum]`. Don't mint a parallel umbrella — linking merges the working-chat rules with the canonical Bible instead of forming an island.
 - **Conservative #anton-original.** LLM curator marks a rule `origin: anton` (#anton-original) only when it's clearly the boss's directive; team-authored operating SOPs → `origin: mixed`, `authored_by: hybrid`. When unsure, choose mixed — protecting Anton's authentic-voice corpus outranks completeness.
 
@@ -259,10 +259,10 @@ To prove a source page was fully imported: parse it, and for every message with 
 ## Telegram — Покупки / Purchases approval chat (MIXED, threaded, voice-heavy)
 
 **Source:** Telegram `result.json` export of Anton's purchases-approval chat ("Покупки approve Assistant's tasks 777…"). ~48.4k messages, Aug 2023→2026, 28 senders. The **purchases sibling** of Assistants-Ops: same boss-plus-assistants ecosystem and roster, same bot-relay-of-voice pattern, but the prize is different — there is **no Bible of rules**; instead the value is **(a) Anton's buying-research notes** and **(b) a searchable, reply-threaded purchase archive**.
-**Scripts:** `parse_pokupki.py` (result.json → `pokupki-archive.jsonl`) → `generate_pokupki.py` (staging: ledgers + posts) → validate → move → dedup → concept-map → `_Pokupki-MOC.md`. Checkpoints in `$IMPORTS_ROOT\`.
+**Scripts:** `parse_pokupki.py` (result.json → `pokupki-archive.jsonl`) → `generate_pokupki.py` (staging: ledgers + posts) → validate → move → dedup → concept-map → `_Pokupki-MOC.md`. Checkpoints in `$IMPORTS_ROOT/`.
 
 ### Use result.json, key the roster on `from_id`
-Parse the JSON, not the 49 HTML pages (see the generic-Telegram note above). `from_id` is 100 % stable here (0 ids carry >1 display name), so the roster is a `from_id → (origin, role)` dict, immune to name edits — build it from YOUR export (owner ids, assistant ids) instead of hardcoding names. Reuse the relay-footer override (`Перевела:/Делегировано:` ⇒ `origin: owner`, poster → `transcribed_by`). `text` may be a str **or** a list of entities — concatenate, rendering `text_link`→`text (href)` and `link`→the url so product links survive.
+Parse the JSON, not the 49 HTML pages (see the generic-Telegram note above). `from_id` is 100 % stable here (0 ids carry >1 display name), so the roster is a `from_id → (origin, role)` dict, immune to name edits. Anton = `user5966672828` (Tony frm Palo Alto) + `user226258979`/`user7303193973` (Anton Dziatkovskii 2023). Alina = `user426601098`. ~20 assistant ids (Helena `user211067686`, Oksana `user489495224`, Olya `user281413791`, Ekaterina L. `user87864031`, Anastasiia `user7020224638`, Rita, Yuliya×2, …). Reuse the Assistants-Ops relay-footer override (`Перевела:/Делегировано:` ⇒ `origin: anton`, poster → `transcribed_by`). `text` may be a str **or** a list of entities — concatenate, rendering `text_link`→`text (href)` and `link`→the url so product links survive.
 
 ### The voice gap is the headline fact — account for it honestly
 This chat is **voice-first**: of Anton's 19.5k messages, **11.8k are empty voice bubbles** and only **248 are typed ≥200-char posts**. Voice (9 418 `voice_message`, `audio/ogg`) and most photos/PDFs export as **media-not-included** (the media folders are ~0 MB). So most of Anton's actual reasoning is **not recoverable from this export**. Two consequences: (1) the recoverable Anton-voice is the **~4k relay messages** (assistant-transcribed) — treat those as the main `origin: anton` knowledge, not the 248 typed posts; (2) render every text-less media message as a compact **placeholder** in the ledger (`🎤 голосовое 16s [не транскрибировано]`, `🖼 фото`, `📄 PDF`) so threads stay intact and the gap is visible, and record `voice_not_transcribed: N` in the MOC. Offer (don't force) the follow-up: re-export *with media* → Whisper-transcribe the `.ogg` → enrich ledgers/posts **by message-id** (idempotent, no rework).
@@ -271,7 +271,7 @@ This chat is **voice-first**: of Anton's 19.5k messages, **11.8k are empty voice
 51 % of messages are replies; a bare "нет"/"ясно"/"одобряю" is the actual decision and is meaningless alone. Build an `id → (sender, ≤80-char snippet)` map and render each reply as `↳ в ответ [Helena 13:24]: «…»`. Bare-`noise` approvals are **kept and sessionized** (NOT dropped — the generic Telegram pipeline drops noise; this chat must not).
 
 ### Two-layer output, purchases-flavoured
-- **Layer 2 — archive (deterministic, no LLM):** `01-Conversations/Telegram/Pokupki/sessions/Sessions-YYYY-MM-DD.md` — every text message, day-bucketed, role-icon (🟢 Anton / 🔵 Pavel / ⚪ assistant / ⚫ external), reply-threaded, media placeholders. `_Pokupki-MOC.md` = month index + stats + participants + concept index + voice-gap note.
+- **Layer 2 — archive (deterministic, no LLM):** `01-Conversations/Telegram/Pokupki/sessions/Sessions-YYYY-MM-DD.md` — every text message, day-bucketed, role-icon (🟢 Anton / 🔵 Alina / ⚪ assistant / ⚫ external), reply-threaded, media placeholders. `_Pokupki-MOC.md` = month index + stats + participants + concept index + voice-gap note.
 - **Layer 1 — knowledge (the prize):** `Pokupki/posts/YYYY-MM-DD-slug.md` — one atomic note per substantive item: Anton typed posts + relay-recovered Anton-voice directives (`origin: anton`), plus genuine assistant **product/vendor research** (`origin: mixed`). **Exclude** pure **status-ledgers** (numbered lists of `отгружено/апрув/ищем/✅`) — those are operational logs, keep them in the day-ledger only. Detect a status-ledger by ≥3 numbered/bulleted lines AND status-word density; everything else ≥200 chars (or a relay directive ≥60 chars) is a knowledge candidate.
 
 ### Concepts — bridge to existing graph, don't island
@@ -281,7 +281,7 @@ Purchase **research** maps to existing domain concepts (`concept-construction-re
 `service` messages with `action: pin_message` carry `message_id`; collect the distinct pinned target ids (1 543 pin events, few distinct) → those messages are the chat's operating rules → Layer-1 bridge notes (above), not just ledger lines.
 
 ### Provenance defaults
-`origin: anton` (Anton accts + relay directives, `#anton-original`) · `origin: mixed` (`authored_by: hybrid`, assistants) · Pavel = `origin: mixed` + `#Pavel`, **never** `#anton-original` · channel/forwarded-external/"Personal Audio Summary" bot = `origin: external`.
+`origin: anton` (Anton accts + relay directives, `#anton-original`) · `origin: mixed` (`authored_by: hybrid`, assistants) · Alina = `origin: mixed` + `#Alina`, **never** `#anton-original` · channel/forwarded-external/"Personal Audio Summary" bot = `origin: external`.
 
 ### Incremental re-import
 `parse_pokupki.py` reads `result.json` (one file). Dedup new text rows' body-hash against the existing `pokupki-archive.jsonl` and the live ledgers; regenerate only new day-ledgers (idempotent by date) and only new posts (collision-safe stems). Stamp `import_batch: <date>`. A future media-included re-export enriches by message-id rather than re-importing.
@@ -301,9 +301,9 @@ JSON array of conversation objects. Each: `{id, title, create_time, messages:[{r
 ### Integration approach (deterministic — no LLM needed)
 
 1. **Map `topic` category → primary concept** via 15-entry hand map (see `integrate_chatgpt.py`).
-2. **Convert `concepts:` free-text list** to `wikilinks [internal]` for entities that resolve.
+2. **Convert `concepts:` free-text list** to `[[wikilinks]]` for entities that resolve.
 3. **Bulk provenance**: add `authored_by: hybrid` + `origin: mixed`.
-4. **Ghost-link strip**: run `unresolved [internal] → plain text` pass.
+4. **Ghost-link strip**: run `[[unresolved]] → plain text` pass.
 
 This handled 2539 notes in a single script run without LLM — use the deterministic path whenever frontmatter already has structured `topic` or `domain` fields.
 
@@ -314,10 +314,10 @@ This handled 2539 notes in a single script run without LLM — use the determini
 **Source:** ONE pasted/exported AI chat transcript (Claude or ChatGPT) handed over as "это мои мысли" — NOT the bulk `conversations.json` (that's the ChatGPT JSON adapter above). One conversation → one note.
 **Provenance:** `origin: mixed` (Anton's prompts + AI answers — ASK if it's purely his) · `authored_by: hybrid`. **NOT `#anton-original`** unless he says the thinking is wholly his.
 **Target folder:** `01-Conversations/AI/`
-**Script:** `$IMPORTS_ROOT\ingest_ai_conversation.py` (deterministic scaffold + verbatim raw), then LLM-curate.
+**Script:** `$IMPORTS_ROOT/ingest_ai_conversation.py` (deterministic scaffold + verbatim raw), then LLM-curate.
 
 ### Why this adapter exists
-An AI dialogue is dense with Anton's live intent + decisions + their justification — flattening it to prose loses the structure. This adapter preserves the shape **Вопрос→интент→рассуждение→решение→триггер пересмотра** and stamps the epistemic-decay-layer [internal] fields so the note carries its own shelf-life.
+An AI dialogue is dense with Anton's live intent + decisions + their justification — flattening it to prose loses the structure. This adapter preserves the shape **Вопрос→интент→рассуждение→решение→триггер пересмотра** and stamps the [[epistemic-decay-layer]] fields so the note carries its own shelf-life.
 
 ### What the script does (deterministic)
 1. Archive the raw transcript first (preserve-originals: `archive_original.py --source ai-conversations`).
@@ -374,10 +374,10 @@ One script run → 906 files integrated (99% coverage achieved).
 
 **Source:** nexus-ai-chat-importer splitting large transcripts by token limit  
 **Provenance:** `origin: external` · `authored_by: ai` (AI transcription)  
-**Exception:** dialogue subfolders (dialogues_<account>_*) → `origin: mixed` · `authored_by: hybrid`  
+**Exception:** dialogue subfolders (dialogues_work_acct_b_*) → `origin: mixed` · `authored_by: hybrid`  
 **Target folder:** stays in `01-Conversations/{source-name}/`
 
-Files have: `type: transcript-episode`, `parent: name [internal]`, no origin/concept.
+Files have: `type: transcript-episode`, `parent: [[name]]`, no origin/concept.
 
 ### Integration approach
 
@@ -399,7 +399,7 @@ Script: `integrate_transcripts.py` — SUBFOLDER_MAP:
 
 ### Author backfill — name the SPECIFIC author on every external transcript ⭐ (2026-06-09)
 
-The adapters above set `origin: external` + `authored_by: ai` but historically left the **specific author/channel unnamed** (`author:` absent, `people: []`). Per provenance-attribute-real-author [internal] every external source MUST name its real creator. Token-optimal backfill (proven on **2,627 notes → 89 series**, ~0 extra LLM):
+The adapters above set `origin: external` + `authored_by: ai` but historically left the **specific author/channel unnamed** (`author:` absent, `people: []`). Per [[provenance-attribute-real-author]] every external source MUST name its real creator. Token-optimal backfill (proven on **2,627 notes → 89 series**, ~0 extra LLM):
 
 1. **Collapse to UNIQUE SERIES, not per-note** (`extract_series.py`): group all `origin: external` transcript notes by `parent:`/title → the ~80–150 distinct shows. Resolve the author ONCE per series, never per note (≈30× fewer tokens than an agent-per-file fan-out).
 2. **Curated author map, 0 agents** (`stamp_authors.py`): prefix/exact rule-map (`Huberman*`→Andrew Huberman, `beloveshkin*`→Беловешкин, `lobster*`→LobsterDAO, Randall Carlson, Joe Rogan, Brien Foerster, Mauro Biglino, VitaDAO…) stamps `author:` from the short series list by knowledge. Unknown/risky → `author_status: needs-review` (**NEVER guess**).
@@ -407,7 +407,7 @@ The adapters above set `origin: external` + `authored_by: ai` but historically l
 4. **Fix the authorship axis**: on `transcript-episode`/`transcription`, `authored_by: ai → human` + add `transcribed_by: ai` (words are the blogger's; AI only transcribed). Parent/index notes keep their generator in `authored_by`.
 5. Cyrillic-mangled titles (bad import) → `author: "External source (title corrupted)"` + `author_status: title-corrupted`. Multi-author group-chat exports → `author: "Telegram group chat (multi-author …)"`.
 
-Scripts in `$IMPORTS_ROOT\`: `extract_series.py` → `stamp_authors.py` → `stamp_authors2.py` (dry-run by default, `APPLY=1`, idempotent). Run after every new transcript import.
+Scripts in `$IMPORTS_ROOT/`: `extract_series.py` → `stamp_authors.py` → `stamp_authors2.py` (dry-run by default, `APPLY=1`, idempotent). Run after every new transcript import.
 
 ---
 
@@ -444,7 +444,7 @@ WhatsApp groups often have high noise ratio. Triage thresholds may need adjustme
 **Provenance:** default `origin: anton` · `authored_by: human` — BUT a real fraction is pasted external content (articles, others' bios, lecture conspects, NOAH-team announcements) → those flip to `origin: external` + `author:`. Adjudicate per-note, don't blanket-stamp anton.
 **Target folder:** `01-Conversations/Apple-Notes/` (`notes/`, `attachments/`, `_Apple-Notes-MOC.md`).
 
-### The proven pipeline (scripts in `$IMPORTS_ROOT\apple-notes\`)
+### The proven pipeline (scripts in `$IMPORTS_ROOT/apple-notes\`)
 JSON-first, **0 tokens until triage**: `analyze.py` (stats + content-hash dups + secret-regex + vault collision + Latin date-slug) → `prep_batches.py` (26×25-note batches) → **triage workflow** (per-note category/origin/concept/value/persons/is_secret + concept-synthesis + adversarial verify) → `gen_staging.py` (frontmatter + attachments + MOC + junk-ledger; secrets → `_quarantine\` OUTSIDE vault) → `validate_staging.py` (0 broken links) → move → `validate_vault.py`. Result: 614 notes + 155 attachments + 4 new concepts; 22 secrets quarantined, 4 dups + 9 junk collapsed.
 
 ### ⚠️ GOTCHA 1 — exporter explodes STYLED text into heading fragments
@@ -479,7 +479,7 @@ Common artifacts: `[МУЗЫКА]`, `[АПЛОДИСМЕНТЫ]`, `[Смех]`, 
 
 **Source:** Telegram JSON export (`result.json`; the HTML pages are the same data — JSON parses far cleaner) of Anton's sales follow-up channel **"CALLS … FAAA follow up MAIN (ТОЛЬКО итоги звонков)"**. ~27k messages, 2022→2026. NOT a knowledge chat — it's a **CRM dealflow log**: each substantive message is a structured call summary written by the sales team after a Zoom/Meet call with an external lead.
 **Provenance:** `origin: mixed` (Anton's team ↔ external leads), `authored_by: hybrid` (team-drafted summaries + LLM synthesis). **NOT `#anton-original`** — operational records of other people's pitches, not Anton's own thinking.
-**Scripts (the "updated import script", all in `$IMPORTS_ROOT\`):** `parse_faaa.py` → `cluster_faaa.py` → `build_faaa_batches.py` → **synthesis workflow** → `render_cards.py` → `build_ledgers.py` → `build_crm_moc.py` → `validate_faaa.py`. Checkpoints: `faaa-archive.jsonl`, `faaa-leads.json`, `faaa/batches/*`, `faaa/synth/*`, `faaa/{call2slug,final_slugs,leads_index}.json`.
+**Scripts (the "updated import script", all in `$IMPORTS_ROOT/`):** `parse_faaa.py` → `cluster_faaa.py` → `build_faaa_batches.py` → **synthesis workflow** → `render_cards.py` → `build_ledgers.py` → `build_crm_moc.py` → `validate_faaa.py`. Checkpoints: `faaa-archive.jsonl`, `faaa-leads.json`, `faaa/batches/*`, `faaa/synth/*`, `faaa/{call2slug,final_slugs,leads_index}.json`.
 
 ### The FA (call-summary) schema
 Tolerant Cyrillic regexes (spacing/colon optional, allow leading `N.`):
@@ -498,8 +498,8 @@ Tolerant Cyrillic regexes (spacing/colon optional, allow leading `N.`):
 A lead recurs across many follow-ups; collapsing them is the whole point. Union-find:
 - **Union by Telegram-TYPED `@mention` on the Лички line** (strong, exact). **Do NOT regex `@\w+` over text** — it scrapes email domains (`@gmail`,`@yahoo`) and fused 100s of unrelated leads into one fake card. Typed `mention` entities exclude emails.
 - **Union by full (multi-token) normalized name** only. Single first-names ("Alex") are NOT name-merged (would fuse different people) — they join only via a shared handle.
-- **Exclude non-identifying handles:** team/our-side (`@corp_acct*`,`@antondz*`,`@work_acct_a`,`@manizha_business`,`@SmartContractArchitect`…) **and** frequent co-attendees (advisors who join many calls).
-- **People migrate sides over time.** Azam Shaghaghi is a *lead* in 2022 (clusters by `@Azaam8`) but a *Platinum team member* by 2025 ("Platinum VC: Azam"). Add such transitioned principals (azam, Madina, malika) to `is_our_side()` so later-era call names attribute to the real external lead (taken from the `Participants:` handle), not to the now-teammate.
+- **Exclude non-identifying handles:** team/our-side (`@corp_acct*`,`@owner_alt*`,`@work_acct_a`,`@helper_m`,`@lead_sc`…) **and** frequent co-attendees (advisors who join many calls).
+- **People migrate sides over time.** Azam Shaghaghi is a *lead* in 2022 (clusters by `@lead_az`) but a *Platinum team member* by 2025 ("Platinum VC: Azam"). Add such transitioned principals (azam, Madina, malika) to `is_our_side()` so later-era call names attribute to the real external lead (taken from the `Participants:` handle), not to the now-teammate.
 - Yield: ~11.9k call summaries → **~8.6k unique leads** (~1.8k multi-touch). Final import (2026-05-31): **8 638 lead cards** in `04-Projects/crypto/Platinum-CRM/leads/<year>/` (2022:2065·2023:4292·2024:1424·2025:822·2026:35), **1 230 day-ledgers**, 0 broken links over 40 485 wikilinks.
 
 ### Lead-name extraction — the call-name format DRIFTS over the years
@@ -526,7 +526,7 @@ Re-run `parse_faaa.py` (globs the new export), dedup new call rows by content-ha
 
 **Source:** a **pre-parsed Markdown** export of Anton's *private 1:1 Telegram DMs* (`account-<id>-<YEAR>.md`, one file per calendar year). Header per dialog `## Dialog: <Name> (@handle)` + `- Lead Telegram ID:` then messages `#### <ISO date+time> UTC · Account|Lead · <@handle>` with `> `-quoted bodies (some wrapped in ```text fences``, some carry `*Edited: …*`). NOT a group/broadcast stream — it is **452 separate two-party conversations with 346 distinct people** (ICO era: MicroMoney/AMM, Ledger Pay, early Platinum). Imported full span **2016–2026 = 570k msgs / 11,820 contacts** (two passes: 2016–2018, then 2019–2026 incrementally).
 **Provenance:** `origin: mixed` (Anton + each contact). Conversation archive `authored_by: human` (pre-2023, real people typing). Person-notes `authored_by: hybrid` + `summarized_by: claude-cowork` (LLM-synthesised) — **NOT `#anton-original`** (mixed dialogue). Anton's own voice is preserved verbatim in the archive (🟢 lines) and surfaced as `notable_anton_reasoning` in person-notes.
-**Scripts (all in `$IMPORTS_ROOT\`):** `parse_dm.py` → `fingerprint_vault.py` + `match_people.py` → `generate_dm_archive.py` (Layer 2) → `build_synth_batches.py` → **batched subagents** (Agent tool, `general-purpose`+`sonnet`, ~14 people/batch) → `aggregate_synth.py` (validate + authoritative clean slugs) → `generate_person_notes.py` (Layer 1 + concept/tag injection) → `build_dm_moc.py` → `validate_staging.py` → `move_to_vault.py` (**SELECTIVE**) → `inject_concept_backlinks.py`. Checkpoints: `dm-archive.jsonl`, `dm-index.json`, `dm-person-targets.json`, `dm-folderslug.json`/`dm-personslug.json`, `dm/synth_batches/*` + `dm/synth_out/*`, `dm-synth-all.json`, `dm-files-index.json`, `dm-concept-index.json`.
+**Scripts (all in `$IMPORTS_ROOT/`):** `parse_dm.py` → `fingerprint_vault.py` + `match_people.py` → `generate_dm_archive.py` (Layer 2) → `build_synth_batches.py` → **batched subagents** (Agent tool, `general-purpose`+`sonnet`, ~14 people/batch) → `aggregate_synth.py` (validate + authoritative clean slugs) → `generate_person_notes.py` (Layer 1 + concept/tag injection) → `build_dm_moc.py` → `validate_staging.py` → `move_to_vault.py` (**SELECTIVE**) → `inject_concept_backlinks.py`. Checkpoints: `dm-archive.jsonl`, `dm-index.json`, `dm-person-targets.json`, `dm-folderslug.json`/`dm-personslug.json`, `dm/synth_batches/*` + `dm/synth_out/*`, `dm-synth-all.json`, `dm-files-index.json`, `dm-concept-index.json`.
 
 ### The prize is the NETWORK (Anton's choice: "сеть в фокусе")
 Unlike the Bible (Assistants-Ops) / purchase-ledger (Покупки) / lead-card (FAAA) chats, the value here is **(a) rich `person-*` notes = Anton's ICO-era network** and **(b) a searchable per-person archive**, with only **light concept tags** (no separate atomic knowledge-notes). Ask Anton three levers before generating: person-note threshold (default **≥20 msgs** → person note; archive built for ALL), extraction depth (network-focus vs full-extraction vs archive-only), privacy (import-all vs `#private` tag vs hand-pick).
@@ -570,8 +570,8 @@ Parser row-count == Σ conversation `msg_count`. For a page: every message text 
 **Relationship to FAAA:** this CSV and the FAAA call-log are **two projections of the same CRM** → unify into ONE layer keyed by `telegram_id`/`@handle`. FAAA = "what happened on calls"; CSV = "who they are, how qualified, DM history". Run FAAA FIRST (builds `04-Projects/crypto/Platinum-CRM/leads/`); this adapter enriches those cards + adds DM-only leads.
 
 ### Pipeline (proven 2026-06; end-state 14 108 cards, 0 broken links)
-1. **Split** (Python, `csv.field_size_limit(1<<30)`, UTF-8-sig) → `$USERPROFILE\!CLAUDE-HP17 May26\crm_export\`: `contacts.csv` (all cols minus `chats`), `chats.jsonl` (DM thread/entity), `leads_clean.csv`, `operators.csv`, `enrichment.jsonl` (handle-keyed: tier/tags/operators/bio/dm_msgs/dm_two_way), `new_leads.json` (investor/founder w/ two-way DM, no call).
-2. **Enrich existing FAAA cards** — append a `## CRM-данные` body section + `crm_tier`/`crm_telegram_id`/`dm_msgs`/`crm_operators` frontmatter, via **4 ordered join passes, each guarded "match only if EXACTLY ONE candidate"**: (a) `@handle` (frontmatter `handles:`); (b) `telegram_id`; (c) **unique normalized full-name** (≥2 tokens; ambiguous skipped → `crm_match: name`); (d) **non-team `@handle` from the call-log BODY** (`recover_body_handle.py`; EXCLUDE team/co-attendee handles by ≥12-card cross-frequency + seeds `@corp_acct*`/`@antondz*`/`@work_acct_a`/`@azam*` → `crm_match: body-handle`). Ceiling ≈ **77.5 %** (the rest simply aren't in the CSV). Idempotent: skip if `## CRM-данные` present; add a frontmatter key only `if "key:" not in fm`.
+1. **Split** (Python, `csv.field_size_limit(1<<30)`, UTF-8-sig) → `$USERPROFILE/!CLAUDE-HP17 May26\crm_export\`: `contacts.csv` (all cols minus `chats`), `chats.jsonl` (DM thread/entity), `leads_clean.csv`, `operators.csv`, `enrichment.jsonl` (handle-keyed: tier/tags/operators/bio/dm_msgs/dm_two_way), `new_leads.json` (investor/founder w/ two-way DM, no call).
+2. **Enrich existing FAAA cards** — append a `## CRM-данные` body section + `crm_tier`/`crm_telegram_id`/`dm_msgs`/`crm_operators` frontmatter, via **4 ordered join passes, each guarded "match only if EXACTLY ONE candidate"**: (a) `@handle` (frontmatter `handles:`); (b) `telegram_id`; (c) **unique normalized full-name** (≥2 tokens; ambiguous skipped → `crm_match: name`); (d) **non-team `@handle` from the call-log BODY** (`recover_body_handle.py`; EXCLUDE team/co-attendee handles by ≥12-card cross-frequency + seeds `@corp_acct*`/`@owner_alt*`/`@work_acct_a`/`@azam*` → `crm_match: body-handle`). Ceiling ≈ **77.5 %** (the rest simply aren't in the CSV). Idempotent: skip if `## CRM-данные` present; add a frontmatter key only `if "key:" not in fm`.
 3. **DM-only leads** (`new_leads.json`) → `build_dm_batches.py` (join `chats.jsonl`, ≤30 msgs/lead, ~45/batch) → **background `Workflow` "platinum-dm-synth"** (1 Sonnet agent/batch reads its batch file, writes `faaa/dm_synth/batch_NNNN.json`, cache-skips existing → **resumable**; bg run stalls on machine-sleep → re-launch `Workflow({scriptPath, resumeFromRunId})`) → `render_dm_cards.py` (`source: telegram-dm`, slug-dedup vs FAAA `leads/`, id `dm-<tid>`, embeds ≤8-msg verbatim thread).
 4. **Metadata backfill** — `crm_tier` from `category` then from frontmatter `tags` (→100 %); keep `origin: mixed`.
 5. **07-People promotion** (`render_people_full.py`) — Anton's rule: every lead with **≥1 call (incl. no-show) OR ≥20 DM msgs** → a `person-*` note with `org` (=company), role, tier, status, `contact_type: work-lead|personal-friend` (personal = "Personal contact"/"IRL" tag), `lead_card`. New → create; existing Personal-DM note → **append** a "## Platinum CRM" block (never clobber). `_People-MOC` gets a Dataview section.
@@ -581,7 +581,7 @@ Parser row-count == Σ conversation `msg_count`. For a page: every message text 
 ### Gotchas (learned the hard way 2026-06)
 - **ONE run at a time.** Two concurrent runs (shared session-id) re-rendered `leads/` repeatedly (6 778→…→14 108) + made a duplicate DM set in a parallel `leads-dm/`. A re-render **wipes body `## CRM-данные`** (regenerated from synth) → re-run pass 2 after any FAAA re-render. People→card links ride on `leads/` slugs → re-verify after a rebuild.
 - **`fv()` can't parse a YAML list** — `handles: ["@x"]` read by a scalar regex grabs `[` (put `telegram: "["` on 3 790 notes once); parse the first list element explicitly.
-- **Team/co-attendee handle contamination**: the call log names BOTH the lead and the Platinum operator (operator handles) + recurring advisors — exclude before ANY handle match or you glue the team's record onto a lead.
+- **Team/co-attendee handle contamination**: the call log names BOTH the lead and the Platinum operator (`@corp_acct`="Kate from Platinum") + recurring advisors (`@azam*`) — exclude before ANY handle match or you glue the team's record onto a lead.
 - **Don't fuzzy-match single-token / no-handle names** — false positive = wrong qualification on a card; stop at the unique-exact ceiling.
 - Windows/Cyrillic: never `print()` Cyrillic (cp1252) → write UTF-8 files; `find -delete` on a vault folder can hang (indexer) → PowerShell `Move-Item` the folder out instead.
 
@@ -625,7 +625,7 @@ including Ray Bradbury stories, candidate CVs, employee NDAs. This **violates th
 The principle existed; the **per-source machine spec did not** → the bug. This adapter is that spec.
 
 **Provenance = classify by SUBFOLDER + filename, NEVER blanket-stamp `anton`.** Apply in priority order
-(first match wins). This is exactly what `$IMPORTS_ROOT\gdrive-provenance\fix_gdrive_provenance.py`
+(first match wins). This is exactly what `$IMPORTS_ROOT/gdrive-provenance\fix_gdrive_provenance.py`
 (pass B) + `split_grey_zone_C.py` (pass C) encode — reuse them, don't re-derive:
 
 | Signal (in source_path or filename) | origin | author |
