@@ -228,9 +228,9 @@ Telegram content-team chat = all Anton (rule confirmed by Anton: "всё моё 
 - **Layer 2 — archive:** `01-Conversations/Telegram/Assistants-Ops/sessions/Sessions-YYYY-MM-DD.md` — every message, day-bucketed, role-labelled, reply-threaded; `_Assistants-Ops-MOC.md` (month index). Cheap/deterministic; no LLM.
 
 ### Provenance model (the hard part — this chat has many speakers)
-- **`who()` roster:** Anton accounts (`Tony frm Palo Alto…`, `Anton Dziatkovskii 2023`, `Tony 📍Silicon Valley…`) → anton/principal. Anna (`Anna Dz`, `01 Anna … Dziatkovskaia`) → anna/principal. ~25 rotating assistants (Helena Kondricheva, Oksana, Ekaterina Lavrenyuk, Yuliya, Eva Anna, Olya Tkalich, Zubeyde, Inna, Margaret…) → mixed/assistant. Everyone else (channels, vendors, contractors) → external.
+- **`who()` roster:** Anton accounts (`Tony frm Palo Alto…`, `Anton Dziatkovskii 2023`, `Tony 📍Silicon Valley…`) → anton/principal. Pavel (`Pavel Dz`, `01 Pavel … Dziatkovskaia`) → Pavel/principal. ~25 rotating assistants (Helena Kondricheva, Oksana, Ekaterina Lavrenyuk, Yuliya, Eva Pavel, Olya Tkalich, Zubeyde, Inna, Margaret…) → mixed/assistant. Everyone else (channels, vendors, contractors) → external.
 - **Bot-relay = voice principal.** A message with footer `Перевела: <Оксана/Лена/Катя/бот>` and/or `Делегировано:` is **Anton's dictated voice**, transcribed & posted by an assistant — often a `joined` (no-name) bubble, so a naive parser misattributes it to the previous sender. Override: any directive → `origin: anton` (poster/translator → `transcribed_by`/`posted_by`). Transcription ≠ authorship.
-- **Anna only by her own name-marker** (`Anna Dz` account, `@annadziat`, `От Анны`, `Анна просит`) — NEVER the generic `задача Анны` (= a task in Anna's domain done by an assistant, not Anna authoring).
+- **Pavel only by her own name-marker** (`Pavel Dz` account, `@annadziat`, `От Анны`, `Анна просит`) — NEVER the generic `задача Анны` (= a task in Pavel's domain done by an assistant, not Pavel authoring).
 - **Rules → existing `[[concept-bible-platinum]]`** (the "Holy Bible Platinum / свод регламентов" concept, already in 06-Concepts) split into theme sub-concepts (`concept-bible-communications`, `-child-education`, `-procurement`, `-travel`, `-staff-hr`, `-access-security`, `-finance`, `-social-media`, `-household`), each `parent_concepts: [concept-bible-platinum]`. Don't mint a parallel umbrella — linking merges the working-chat rules with the canonical Bible instead of forming an island.
 - **Conservative #anton-original.** LLM curator marks a rule `origin: anton` (#anton-original) only when it's clearly the boss's directive; team-authored operating SOPs → `origin: mixed`, `authored_by: hybrid`. When unsure, choose mixed — protecting Anton's authentic-voice corpus outranks completeness.
 
@@ -271,7 +271,7 @@ This chat is **voice-first**: of Anton's 19.5k messages, **11.8k are empty voice
 51 % of messages are replies; a bare "нет"/"ясно"/"одобряю" is the actual decision and is meaningless alone. Build an `id → (sender, ≤80-char snippet)` map and render each reply as `↳ в ответ [Helena 13:24]: «…»`. Bare-`noise` approvals are **kept and sessionized** (NOT dropped — the generic Telegram pipeline drops noise; this chat must not).
 
 ### Two-layer output, purchases-flavoured
-- **Layer 2 — archive (deterministic, no LLM):** `01-Conversations/Telegram/Pokupki/sessions/Sessions-YYYY-MM-DD.md` — every text message, day-bucketed, role-icon (🟢 Anton / 🔵 Anna / ⚪ assistant / ⚫ external), reply-threaded, media placeholders. `_Pokupki-MOC.md` = month index + stats + participants + concept index + voice-gap note.
+- **Layer 2 — archive (deterministic, no LLM):** `01-Conversations/Telegram/Pokupki/sessions/Sessions-YYYY-MM-DD.md` — every text message, day-bucketed, role-icon (🟢 Anton / 🔵 Pavel / ⚪ assistant / ⚫ external), reply-threaded, media placeholders. `_Pokupki-MOC.md` = month index + stats + participants + concept index + voice-gap note.
 - **Layer 1 — knowledge (the prize):** `Pokupki/posts/YYYY-MM-DD-slug.md` — one atomic note per substantive item: Anton typed posts + relay-recovered Anton-voice directives (`origin: anton`), plus genuine assistant **product/vendor research** (`origin: mixed`). **Exclude** pure **status-ledgers** (numbered lists of `отгружено/апрув/ищем/✅`) — those are operational logs, keep them in the day-ledger only. Detect a status-ledger by ≥3 numbered/bulleted lines AND status-word density; everything else ≥200 chars (or a relay directive ≥60 chars) is a knowledge candidate.
 
 ### Concepts — bridge to existing graph, don't island
@@ -281,7 +281,7 @@ Purchase **research** maps to existing domain concepts (`concept-construction-re
 `service` messages with `action: pin_message` carry `message_id`; collect the distinct pinned target ids (1 543 pin events, few distinct) → those messages are the chat's operating rules → Layer-1 bridge notes (above), not just ledger lines.
 
 ### Provenance defaults
-`origin: anton` (Anton accts + relay directives, `#anton-original`) · `origin: mixed` (`authored_by: hybrid`, assistants) · Anna = `origin: mixed` + `#anna`, **never** `#anton-original` · channel/forwarded-external/"Personal Audio Summary" bot = `origin: external`.
+`origin: anton` (Anton accts + relay directives, `#anton-original`) · `origin: mixed` (`authored_by: hybrid`, assistants) · Pavel = `origin: mixed` + `#Pavel`, **never** `#anton-original` · channel/forwarded-external/"Personal Audio Summary" bot = `origin: external`.
 
 ### Incremental re-import
 `parse_pokupki.py` reads `result.json` (one file). Dedup new text rows' body-hash against the existing `pokupki-archive.jsonl` and the live ledgers; regenerate only new day-ledgers (idempotent by date) and only new posts (collision-safe stems). Stamp `import_batch: <date>`. A future media-included re-export enriches by message-id rather than re-importing.
@@ -498,8 +498,8 @@ Tolerant Cyrillic regexes (spacing/colon optional, allow leading `N.`):
 A lead recurs across many follow-ups; collapsing them is the whole point. Union-find:
 - **Union by Telegram-TYPED `@mention` on the Лички line** (strong, exact). **Do NOT regex `@\w+` over text** — it scrapes email domains (`@gmail`,`@yahoo`) and fused 100s of unrelated leads into one fake card. Typed `mention` entities exclude emails.
 - **Union by full (multi-token) normalized name** only. Single first-names ("Alex") are NOT name-merged (would fuse different people) — they join only via a shared handle.
-- **Exclude non-identifying handles:** team/our-side (`@platinumvc*`,`@antondz*`,`@tonyssd`,`@manizha_business`,`@SmartContractArchitect`…) **and** frequent co-attendees (advisors who join many calls).
-- **People migrate sides over time.** Azam Shaghaghi is a *lead* in 2022 (clusters by `@Azaam8`) but a *Platinum team member* by 2025 ("Platinum VC: Azam"). Add such transitioned principals (azam, manizha, malika) to `is_our_side()` so later-era call names attribute to the real external lead (taken from the `Participants:` handle), not to the now-teammate.
+- **Exclude non-identifying handles:** team/our-side (`@corp_acct*`,`@antondz*`,`@work_acct_a`,`@manizha_business`,`@SmartContractArchitect`…) **and** frequent co-attendees (advisors who join many calls).
+- **People migrate sides over time.** Azam Shaghaghi is a *lead* in 2022 (clusters by `@Azaam8`) but a *Platinum team member* by 2025 ("Platinum VC: Azam"). Add such transitioned principals (azam, Madina, malika) to `is_our_side()` so later-era call names attribute to the real external lead (taken from the `Participants:` handle), not to the now-teammate.
 - Yield: ~11.9k call summaries → **~8.6k unique leads** (~1.8k multi-touch). Final import (2026-05-31): **8 638 lead cards** in `04-Projects/crypto/Platinum-CRM/leads/<year>/` (2022:2065·2023:4292·2024:1424·2025:822·2026:35), **1 230 day-ledgers**, 0 broken links over 40 485 wikilinks.
 
 ### Lead-name extraction — the call-name format DRIFTS over the years
@@ -571,7 +571,7 @@ Parser row-count == Σ conversation `msg_count`. For a page: every message text 
 
 ### Pipeline (proven 2026-06; end-state 14 108 cards, 0 broken links)
 1. **Split** (Python, `csv.field_size_limit(1<<30)`, UTF-8-sig) → `$USERPROFILE\!CLAUDE-HP17 May26\crm_export\`: `contacts.csv` (all cols minus `chats`), `chats.jsonl` (DM thread/entity), `leads_clean.csv`, `operators.csv`, `enrichment.jsonl` (handle-keyed: tier/tags/operators/bio/dm_msgs/dm_two_way), `new_leads.json` (investor/founder w/ two-way DM, no call).
-2. **Enrich existing FAAA cards** — append a `## CRM-данные` body section + `crm_tier`/`crm_telegram_id`/`dm_msgs`/`crm_operators` frontmatter, via **4 ordered join passes, each guarded "match only if EXACTLY ONE candidate"**: (a) `@handle` (frontmatter `handles:`); (b) `telegram_id`; (c) **unique normalized full-name** (≥2 tokens; ambiguous skipped → `crm_match: name`); (d) **non-team `@handle` from the call-log BODY** (`recover_body_handle.py`; EXCLUDE team/co-attendee handles by ≥12-card cross-frequency + seeds `@platinumvc*`/`@antondz*`/`@tonyssd`/`@azam*` → `crm_match: body-handle`). Ceiling ≈ **77.5 %** (the rest simply aren't in the CSV). Idempotent: skip if `## CRM-данные` present; add a frontmatter key only `if "key:" not in fm`.
+2. **Enrich existing FAAA cards** — append a `## CRM-данные` body section + `crm_tier`/`crm_telegram_id`/`dm_msgs`/`crm_operators` frontmatter, via **4 ordered join passes, each guarded "match only if EXACTLY ONE candidate"**: (a) `@handle` (frontmatter `handles:`); (b) `telegram_id`; (c) **unique normalized full-name** (≥2 tokens; ambiguous skipped → `crm_match: name`); (d) **non-team `@handle` from the call-log BODY** (`recover_body_handle.py`; EXCLUDE team/co-attendee handles by ≥12-card cross-frequency + seeds `@corp_acct*`/`@antondz*`/`@work_acct_a`/`@azam*` → `crm_match: body-handle`). Ceiling ≈ **77.5 %** (the rest simply aren't in the CSV). Idempotent: skip if `## CRM-данные` present; add a frontmatter key only `if "key:" not in fm`.
 3. **DM-only leads** (`new_leads.json`) → `build_dm_batches.py` (join `chats.jsonl`, ≤30 msgs/lead, ~45/batch) → **background `Workflow` "platinum-dm-synth"** (1 Sonnet agent/batch reads its batch file, writes `faaa/dm_synth/batch_NNNN.json`, cache-skips existing → **resumable**; bg run stalls on machine-sleep → re-launch `Workflow({scriptPath, resumeFromRunId})`) → `render_dm_cards.py` (`source: telegram-dm`, slug-dedup vs FAAA `leads/`, id `dm-<tid>`, embeds ≤8-msg verbatim thread).
 4. **Metadata backfill** — `crm_tier` from `category` then from frontmatter `tags` (→100 %); keep `origin: mixed`.
 5. **07-People promotion** (`render_people_full.py`) — Anton's rule: every lead with **≥1 call (incl. no-show) OR ≥20 DM msgs** → a `person-*` note with `org` (=company), role, tier, status, `contact_type: work-lead|personal-friend` (personal = "Personal contact"/"IRL" tag), `lead_card`. New → create; existing Personal-DM note → **append** a "## Platinum CRM" block (never clobber). `_People-MOC` gets a Dataview section.
@@ -641,7 +641,7 @@ The principle existed; the **per-source machine spec did not** → the bug. This
 | genuinely ambiguous | `gdrive-personal-mixed` | — |
 
 **Hard guards (both learned 2026-06-13):**
-1. **Don't match "Anton" in the full disk path** — the vault root is `Anton-Knowledge\`, so check
+1. **Don't match "Anton" in the full disk path** — the vault root is `Owner-Knowledge\`, so check
    `source_path`, not the absolute path, when deciding "is this Anton's own".
 2. **Don't classify candidate CVs by the word `cv`/`резюме` in a filename** — "резюме звонка" = a CALL
    SUMMARY (Anton's own), and the "SELF PRESENTING REZUMEs" folder holds his self-pitch material.

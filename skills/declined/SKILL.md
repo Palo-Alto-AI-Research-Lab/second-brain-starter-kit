@@ -6,7 +6,7 @@ description: Быстрый доступ к реестру ОТКЛОНЁННЫ�
 OBJECTIVE: Показать реестр отклонённых/отложенных решений (что · почему · revisit-if) перед тем как (пере)предлагать идею — anti-«хождение по граблям». READ-ONLY: ничего не пишет в реестр (туда пишет ночной скан + человек вручную).
 
 CONTEXT:
-- Канонический реестр (этот хаб): `C:\Users\Anton\.claude\projects\E---CLAUDE-PaloAltoPC-June26\memory\declined-decisions.md` (есть и копия в проекте ноута — читать хабовую).
+- Канонический реестр (этот хаб): `%USERPROFILE%\.claude\projects\E---CLAUDE-HUB-1-June26\memory\declined-decisions.md` (есть и копия в проекте ноута — читать хабовую).
 - Ночной детектор: `$IMPORTS_ROOT\declined-scan\declined_scan.py` (scheduled "Declined-Decisions Nightly Scan" ~03:45) — сам ловит новые отказы из свежих сессий и кладёт на полку AUTO-CAPTURED.
 - Правило (кросс-акторное): отверг/отложил предложение → занеси в реестр. Канон для людей-ассистентов = Библия `reglament-otvergnutoe-reshenie-v-reestr-declined`.
 

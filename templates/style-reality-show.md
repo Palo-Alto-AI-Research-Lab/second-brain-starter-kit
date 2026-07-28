@@ -21,7 +21,7 @@ sources: "внешний Deep Research «Authentic Narrative Engineering for Sol
 > Это **нарративный КАРКАС**, накладываемый на **голос Антона** (fb-diary-voice [internal] + _CRAFT [internal]), — НЕ замена голоса и НЕ выдумка событий. **Инженерим СТРУКТУРУ, а не события** (DR-2026-07-01): реальную работу дня монтируем как сериал, но НЕ монтируем саму реальность. Reality-TV даёт машинерию (cold open, recap, confessional, финалы) — берём её; манипулятивную «постановку» отбрасываем. Граница монтаж↔фабрикация (documentary-этика): нельзя переставлять события как причинную цепь, инсценировать конфликт, выдумывать дедлайн, сшивать разные дни в «один день», лепить фейк-«доказательства». Цена нарушения — не спад, а обвал доверия: кейсы 2026 (инфлюенсер инсценировал похищение собаки → потеря партнёрств; BBC *Human Planet* — постановочная сцена → репутационный удар). Полный свод — раздел «Авторская хартия честности» ниже. **Авторский голос Антона пишет ТОЛЬКО Opus** (карв-аут model-routing-sonnet-grunt [internal]). Приватность из fb-diary-voice [internal] (чужие имена/суммы/секреты, и СВОИ числа) — в силе. Исключение приватности — только публичный WhatsApp-номер co-founder (см. decision-content-pipeline-reality-show [internal]).
 
 > [!note] Зачем
-> Цель №1 — цифровой двойник как **публичное reality-show** (insight-glavnaya-tsel-tsifrovoj-dvojnik [internal]). Этот файл = палитра, из которой берём приёмы сериальной драматургии, чтобы поток контента читался как захватывающий американский сериал/блокбастер, а не как лог активности. Сидит на одном уровне со стилевыми палитрами [[style-gershuni-influence]] и fb-diary-voice [internal] — все три подгружает писатель на стадии Generate.
+> Цель №1 — цифровой двойник как **публичное reality-show** (insight-glavnaya-tsel-tsifrovoj-dvojnik [internal]). Этот файл = палитра, из которой берём приёмы сериальной драматургии, чтобы поток контента читался как захватывающий американский сериал/блокбастер, а не как лог активности. Сидит на одном уровне со стилевыми палитрами [[style-Mei-influence]] и fb-diary-voice [internal] — все три подгружает писатель на стадии Generate.
 
 ## Каркас сериала (season → arc → episode)
 Серийный нарратив УЖЕ сформулирован (DR 2026-06-17): **«Я, человек без программистского прошлого, превращаюсь в AI-native builder через боль, сотни часов тупняка, ошибки, микро-победы и инженерную дисциплину».** Это сквозная дуга СЕЗОНА. На неё нанизываются:
@@ -60,7 +60,7 @@ Reality-show держится на узнаваемых персонажах. У
 
 ## Как накладывать на голос Антона (микс, НЕ замена)
 - **Каркас и приёмы — отсюда** (cold open, клиффхэнгер, ставки, арка, каст). **Материал, голос, исповедальность, самоирония, конкретика дня — от Антона** (fb-diary-voice [internal], _CRAFT [internal]).
-- **Оптика/афористичность second-order** — от [[style-gershuni-influence|Гершуни]] (когда уместно). Три палитры стыкуются: Гершуни даёт мысль-формулу, reality-show даёт сериальную форму, fb-diary даёт честный голос.
+- **Оптика/афористичность second-order** — от [[style-Mei-influence|Артём]] (когда уместно). Три палитры стыкуются: Артём даёт мысль-формулу, reality-show даёт сериальную форму, fb-diary даёт честный голос.
 - **Длина под тир** (контракт decision-content-pipeline-reality-show [internal]): тизер ~240–370 зн. = cold open + клиффхэнгер; средний рид (FB) = полный эпизод с дугой; лонгрид = «расширенная серия»; дев-лог = «сырые материалы со съёмочной площадки» (не драматизируем, это firehose для GEO).
 - **Тон по тиру/каналу:** RU (@ClawRus/FB) — исповедальный сериал-дневник; EN (X) — суше, тейк+крючок; дев-лог — без драмы.
 
@@ -86,9 +86,9 @@ Reality-show держится на узнаваемых персонажах. У
 - **Анти-slop позиционирование:** чем более AI-native стройка, тем важнее, чтобы эмоциональный и хронологический слой был безошибочно ЧЕЛОВЕЧЕСКИМ. YouTube 2025 переименовал «повторяющийся контент» в «неаутентичный»; рынок движется к creator-led «шоу», но карает синтетику. Человеческая нерегулярность = конкурентное отличие, не ностальгия.
 
 ## Как применять (в пайплайне)
-- Контент-фабрика [internal] / `/episode`: на стадии Generate писатель-Opus подгружает ЭТОТ файл + fb-diary-voice [internal] + _CRAFT [internal] + [[style-gershuni-influence]] и пишет эпизод как серию (cold open → ставки → поворот → клиффхэнгер), вплетая открытые арки сезона.
+- Контент-фабрика [internal] / `/episode`: на стадии Generate писатель-Opus подгружает ЭТОТ файл + fb-diary-voice [internal] + _CRAFT [internal] + [[style-Mei-influence]] и пишет эпизод как серию (cold open → ставки → поворот → клиффхэнгер), вплетая открытые арки сезона.
 - **Season-bible (состояние сезона)** — лёгкий курируемый файл «какие арки открыты / какие клиффхэнгеры висят / номер эпизода / каст»: чтобы серии связывались, а не были разрозненными постами. См. спек скилла `/reality-show` ниже / в хэндоффе.
 - Платформы: RU (@ClawRus/FB), EN (X) — везде допускается сериальный каркас; draft-first, Антон постит сам. Дев-лог — БЕЗ драматизации.
 
 ## Связи
-- decision-content-pipeline-reality-show [internal] · decision-content-distribution-growth-architecture [internal] · insight-glavnaya-tsel-tsifrovoj-dvojnik [internal] · fb-diary-voice [internal] · _CRAFT [internal] · _STYLE [internal] · [[style-gershuni-influence]] · content-factory [internal] · content-gershuni-style [internal]
+- decision-content-pipeline-reality-show [internal] · decision-content-distribution-growth-architecture [internal] · insight-glavnaya-tsel-tsifrovoj-dvojnik [internal] · fb-diary-voice [internal] · _CRAFT [internal] · _STYLE [internal] · [[style-Mei-influence]] · content-factory [internal] · content-Mei-style [internal]

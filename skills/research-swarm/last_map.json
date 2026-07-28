@@ -1,0 +1,418 @@
+{
+  "hypothesis": "Безопорные (реактивless) электромагнитные двигатели типа EmDrive могут создавать полезную чистую тягу в вакууме (propellantless/reactionless thrust)",
+  "lenses": [
+    {
+      "lens": "Consensus / Established Physics & Engineering",
+      "stance_summary": "Established physics holds that a closed electromagnetic cavity (EmDrive-type device) cannot produce net propellantless thrust in vacuum, because doing so would violate conservation of momentum — one of the most precisely tested, most deeply structural principles in physics (Noether's theorem ties it to the homogeneity of space itself). The mainstream position is NOT merely \"scientists declare it impossible.\" Its real strength is twofold: (1) a strong theoretical prior — every known force has a measurable reaction; a microwave bouncing inside a sealed cone radiates/absorbs symmetrically and the cavity feels no net push beyond known photon-momentum effects (which are real but ~µN/kW and require an open aperture / radiation leaving, not \"reactionless\"), and (2) the empirical track record: every positive EmDrive result reported so far has, on careful independent re-measurement, dissolved into mundane experimental artifacts — thermal expansion of the test stand, magnetic interaction with Earth's field, cable/Lorentz forces, air currents, and center-of-mass shifts. The decisive datapoint is the 2021 TU Dresden program (Tajmar group), which rebuilt NASA Eagleworks' own apparatus and showed the apparent thrust was the balance's zero-point drifting as the device heated — refuting the claims \"by at least three orders of magnitude.\" So the honest consensus read: the claim is almost certainly false as stated, the burden of proof is correctly very high, and so far no claimant has cleared it. What is PROVEN is that the specific reported thrusts were artifacts; what is ASSUMED (very strongly, but as a principle not a direct measurement of this device) is that NO such device can ever work.",
+      "points": [
+        {
+          "claim": "Net propellantless thrust in a closed system violates conservation of momentum, the most precisely tested symmetry in physics.",
+          "direction": "against",
+          "evidence_quality": "strong",
+          "reasoning": "Momentum conservation follows from translational symmetry of space (Noether's theorem) and underpins all of mechanics, electrodynamics (via field momentum), and particle physics; no laboratory experiment in history has shown a credible violation. A reactionless drive would require either a momentum reservoir nobody has identified or new physics. This is the core theoretical prior — strong, but note it is a PRINCIPLE applied to the device, not a direct null measurement of every possible cavity geometry."
+        },
+        {
+          "claim": "Every independently scrutinized positive EmDrive result has been traced to a mundane experimental artifact.",
+          "direction": "against",
+          "evidence_quality": "strong",
+          "reasoning": "The 2021 TU Dresden program (Tajmar et al.) rebuilt the NASA Eagleworks setup and found the 'thrust' was thermal: heating warped the balance's mounting, shifting its zero point. They concluded measurements 'refute all EmDrive claims by at least three orders of magnitude.' Earlier candidate confounders identified across labs: magnetic interaction with Earth's field, Lorentz forces on power cables, air convection, and center-of-mass shifts. This is the strongest empirical pillar of the consensus. (phys.org / Universe Today / Springer s12567-021-00385-1)"
+        },
+        {
+          "claim": "Reported thrust-to-power ratios were always near the noise floor and at the scale where thermal/EM artifacts dominate.",
+          "direction": "against",
+          "evidence_quality": "strong",
+          "reasoning": "Claimed signals were ~µN to mN at hundreds of watts — exactly the regime where stand thermal drift, outgassing, and magnetic coupling produce false positives. A real propulsion effect useful for spaceflight would need to be far larger or far cleaner; the signal never separated from known systematics. Strong as a methodological critique."
+        },
+        {
+          "claim": "Photon-momentum and known radiation-pressure effects DO produce tiny real thrust — but these are not 'reactionless' and are orders of magnitude too small.",
+          "direction": "context",
+          "evidence_quality": "strong",
+          "reasoning": "A photon rocket / leaky cavity genuinely produces thrust ~3.3 µN per kW by ejecting/radiating EM energy — fully consistent with conservation laws (the momentum leaves with the radiation). This matters because it sets the ceiling for any LEGITIMATE EM-only effect and shows the consensus is not 'EM can never push' — it's 'a CLOSED cavity can't, and the open-aperture limit is minuscule.' Important to separate the real small effect from the disputed large 'anomalous' one."
+        },
+        {
+          "claim": "No peer-reviewed theory explaining EmDrive thrust has survived scrutiny; proposed mechanisms (e.g. quantum-vacuum/MHD plasma, unruh-radiation/MiHsC) are not established.",
+          "direction": "against",
+          "evidence_quality": "moderate",
+          "reasoning": "NASA Eagleworks invoked a 'quantum vacuum plasma' pushed against, which most physicists reject because the quantum vacuum has no rest frame to push against and isn't a normal medium. McCulloch's MiHsC/quantised-inertia is a genuine alternative hypothesis but is itself non-consensus and unconfirmed. The ABSENCE of a viable accepted mechanism strengthens the prior but is an argument from current theory, not proof of impossibility."
+        },
+        {
+          "claim": "The market/funding signal: no space agency or commercial program has adopted EmDrive after a decade of testing.",
+          "direction": "against",
+          "evidence_quality": "moderate",
+          "reasoning": "DARPA, NASA Eagleworks, and university groups investigated; none produced a fielded or replicated device, and serious programs have moved on. This reflects accumulated null results, but 'nobody funds it' is partly sociological — it would be circular to treat lack of adoption alone as physical disproof. Moderate."
+        },
+        {
+          "claim": "Consensus rests on a principle generalized to the device, not on having tested every conceivable geometry/material/regime.",
+          "direction": "context",
+          "evidence_quality": "theoretical",
+          "reasoning": "Honest framing for Anton: what is empirically PROVEN is that the specific tested devices showed artifacts, not thrust. The leap to 'no such device can EVER work' is a (very well-justified) theoretical extrapolation from conservation laws. If conservation of momentum held exactly, the case is closed; the only way the hypothesis survives is if there is unknown new physics providing a hidden momentum sink — which would itself be a Nobel-level discovery and has zero confirming evidence. So: assumption is load-bearing, but it's the best-supported assumption in physics."
+        }
+      ],
+      "confidence_note": "High confidence that the consensus position is correct AS STATED (the reported thrusts are artifacts; no propellantless drive has been demonstrated). The 2021 Dresden replication of Eagleworks' own rig is the decisive, cleanly-reasoned datapoint. The one honest caveat I flag for Anton's neutrality: 'no closed EM cavity can EVER produce thrust' is a theoretical extrapolation from conservation of momentum, not a direct measurement of all possible configurations — so it's an extremely strong ASSUMPTION, not a per-device proof. The distinction doesn't rescue EmDrive (no evidence supports the new-physics escape hatch), but it's the correct epistemic boundary between 'proven artifact' and 'assumed impossible.' Sources: phys.org 2021-04, Universe Today, Springer CEAS s12567-021-00385-1 (Tajmar/Dresden), National Geographic, Wikipedia EmDrive."
+    },
+    {
+      "lens": "Skeptic",
+      "stance_summary": "The strongest case against propellantless EM thrust is not \"the establishment says no\" — it is that the claim collides head-on with momentum conservation (a consequence of spatial-translation symmetry / Noether's theorem), and that every positive measurement to date has been at the threshold of measurement noise, where a long list of mundane artifacts — thermal expansion of the mount, magnetic interaction of power cables with Earth's field, outgassing, air currents, asymmetric Lorentz forces, cable stiffness — produce exactly the kind of micro/milli-newton \"thrust\" that was reported. The decisive blow is empirical, not theoretical: when Tajmar's Dresden group rebuilt the Eagleworks rig with a balance ~3 orders of magnitude more sensitive than the claimed signal, the apparent thrust scaled with INPUT POWER (heat) rather than with the resonant RF field — the signature of an artifact, not a drive — and vanished once the mount thermal-warp and the magnetic-cable coupling were controlled. A real propellantless drive should produce a signal that (a) survives in any orientation, (b) tracks the EM field's Q/resonance not the heater curve, and (c) reverses sign when the cavity is reversed. No experiment has cleanly shown all three. The hypothesis is therefore not \"impossible to imagine\" but \"currently indistinguishable from zero once known systematics are removed,\" and it carries an extraordinary burden: to keep it alive you must either show a clean artifact-free signal or propose a concrete momentum reservoir (quantum vacuum, asymmetric radiation, hidden ejected mass/field momentum) that is itself testable — and so far each proposed reservoir either fails on theory or has not been measured.",
+      "points": [
+        {
+          "claim": "The core claim requires net momentum to appear in a closed system with nothing leaving it — a direct violation of conservation of momentum.",
+          "direction": "against",
+          "evidence_quality": "strong",
+          "reasoning": "Momentum conservation is not an empirical observation that might have exceptions; it is a mathematical consequence of the translational symmetry of space (Noether's theorem). A truly closed cavity that gains momentum implies either space is not translationally symmetric here, or momentum is being dumped into an unaccounted reservoir. That is the hidden assumption the hypothesis MUST cash out. 'Reactionless' as literally stated is self-contradictory; the only survivable versions secretly posit a reservoir (see next points)."
+        },
+        {
+          "claim": "Reported thrust has always sat at the edge of measurement resolution, where many mundane forces masquerade as thrust.",
+          "direction": "against",
+          "evidence_quality": "strong",
+          "reasoning": "Eagleworks-era signals were ~1.2 mN/kW and micronewton-scale balance readings — comparable in magnitude to thermal drift, air convection, outgassing, cable stiffness, and Lorentz forces on currents. A claim is only as strong as its signal-to-systematics ratio; here it is near unity. Extraordinary claim, ordinary-sized signal = the classic false-positive setup."
+        },
+        {
+          "claim": "The single sharpest falsification already happened: at higher sensitivity the 'thrust' scaled with input power (heat), not with the RF resonance, and disappeared when known artifacts were controlled.",
+          "direction": "against",
+          "evidence_quality": "strong",
+          "reasoning": "Tajmar/TU Dresden (three 2021 papers) rebuilt the rig with a balance ~1000x more sensitive than the claimed effect and found no net thrust to the nanonewton level; the apparent force tracked the thermal warping of the mount and (in 2018 work) Earth's magnetic field interacting with power cables. A genuine drive's force should track field energy/Q, not the heater curve. This is the decisive experiment and the hypothesis failed it. (phys.org 2021; Universe Today 2021; Wikipedia EmDrive)"
+        },
+        {
+          "claim": "Thermal expansion of the test-stand mount is a known, sufficient explanation for the original positive results.",
+          "direction": "against",
+          "evidence_quality": "strong",
+          "reasoning": "When RF power heats the cavity, the fastening elements on the balance warp and the zero-point of the scale shifts — producing a slow, power-correlated deflection indistinguishable from thrust on a torsion balance. Reinforcing the mount removed the effect. This is a textbook failure mode for any low-thrust balance and was independently identified, not assumed."
+        },
+        {
+          "claim": "Proposed momentum reservoirs (quantum-vacuum 'pushing off' virtual particles, etc.) are not established physics and mostly fail their own theory.",
+          "direction": "against",
+          "evidence_quality": "moderate",
+          "reasoning": "The quantum vacuum has no rest frame and is Lorentz-invariant, so 'pushing off it' to gain net momentum is theoretically problematic; the pilot-wave/MHD-vacuum models invoked by Eagleworks are not accepted derivations. This doesn't prove no reservoir exists, but it means the rescue hypotheses inherit their own unproven burden rather than relieving the original one."
+        },
+        {
+          "claim": "Publication bias and the file-drawer effect inflate the apparent strength of positive results.",
+          "direction": "context",
+          "evidence_quality": "moderate",
+          "reasoning": "Positive EmDrive results were widely amplified (NASA leak, peer-reviewed AIAA paper) while careful null results got less attention. A peer-reviewed positive paper is necessary but not sufficient — it did not control the artifacts the later null studies did. Weighing evidence by who got headlines rather than by systematics-control is the trap to avoid in either direction."
+        },
+        {
+          "claim": "A clean falsification test is cheap and well-defined, which raises the bar: it has been run and not passed cleanly.",
+          "direction": "context",
+          "evidence_quality": "strong",
+          "reasoning": "The decisive experiment is concrete: put the cavity on a calibrated balance in vacuum, vary RF frequency across resonance while holding average input power constant, and require the force to (a) peak at resonance/Q, (b) reverse when the cavity is flipped, (c) survive multiple orientations, and (d) decouple from the thermal time-constant. Because this is achievable with existing nanonewton balances and has shown null results, the absence of a clean pass is itself strong evidence against, not merely 'not yet tested.'"
+        },
+        {
+          "claim": "Even granting a real effect, the reported thrust-to-power is far too low to be a useful drive without violating energy bookkeeping at high speed.",
+          "direction": "against",
+          "evidence_quality": "moderate",
+          "reasoning": "A constant force per unit power that is independent of velocity eventually produces kinetic energy faster than the energy input allows (the standard 'over-unity at high velocity' objection), implying the simplest 'useful net thrust' framing breaks energy conservation in some frame. Any rescue must make the force velocity- or frame-dependent, which the basic EmDrive claim does not do — so 'useful' thrust is an even stronger claim than 'any' thrust."
+        }
+      ],
+      "confidence_note": "Confidence that the literal reactionless/propellantless EmDrive produces useful net thrust: LOW that it's real (high-quality independent null results explain the positives via thermal + magnetic artifacts at ~1000x sensitivity). But honesty cuts both ways: the null results refute the SPECIFIC tested geometries and signal levels, not the general possibility that some unmodeled momentum-exchange channel exists at scales not yet probed — that remains 'fringe/speculative,' i.e. not established either way. The theoretical objection (momentum/energy conservation) is strong but is an argument about which reservoir must exist, not a proof that no clever reservoir could; the empirical objection (failed decisive replication) is the load-bearing one. The cheap decisive test exists and currently reads zero — that is the fact a proponent must overturn."
+    },
+    {
+      "lens": "Frontier (steelman / strongest case FOR)",
+      "stance_summary": "The strongest honest case is NOT \"EmDrive works\" — the specific RF-cavity EmDrive was largely refuted by 2021 (Tajmar/Dresden reproduced the apparent thrust as thermal-warping and suspension artifacts, ruling out real thrust by ~3 orders of magnitude). The defensible frontier position is narrower and more interesting: (1) propellantless thrust is NOT categorically forbidden if momentum is carried away by a field/radiation reservoir rather than ejected mass — true \"reactionless\" violates momentum conservation, but \"propellantless\" need not, and the distinction is where the live science is; (2) the history of these claims exposed a real, fixable measurement gap (thermal drift, EM interaction with leads, Lorentz forces on cables, asymmetric outgassing) that took world-class metrology to nail down — meaning earlier positive signals were honest anomalies, not fraud, and the field genuinely advanced by chasing them; (3) adjacent, less-exotic propellantless concepts (photon rockets, light sails, electrodynamic/momentum-exchange tethers, plasma-magnetic-sail \"thrust from the solar wind\") already produce real net thrust on a spacecraft without onboard propellant, so the category \"useful thrust without carrying reaction mass\" is established — the dispute is specifically about closed-cavity devices with no external reservoir. The most promising surviving version of Anton's hypothesis is therefore: an EM device that couples to an EXTERNAL field/medium (quantum vacuum if it has exploitable structure, ambient plasma, or an asymmetric radiation pattern) — not a truly closed reactionless box. Evidence for that promising version is currently theoretical-to-speculative, not demonstrated.",
+      "points": [
+        {
+          "claim": "\"Propellantless\" and \"reactionless\" are not the same claim, and conflating them buries the only defensible version. A device can produce thrust with no onboard propellant yet still conserve momentum if the momentum is dumped into a field, radiation, or external medium.",
+          "direction": "context",
+          "evidence_quality": "strong",
+          "reasoning": "A photon rocket and a solar/magnetic sail both produce net thrust on the craft without ejecting stored mass — momentum is carried by photons or the deflected solar wind. This is textbook and uncontroversial. The frontier question is narrowly whether a CLOSED EM cavity can do likewise via some external reservoir (e.g. structured quantum vacuum). Steelmanning requires attacking only the closed-box reactionless version, not the broader propellantless category, which is real."
+        },
+        {
+          "claim": "The EmDrive saga produced honest, repeatable small positive signals across independent groups (Shawyer, Chinese teams, NASA Eagleworks ~1.2 mN/kW) before they were explained — these were real anomalies worth chasing, not obvious nonsense.",
+          "direction": "for",
+          "evidence_quality": "weak",
+          "reasoning": "Multiple labs independently measured thrust-like signals on torsion balances, which is why serious metrologists (Tajmar) spent years on it. The signals were real measurements; the dispute was their CAUSE. Rated weak as evidence FOR propulsion because the 2021 Dresden work (phys.org, Gizmodo) reproduced and then nulled them as thermal/suspension artifacts — but the episode legitimately demonstrates the anomaly was non-trivial to dismiss."
+        },
+        {
+          "claim": "The null result hinged entirely on a subtle, identifiable systematic (thermal warping shifting the balance zero-point), not on any law forbidding the effect a priori — which means the experimental question was decided by metrology, exactly as a fair test should be.",
+          "direction": "context",
+          "evidence_quality": "strong",
+          "reasoning": "Tajmar's team showed that with one suspension geometry they reproduced NASA-like 'thrust,' and with a point suspension it vanished; the apparent force tracked heating of the fastening elements (phys.org 2021). This is the steelman's strongest meta-point: the field self-corrected through better instruments, and the same rigor is what any future positive claim must survive — it does NOT prove no EM device can ever couple to an external reservoir."
+        },
+        {
+          "claim": "Quantum-vacuum / zero-point-field momentum exchange is not formally ruled out as a thrust reservoir; if the vacuum has exploitable directional structure (e.g. via asymmetric Casimir-like boundary conditions), a device could in principle push against it while conserving total momentum.",
+          "direction": "for",
+          "evidence_quality": "theoretical",
+          "reasoning": "White's 'quantum vacuum plasma thruster' framing was the proposed mechanism for Eagleworks. Mainstream QFT says the vacuum has no preferred frame to push against, so most physicists assign this very low prior — but 'no known mechanism' is an absence of theory, not a proof of impossibility, and Casimir physics shows vacuum boundary conditions DO exert measurable forces. Rated theoretical: a conceivable loophole with no experimental support, not an established pathway."
+        },
+        {
+          "claim": "Real propellantless propulsion that DOES work is already flying or near-term, establishing that 'no onboard reaction mass' is an engineering reality — which raises the plausibility prior for novel field-coupled variants.",
+          "direction": "for",
+          "evidence_quality": "strong",
+          "reasoning": "Electrodynamic tethers (momentum exchange with Earth's magnetic field / ionosphere), solar sails (IKAROS, LightSail-2 demonstrated measurable acceleration from photon pressure), and magnetic/plasma sails all produce net thrust without stored propellant. These are proven. They steelman the CATEGORY — though notably all couple to an EXTERNAL field/medium, which is precisely the ingredient a closed EmDrive lacks."
+        },
+        {
+          "claim": "For the hypothesis to be true in its strongest form, the necessary-and-sufficient condition is identifiable: the device must couple to an external momentum reservoir (vacuum structure, ambient plasma, or an asymmetric photon/radiation pattern). A device that demonstrably does this is not forbidden; a truly closed reactionless box is.",
+          "direction": "context",
+          "evidence_quality": "strong",
+          "reasoning": "This is the load-bearing 'what would have to be true' for the believer. It cleanly separates the impossible claim (closed-system momentum violation) from the merely-undemonstrated one (open-system field coupling). The most promising research program is therefore to ADD a deliberate external reservoir and measure asymmetry — not to defend the sealed cavity that Dresden nulled."
+        },
+        {
+          "claim": "Asymmetric photon/radiation thrust is a guaranteed-real (if tiny) effect that any RF cavity already produces, setting a hard, honest performance ceiling for the legitimate part of the idea.",
+          "direction": "for",
+          "evidence_quality": "strong",
+          "reasoning": "Any device radiating EM asymmetrically gets a real photon-rocket recoil of F = P/c ≈ 3.3 µN per kW — utterly real, momentum-conserving, but ~1000x smaller than the claimed EmDrive signal. Dresden's improved tests reached sensitivity BELOW this photon-thrust floor and still saw nothing anomalous. So the honest frontier claim is: the only surviving guaranteed thrust is the photon-recoil level; anything above that remains unproven."
+        }
+      ],
+      "confidence_note": "Confidence that the SPECIFIC closed-cavity EmDrive produces useful net thrust: LOW (the 2021 Dresden/Tajmar reproduction + null is strong, multi-geometry, and reached sub-photon-thrust sensitivity — the believer's best signals were explained as thermal/suspension artifacts). Confidence that the BROADER hypothesis ('an EM device can produce useful propellantless thrust') is impossible: also not high — propellantless (as distinct from reactionless) thrust via external-field coupling is already real, and quantum-vacuum reservoir ideas are unfalsified rather than disproven. Net frontier read: the strong version (sealed reactionless box) is on very thin ice empirically; the interesting survivable version (open-system field-coupled EM thrust above the photon-recoil floor) is speculative/theoretical with no current demonstration — a genuine open experimental question, not a settled one, but the burden of proof sits squarely on a new positive measurement that survives Dresden-grade metrology. Evidence tiers honest: 'established' only for the adjacent propellantless tech and the photon-thrust floor; 'theoretical/speculative' for any closed-cavity or vacuum-reservoir mechanism. Sources: en.wikipedia.org/wiki/EmDrive; phys.org/news/2021-04-comprehensive-emdrive.html; gizmodo.com EmDrive Dresden coverage. Note: deliberately did NOT use 'scientists say it's impossible' as a terminal argument — the null rests on a specific reproduced systematic, which is a stronger and fairer basis."
+    },
+    {
+      "lens": "Historian — precedents and base rates",
+      "stance_summary": "The EmDrive's closest historical analog is not one case but a whole reference class: claimed \"reactionless\" / propellantless devices and small-signal \"anomalous force\" measurements at the noise floor (Dean drive, gyroscopic propulsion à la Kidd, and as measurement-pathology siblings N-rays, polywater, cold fusion). The pattern is strikingly consistent: a small, hard-to-measure signal claimed to overturn a deep conservation law (momentum), an enthusiastic experimenter and amplifying press, partial early \"confirmations,\" then — when a high-sensitivity, artifact-controlled rebuild is done — the signal collapses into a mundane systematic (thermal expansion of the mount, stick-slip, EM interaction with cables/Earth's field, air currents). For the EmDrive specifically this arc is now essentially complete: the 2021 Dresden (Tajmar group) experiment rebuilt the NASA Eagleworks setup, traced the apparent thrust to thermal warping of the balance, and found null thrust to within ~3 orders of magnitude of the claim. So the honest Historian read is: the base rate of vindication for this specific reference class (propellantless thrust violating momentum conservation, signal at measurement noise floor) is very low — near zero in the documented record — and this candidate has already been through and failed the decisive test. That is a strong \"against,\" but it is a historical base rate, NOT a proof that no EM-cavity anomaly can ever exist; it tells us where the burden of proof sits and what a real positive would have to look like.",
+      "points": [
+        {
+          "claim": "Closest direct analog: the Dean drive (1950s-60s) — a claimed reactionless/Newton's-3rd-law-violating drive, hyped by editor John W. Irina, that vanished under proper test (frictionless air-table) as stick-slip friction, not new physics.",
+          "direction": "against",
+          "evidence_quality": "strong",
+          "reasoning": "Same logical structure as EmDrive: small net unidirectional force claimed to break momentum conservation, championed by an enthusiast, 'confirmed' on imperfect rigs, then nulled when the artifact (stick-and-slip vs thermal-warp) was controlled. Teaches that the failure mode is almost always an uncontrolled mechanical/thermal systematic at the measurement interface. (en.wikipedia.org/wiki/Dean_drive)"
+        },
+        {
+          "claim": "The EmDrive itself has already completed the historical arc: the 2021 TU Dresden / Tajmar rebuild of the Eagleworks setup found the 'thrust' was thermal warping of the balance, with true thrust null to ~3 orders of magnitude below the claim.",
+          "direction": "against",
+          "evidence_quality": "strong",
+          "reasoning": "This is the decisive high-sensitivity replication the reference class always eventually gets. Tajmar's group identified the exact false-positive (heating shifts the scale's zero point) and ruled out earlier 'it's not thermal' rebuttals. This is data, not opinion: a controlled null. (phys.org/news/2021-04-comprehensive-emdrive.html; link.springer.com/article/10.1007/s12567-021-00385-1)"
+        },
+        {
+          "claim": "Pathological-science siblings (N-rays 1903, polywater 1960s, cold fusion 1989) give the base rate for 'real-looking signal at the detection limit overturning textbook physics': they were sincere, peer-published, partially replicated — and all resolved to artifact/contamination.",
+          "direction": "against",
+          "evidence_quality": "strong",
+          "reasoning": "Langmuir's 'pathological science' criteria fit EmDrive almost point-for-point: effect near the limit of detectability, magnitude near-independent of cause, claims of great accuracy, ad hoc rescue of theory as critics close in. Across this documented class the vindication rate is essentially 0/N. (lindau-nobel.org cold-fusion/polywater/N-rays; centerforinquiry.org 'From N-rays to EM-drives')"
+        },
+        {
+          "claim": "The deep prior that makes the base rate so unforgiving: net propellantless thrust in vacuum requires either violating momentum conservation or carrying away unaccounted momentum (e.g. photons), and conservation of momentum is among the most tested laws in physics (Noether: it follows from spatial translation symmetry).",
+          "direction": "against",
+          "evidence_quality": "strong",
+          "reasoning": "This is why every honest replication starts from 'find the leak' rather than 'find the new force.' A photon rocket DOES give real thrust but only ~3.3 microN/kW — orders below EmDrive claims; the EmDrive's whole point was thrust-without-exhaust, which is exactly the conserved quantity at issue. Theoretical, but extraordinarily well-grounded."
+        },
+        {
+          "claim": "Counter-weight (context, not endorsement): the reference class is not 100% predictive — genuinely surprising momentum/force phenomena have survived skepticism (radiometer/Crookes effects, radiation pressure, the Casimir force, the Pioneer anomaly which was real but resolved mundanely as thermal recoil).",
+          "direction": "context",
+          "evidence_quality": "moderate",
+          "reasoning": "History also rewards measuring carefully rather than dismissing: several 'tiny anomalous force' stories were REAL, just not new fundamental physics. The lesson cuts both ways — the anomaly can be real AND have a boring cause. The Pioneer anomaly is the cleanest analog: a real, reproducible unexplained acceleration that turned out to be anisotropic thermal radiation, not new gravity. So 'there is a signal' was true; 'it's new physics' was false."
+        },
+        {
+          "claim": "Calibrated base rate for THIS idea (propellantless/reactionless thrust violating momentum conservation, signal at the noise floor): vindication probability is very low — order ~1% or below — and lower still here because the decisive replication has already returned null.",
+          "direction": "against",
+          "evidence_quality": "moderate",
+          "reasoning": "Reference-class forecasting: in the documented modern record of such claims (Dean, Kidd gyro-drives, Cannae/EmDrive, plus the pathological-science measurement siblings), the count of vindicated cases is ~0 of many. I rate the inference 'moderate' not 'strong' because base rates are an outside-view heuristic, not a law — but the post-2021 null makes it converge with the inside view."
+        },
+        {
+          "claim": "What a genuine vindication would historically have to look like (so the map isn't a verdict): a thrust signal that scales correctly with input power, survives bidirectional/null-orientation tests, persists in hard vacuum with the device fully thermally settled and on a torsion balance immune to thermal-zero drift, replicated by 2+ independent labs blind to each other.",
+          "direction": "context",
+          "evidence_quality": "theoretical",
+          "reasoning": "Every vindicated 'weird force' (radiation pressure, Casimir) won precisely by passing artifact-elimination that the false ones failed. This is the experimental bar the Skeptic and Experimental-Design lenses should own; historically, claims die at exactly the thermal-drift and orientation-reversal tests Tajmar applied."
+        }
+      ],
+      "confidence_note": "High confidence on the historical facts (Dean-drive null, Dresden 2021 null, the pathological-science precedents) — documented. Moderate, not absolute, on the numeric base rate (~1% or below): reference-class forecasting is an outside-view estimate and the class boundary is a judgment call. Two honest caveats keep this a map, not a verdict: (1) base rate != impossibility — the history also contains real-but-mundane anomalies (Pioneer), so 'there may be a measurable signal' can be true while 'it's reactionless new physics' is false; (2) consensus and precedent are evidence about where the burden of proof sits, not proof. The single most decisive datum is empirical, not authority: the 2021 high-sensitivity replication traced the thrust to a thermal artifact and measured null. RECALL found no prior Anton notes on this, so treat as fresh; strongest next step is the Experimental-Design lens specifying the orientation-reversal + thermal-settle + dual-lab protocol that would distinguish a true positive from the historical failure mode."
+    },
+    {
+      "lens": "ExperimentalDesign",
+      "stance_summary": "С точки зрения «как это вообще решить» гипотеза EmDrive — один из самых удобных для проверки frontier-claims: предполагаемый эффект (≈мН на кВт) на порядки больше единственной законной тяги-сравнения (фотонная отдача ~3.3 мкН/кВт), а вся установка помещается на лабораторный стол. Это значит, что спор решается не «лучше теорией», а одним хорошо контролируемым измерением силы. Ключ — не «увидеть отклонение баланса», а исключить артефакты, которые имитируют тягу: тепловое расширение/смещение центра масс при нагреве, взаимодействие токов в кабелях с магнитным полем Земли, выгазовывание, ионный/конвекционный ветер, наводки. Решающий тест уже фактически проведён: группа Тайма́ра (TU Dresden, 2021) на установке с разрешением ~нН воспроизвела «тягу» прежних команд (включая NASA Eagleworks), а затем заставила её исчезнуть, заменив подвес и устранив тепловой дрейф нуля и магнитное взаимодействие кабелей. Честный вывод для дизайна эксперимента: существующая «тяга» лучше всего объясняется известными систематическими ошибками, и любой будущий claim должен сначала пройти набор предрегистрированных контролей-«пустышек», прежде чем его вообще можно обсуждать как новую физику.",
+      "points": [
+        {
+          "claim": "Гипотеза НЕОБЫЧНО легко фальсифицируема: заявленный эффект на ~2-3 порядка больше единственной законной тяги сравнения (фотонная отдача), и вся установка настольная.",
+          "direction": "context",
+          "reasoning": "NASA Eagleworks заявляли ~1.2 мН/кВт; чистая фотонная тяга ~3.3 мкН/кВт (P/c) — фактор ~500. Большой предсказанный сигнал + настольный масштаб = решается одним измерением силы, а не философией. Это сильная сторона гипотезы как объекта проверки, не как истины.",
+          "evidence_quality": "strong"
+        },
+        {
+          "claim": "Решающий эксперимент = вакуумный торсионный/нулевой баланс с разрешением суб-мкН, где DUT можно ПЕРЕОРИЕНТИРОВАТЬ (тяга меняет знак с поворотом устройства, а тепловой/магнитный артефакт — нет).",
+          "direction": "context",
+          "reasoning": "Реверс-тест (flip the device) — золотой стандарт разделения настоящей силы от дрейфа нуля: реальная тяга следует за осью устройства, артефакт привязан к установке. Это тот контроль, который обе стороны (верующий и скептик) обязаны принять как честный.",
+          "evidence_quality": "strong"
+        },
+        {
+          "claim": "Данные собрать ПЕРВЫМИ: серия пустых прогонов (dummy load / резистивный нагреватель той же мощности, расстроенная по частоте полость, чисто тепловой эквивалент) ДО любого 'боевого' прогона.",
+          "direction": "context",
+          "reasoning": "Артефакты EmDrive — тепловые и магнитные, масштабируются с подведённой МОЩНОСТЬЮ, а не с резонансом полости. Если 'тяга' одинакова при резонансе и при расстройке/чистом нагреве той же мощности — это не тяга. Этот baseline-набор отделяет сигнал от P-зависимого шума.",
+          "evidence_quality": "strong"
+        },
+        {
+          "claim": "Этот решающий тест уже выполнен и дал ОТРИЦАТЕЛЬНЫЙ результат: Tajmar/TU Dresden (2021) воспроизвёл прежнюю 'тягу', затем устранил её, убрав тепловой дрейф нуля и магнитное взаимодействие кабелей.",
+          "direction": "against",
+          "reasoning": "Группа Дрездена на ~нН-балансе показала, что кажущаяся тяга Eagleworks = нагрев крепления весов (сдвиг нуля), а более ранний источник = частично экранированные кабели в поле Земли. При точечном подвесе сигнал исчезал. phys.org/news/2021-04, tu-dresden ILR/RFS препринт SP2020_268. Это лучший имеющийся прямой тест.",
+          "evidence_quality": "strong"
+        },
+        {
+          "claim": "Критерий ПОДТВЕРЖДЕНИЯ (что заставило бы и скептика согласиться): тяга масштабируется с добротностью полости Q (а не с мощностью), меняет знак при реверсе устройства, исчезает на расстроенной полости, и совпадает у ≥2 независимых групп на ≥2 разных принципах баланса.",
+          "direction": "context",
+          "reasoning": "Настоящая реактивless-тяга обязана зависеть от резонанса (Q), а не от тепла; реверс-инвариантность и независимая репликация на разной метрологии закрывают класс систематик. Ни один прошлый положительный результат этих критериев одновременно не прошёл — что и делает их честной планкой.",
+          "evidence_quality": "strong"
+        },
+        {
+          "claim": "Критерий ОПРОВЕРЖЕНИЯ (фактически достигнут): после контроля тепла, магнетизма, выгазовывания и наводок сила падает до уровня шума и НЕ зависит от резонанса — остаётся ≤ фотонного предела.",
+          "direction": "against",
+          "reasoning": "Именно это наблюдал Дрезден: эффект объяснён known forces поштучно. Отсутствие Q-зависимости и исчезновение при смене подвеса — каноничная подпись артефакта, а не новой физики.",
+          "evidence_quality": "strong"
+        },
+        {
+          "claim": "Самый дешёвый ДЕФИНИТИВНЫЙ следующий шаг для Антона — не строить установку, а свести метрологический бюджет ошибок: суб-мкН баланс в вакууме <1e-5 мбар, нагрев-эквивалент, реверс, предрегистрация порогов.",
+          "direction": "context",
+          "reasoning": "AK-47-принцип: 0 новой физики, чистая метрология. Если кто-то заявляет тягу, единственный вопрос — пройден ли этот error-budget. Это превращает спор в проверяемый чек-лист, а не в веру.",
+          "evidence_quality": "moderate"
+        },
+        {
+          "claim": "Орбитальный/free-flight тест ('просто запустите в космос') — НЕ дешёвый и НЕ чистый решающий тест, вопреки интуиции.",
+          "direction": "context",
+          "reasoning": "В космосе остаются systematics: выгазовывание, давление света, остаточный атмосферный снос, тепловые/магнитные моменты от Земли. Орбита убирает воздух, но добавляет дорогие, плохо контролируемые силы; настольный реверс-баланс дешевле и чище для ПЕРВОГО опровержения/подтверждения.",
+          "evidence_quality": "moderate"
+        }
+      ],
+      "confidence_note": "Высокая уверенность в дизайне решающего теста (суб-мкН вакуумный реверс-баланс + dummy-load + Q-зависимость — это стандарт прецизионной метрологии силы, и обе стороны его принимают). Высокая уверенность, что этот тест УЖЕ проведён группой Тайма́ра 2021 с отрицательным результатом и поштучным объяснением артефактов. Что остаётся открытым честно: ни один тест не доказывает «невозможно никогда» — он доказывает, что КОНКРЕТНЫЕ опубликованные положительные результаты были артефактами. Планка для будущего claim: одновременно Q-зависимость + реверс-инвариантность + расстройка-нуль + независимая репликация. Источники: phys.org/news/2021-04-comprehensive-emdrive.html; tu-dresden ILR/RFS препринт «High-accuracy thrust measurements of the EMDrive and elimination of false-positive effects» (SP2020_268); en.wikipedia.org/wiki/EmDrive."
+    }
+  ],
+  "map": {
+    "hypothesis": "Безопорные (reactionless) электромагнитные двигатели типа EmDrive могут создавать полезную чистую тягу в вакууме (propellantless/reactionless thrust)",
+    "confidence_tier": "fringe",
+    "confidence_rationale": "Tier applies to the SPECIFIC literal claim — a closed RF cavity producing useful net reactionless thrust. It earns \"fringe\" (not merely \"speculative\") on two convergent grounds the lenses actually surfaced: (1) the decisive high-sensitivity replication has been RUN and returned null — TU Dresden/Tajmar 2021 rebuilt NASA Eagleworks' own rig at ~nN resolution, reproduced the apparent thrust, then made it vanish by removing thermal zero-drift of the balance mount and magnetic cable-Earth-field coupling, refuting prior claims by ~3 orders of magnitude; and (2) the claim sits against momentum conservation (Noether/translational symmetry), the most precisely tested principle in physics, with no identified momentum reservoir. This is NOT \"consensus says no\" — the load-bearing fact is an empirical controlled null plus a per-artifact explanation, which is stronger and fairer than authority. HONEST BOUNDARY (keeps it a map, not a verdict): what is PROVEN is that the specific tested geometries/signal-levels were artifacts; \"no EM cavity can EVER work\" is a very-strong theoretical extrapolation, not a per-configuration measurement. A genuinely DISTINCT and weaker claim — \"propellantless\" (not reactionless) EM thrust via coupling to an EXTERNAL reservoir (structured vacuum, ambient plasma, asymmetric radiation) — is only speculative/theoretical, not fringe, because the category \"useful thrust without onboard propellant\" is already established (solar sails, electrodynamic tethers, photon recoil). The hypothesis as WORDED (\"reactionless... in vacuum\") is the fringe version; its strongest survivable cousin is a separate, open question.",
+    "for_arguments": [
+      {
+        "point": "'Propellantless' and 'reactionless' are NOT the same claim — and the defensible version hides in the gap. A craft can gain net thrust with zero onboard propellant while still conserving momentum, IF momentum is carried off by a field/radiation/external medium. Solar sails (IKAROS, LightSail-2 measured real acceleration), electrodynamic tethers (momentum exchange with Earth's magnetic field/ionosphere), and photon rockets all do exactly this and are PROVEN. So the category 'useful thrust without reaction mass' is established engineering; the dispute is narrowly about a CLOSED cavity with no external reservoir.",
+        "quality": "strong",
+        "source_lens": "Frontier (steelman)"
+      },
+      {
+        "point": "The null result was decided by metrology, not by a law forbidding the effect a priori — which is exactly how a fair test should go and means the door isn't closed by decree. Tajmar's team reproduced NASA-like 'thrust' with one suspension geometry and saw it vanish with a point suspension; the apparent force tracked heating of the fastening elements. The field self-corrected through better instruments. This proves the SPECIFIC rigs had artifacts; it does not prove no EM device could ever couple to an external reservoir.",
+        "quality": "strong",
+        "source_lens": "Frontier / Historian"
+      },
+      {
+        "point": "The EmDrive episode produced honest, independently-measured small positive signals across multiple groups (Shawyer, Chinese teams, NASA Eagleworks ~1.2 mN/kW) BEFORE they were explained — real anomalies non-trivial to dismiss, not fraud or obvious nonsense. This is why world-class metrologists spent years on it. (Rated weak as evidence FOR propulsion specifically, because the 2021 Dresden work reproduced and then nulled these as thermal/suspension artifacts — but the anomaly was genuine and worth chasing.)",
+        "quality": "weak",
+        "source_lens": "Frontier"
+      },
+      {
+        "point": "Quantum-vacuum / zero-point-field momentum exchange is unfalsified rather than disproven. Casimir physics shows vacuum boundary conditions DO exert measurable forces, so an asymmetric-boundary device pushing against structured vacuum while conserving total momentum is a conceivable loophole. Mainstream QFT assigns this a very low prior (the vacuum has no rest frame to push against), so this is a theoretical possibility with zero confirming evidence — 'no known mechanism' is an absence of theory, not a proof of impossibility.",
+        "quality": "theoretical",
+        "source_lens": "Frontier"
+      },
+      {
+        "point": "The hypothesis is UNUSUALLY easy to falsify — a virtue as a research object: the claimed effect (~mN/kW) is ~2-3 orders of magnitude larger than the only legitimate comparison thrust (photon recoil ~3.3 µN/kW = P/c), and the whole apparatus fits on a lab bench. The dispute is therefore settled by one well-controlled force measurement, not by competing theory — which is what makes it tractable rather than untestable.",
+        "quality": "strong",
+        "source_lens": "Experimental-Design"
+      }
+    ],
+    "against_arguments": [
+      {
+        "point": "The decisive high-sensitivity replication has ALREADY been run and returned NULL. TU Dresden / Tajmar (2021) rebuilt the NASA Eagleworks rig with a balance ~1000x more sensitive than the claimed signal; the apparent 'thrust' scaled with INPUT POWER (heat), not with RF resonance/Q, and disappeared once thermal zero-drift of the mount and magnetic cable-Earth-field coupling were controlled. They concluded measurements refute EmDrive claims by ~3 orders of magnitude. A real drive's force should track field energy/Q, not the heater curve. This is the load-bearing empirical fact, and the hypothesis failed it. (phys.org 2021-04; Springer CEAS s12567-021-00385-1; TU Dresden SP2020_268)",
+        "quality": "strong",
+        "source_lens": "Consensus / Skeptic / Historian / Experimental-Design (all 4 converge)"
+      },
+      {
+        "point": "Net propellantless thrust in a truly CLOSED system requires momentum to appear with nothing leaving — a direct conflict with conservation of momentum, which is not an empirical regularity that might have exceptions but a mathematical consequence of the translational symmetry of space (Noether). The only survivable versions secretly posit an unidentified momentum reservoir; 'reactionless' as literally worded is self-contradictory. Strong as a prior, but note it is a PRINCIPLE applied to the device, not a direct null of every conceivable geometry.",
+        "quality": "strong",
+        "source_lens": "Consensus / Skeptic"
+      },
+      {
+        "point": "Every positive result sat at the edge of measurement resolution (~µN to mN at hundreds of watts) — exactly the regime where thermal drift, outgassing, air convection, cable stiffness, Lorentz forces on power cables, and center-of-mass shifts manufacture false thrust. Signal-to-systematics was near unity: an extraordinary claim resting on an ordinary-sized signal — the classic false-positive setup. Thermal expansion of the test-stand mount alone is a known, SUFFICIENT explanation, independently identified (reinforcing the mount removed the effect).",
+        "quality": "strong",
+        "source_lens": "Skeptic / Consensus / Experimental-Design"
+      },
+      {
+        "point": "Reference-class base rate is near-zero. The closest analogs — Dean drive (claimed reactionless, nulled as stick-slip friction on a frictionless air-table), Kidd gyroscopic drives — plus pathological-science measurement siblings (N-rays 1903, polywater 1960s, cold fusion 1989) — all followed the identical arc: small signal at the detection limit overturning a conservation law, enthusiast + amplifying press, partial early 'confirmations', then collapse to a mundane systematic under artifact-controlled rebuild. Langmuir's pathological-science criteria fit EmDrive almost point-for-point. Vindication count across this documented class is ~0 of many (~1% or below). (Base rate is an outside-view heuristic, not a law — hence moderate.)",
+        "quality": "moderate",
+        "source_lens": "Historian"
+      },
+      {
+        "point": "Proposed momentum reservoirs inherit their own unproven burden rather than relieving the original one. NASA Eagleworks' 'quantum vacuum plasma' is rejected by most physicists because the Lorentz-invariant vacuum has no rest frame to push against; McCulloch's MiHsC/quantised-inertia is a genuine but non-consensus, unconfirmed alternative. No peer-reviewed mechanism has survived scrutiny — an argument from current theory, not proof of impossibility, but it removes the rescue routes.",
+        "quality": "moderate",
+        "source_lens": "Consensus / Skeptic / Frontier"
+      },
+      {
+        "point": "Even GRANTING a real effect, the simplest 'useful net thrust' framing (constant force per unit power, velocity-independent) eventually produces kinetic energy faster than energy input allows — over-unity in some frame, breaking energy conservation. Any rescue must make the force velocity- or frame-dependent, which the basic EmDrive claim does not. So 'useful' thrust is an even STRONGER claim than 'any' thrust.",
+        "quality": "moderate",
+        "source_lens": "Skeptic"
+      }
+    ],
+    "historical_analogs": [
+      "Dean drive (1950s-60s) — claimed reactionless / Newton's-3rd-law-violating drive, hyped by editor John W. Irina; vanished under proper test on a frictionless air-table as stick-slip friction. Same logical structure as EmDrive (small unidirectional force claimed to break momentum conservation, championed by an enthusiast, 'confirmed' on imperfect rigs, nulled when the artifact was controlled).",
+      "N-rays (1903), polywater (1960s), cold fusion (1989) — pathological-science siblings: sincere, peer-published, partially replicated signals at the detection limit that all resolved to artifact/contamination. Fit Langmuir's pathological-science criteria (effect near detectability limit, magnitude near-independent of cause, claims of high accuracy, ad hoc theory-rescue as critics close in).",
+      "Pioneer anomaly — the CLEANEST counter-analog: a REAL, reproducible, unexplained spacecraft acceleration that was genuinely anomalous yet resolved mundanely as anisotropic thermal radiation recoil, not new gravity. Lesson cuts both ways: 'there is a signal' was true while 'it's new physics' was false — measure carefully, don't dismiss, but expect a boring cause.",
+      "Crookes radiometer, radiation pressure, the Casimir force — small 'anomalous force' effects that survived skepticism and proved REAL, won precisely by passing the artifact-elimination tests the false claims failed. They show the consensus is not 'EM/tiny forces can't push' — it's that real effects clear orientation-reversal and thermal-settle controls, which EmDrive did not.",
+      "Photon rocket / leaky-cavity recoil (~3.3 µN/kW, F = P/c) — the legitimate, momentum-conserving EM thrust that sets the hard performance CEILING and floor for any honest EM-only effect; Dresden's tests reached sensitivity BELOW this photon-thrust floor and still saw nothing anomalous above it."
+    ],
+    "open_questions": [
+      "The empirical null refutes the SPECIFIC tested geometries, signal levels, and Eagleworks rig — it does not test every conceivable cavity material/geometry/power regime. Is there any configuration not yet probed where an unmodeled momentum-exchange channel could appear? (No evidence it exists; flagged for honest completeness, not as support.)",
+      "Does the structured quantum vacuum have any exploitable directional/boundary structure (Casimir-like asymmetry) that a device could couple to while conserving TOTAL momentum? Mainstream QFT says no rest frame to push against; this is unfalsified rather than disproven.",
+      "Can the weaker, defensible cousin — an OPEN-system EM device deliberately coupled to an external reservoir (ambient plasma, asymmetric radiation pattern) — produce net thrust ABOVE the photon-recoil floor? This is a genuinely open experimental question, distinct from the sealed-cavity claim.",
+      "Why did multiple independent groups initially measure consistent thrust-like signals? Mostly answered (thermal mount-warp + magnetic cable coupling), but is the artifact catalogue complete enough that any future positive can be cleanly attributed or excluded?",
+      "What would a credible momentum reservoir's signature be, and is it independently measurable (e.g., detectable radiation/field momentum leaving the device) — turning the metaphysical 'reactionless' debate into a measurable bookkeeping question?"
+    ],
+    "decisive_experiment": {
+      "description": "Sub-µN-resolution vacuum (<1e-5 mbar) torsion/null balance with a REVERSIBLE device under test, run against a pre-registered error budget. Three controls that separate true thrust from artifact: (1) ORIENTATION REVERSAL — real thrust follows the device's axis and reverses sign when the device is flipped; a thermal/magnetic artifact stays pinned to the test stand. (2) DUMMY-LOAD / Q-DEPENDENCE — drive a resistive heater at the same input power, and a frequency-detuned (off-resonance) cavity at the same power; genuine reactionless thrust must scale with cavity Q/resonance, NOT with input power/heat, so if 'thrust' is identical on-resonance vs detuned/pure-heat it is not thrust. (3) THERMAL-SETTLE — hold the device fully thermally equilibrated so the balance zero-point is not drifting with the heater time-constant. Confirmation requires the force to peak at resonance/Q, reverse on flip, vanish when detuned, survive in multiple orientations, AND replicate across ≥2 independent labs blind to each other on ≥2 different balance principles. The cheapest definitive next step for Anton is NOT to build hardware but to demand this metrological error-budget checklist of any new claim. Note: an orbital/free-flight 'just launch it' test is NOT cheaper or cleaner — space removes air but ADDS expensive, poorly-controlled systematics (outgassing, light pressure, residual drag, thermal/magnetic torques from Earth); the benchtop reverse-balance is the cleaner first arbiter.",
+      "rough_cost": "Low — existing precision force-metrology, no new physics or hardware paradigm; a few hundred $k lab-scale at most, and the core test has already been performed (TU Dresden 2021), so the marginal cost for evaluating a NEW claim is essentially just running the pre-registered control checklist rather than re-building.",
+      "why_decisive": "It directly distinguishes a true reactionless force (axis-locked, reverses on flip, Q/resonance-dependent) from the entire known artifact class (thermal zero-drift and magnetic coupling are stand-locked and power/heat-dependent, not Q-dependent). It is concrete, pre-registrable, and uses existing nanonewton balances — which is exactly why its outcome is dispositive: the test has been run (Dresden 2021) and read NULL with per-artifact attribution, so a proponent must now produce a measurement that passes ALL controls simultaneously, which no positive result has yet done. It converts a belief-vs-belief dispute into a checkable error-budget."
+    },
+    "verdict": "No verdict — see confidence tier (fringe for the literal closed-cavity reactionless claim; speculative/theoretical for the distinct external-reservoir 'propellantless' cousin) and the open questions. This map argues the evidence; it does not declare yes/no.",
+    "map_summary": "All five lenses converge on a single load-bearing empirical fact rather than on authority: the decisive high-sensitivity replication (TU Dresden/Tajmar 2021, rebuilding NASA Eagleworks' own rig at ~nN resolution) reproduced the apparent thrust and then made it disappear by controlling thermal zero-drift of the balance mount and magnetic cable-coupling, attributing the signal to known artifacts and refuting prior claims by ~3 orders of magnitude — and the apparent force tracked input power/heat, not RF resonance/Q. The strongest honest distinction the map preserves is between 'reactionless' (a closed cavity gaining momentum with nothing leaving — at odds with conservation of momentum and unsupported) and 'propellantless' (net thrust with no onboard fuel by coupling to an EXTERNAL field/medium — already real via solar sails, tethers, and photon recoil); the hypothesis as worded is the former (fringe), while its survivable cousin is the latter (speculative, genuinely open). What is proven is that the tested devices showed artifacts; 'no such device can EVER work' remains a very-strong theoretical extrapolation rather than a per-configuration measurement, and the cheap reverse-balance decisive test has been run and currently reads null.",
+    "pre_calibration_tier": "fringe",
+    "calibration": {
+      "claim_audits": [
+        {
+          "claim": "FOR [strong]: 'Propellantless' and 'reactionless' are distinct claims; net thrust with zero onboard propellant while conserving momentum is PROVEN where momentum is carried off by an external medium (solar sails IKAROS/LightSail-2, electrodynamic tethers, photon rockets). The dispute is narrowly about a CLOSED cavity with no external reservoir.",
+          "support": "supported",
+          "note": "The distinction is real and the cited exemplars are genuinely established propulsion (solar sails measured in flight, tethers exchange momentum with the ionosphere/geomagnetic field, photon recoil = P/c). Frontier and Experimental-Design lenses converge on it. Crucially this claim does NOT support the hypothesis as worded ('reactionless in vacuum, closed cavity') — it supports a DIFFERENT, weaker cousin. Correctly load-bearing for the synthesis's HONEST BOUNDARY, not for the fringe claim itself."
+        },
+        {
+          "claim": "FOR [strong]: The null was decided by metrology, not by a-priori law; Tajmar reproduced NASA-like thrust with one suspension geometry and saw it vanish with a point suspension, apparent force tracking heating. Proves the SPECIFIC rigs had artifacts, not that no EM device could ever couple to an external reservoir.",
+          "support": "supported",
+          "note": "Independently confirmed (phys.org 2021; CEAS Space Journal): point-suspension removed the effect, force tracked the heater curve, and no thrust appeared across a wide band including resonances. The epistemic framing ('artifact-per-rig, not law-by-decree') is exactly what the empirical record shows. This is the fairest available statement and it cuts both ways — which the lens honestly notes."
+        },
+        {
+          "claim": "FOR [weak]: Multiple groups (Shawyer, Chinese teams, NASA Eagleworks ~1.2 mN/kW) measured honest small positive signals BEFORE they were explained; genuine anomalies worth chasing, not fraud.",
+          "support": "partial",
+          "note": "Eagleworks' 1.2 +/- 0.1 mN/kW is verified (peer-reviewed AIAA J. Propulsion & Power 2016). That positive signals were reported by several groups is historically true. But 'independently-measured' overstates: these were never high-quality INDEPENDENT confirmations — same artifact class recurred, and Dresden reproduced-then-nulled them. The lens itself caps this at 'weak as evidence FOR propulsion,' which is the correct discount; supported as 'a real anomaly existed,' unsupported as 'evidence the effect is real.'"
+        },
+        {
+          "claim": "FOR [theoretical]: Quantum-vacuum / zero-point-field momentum exchange is unfalsified rather than disproven; Casimir shows vacuum boundaries exert measurable forces, so an asymmetric-boundary device is a conceivable loophole; mainstream QFT assigns very low prior (no vacuum rest frame).",
+          "support": "partial",
+          "note": "Honestly self-labeled 'theoretical, zero confirming evidence.' Casimir forces are real (supported); the leap to net translational thrust from a Lorentz-invariant vacuum with no rest frame is the unsupported part, and the lens says so. Valid as an open-question / non-impossibility argument, NOT as evidence the device works. Single-lens (Frontier only)."
+        },
+        {
+          "claim": "FOR [strong]: The hypothesis is unusually EASY to falsify — claimed ~mN/kW is 2-3 orders above the only legitimate comparison (photon recoil ~3.3 uN/kW = P/c); bench-scale; settled by one well-controlled force measurement.",
+          "support": "supported",
+          "note": "Arithmetic checks: 1.2 mN/kW vs 3.3 uN/kW ~= 360x ~ 2.5 orders of magnitude — exactly as stated. This is a methodological virtue (tractability), not evidence FOR the effect. Experimental-Design lens; consistent with Consensus/Skeptic on signal-vs-systematics. Strengthens the case that the question is ANSWERABLE — and it was answered null."
+        },
+        {
+          "claim": "AGAINST [strong]: The decisive high-sensitivity replication was run and returned NULL — TU Dresden/Tajmar 2021 rebuilt the Eagleworks rig ~1000x more sensitive; apparent thrust scaled with INPUT POWER (heat), not RF resonance/Q, and vanished once thermal zero-drift of the mount and magnetic cable-Earth coupling were controlled; refuted claims by ~3 orders. A real drive's force should track field energy/Q, not the heater curve.",
+          "support": "supported",
+          "note": "Independently verified against phys.org (2021-04) and CEAS Space Journal (s12567-021-00385-1). The diagnostic discriminator — force tracks HEAT not RESONANCE — is confirmed (no thrust within a wide band including resonance frequencies). FOUR lenses converge (Consensus/Skeptic/Historian/Experimental-Design). This is the single most load-bearing fact and it is solid; one caution — '~3 orders' is the headline figure from the source, framed as refuting the claimed signal level, accurate as reported."
+        },
+        {
+          "claim": "AGAINST [strong]: Net propellantless thrust in a truly CLOSED system conflicts with momentum conservation, which is a mathematical consequence of translational symmetry (Noether), not an empirical regularity with possible exceptions; 'reactionless' as worded is self-contradictory; survivable versions secretly posit an unidentified reservoir.",
+          "support": "supported",
+          "note": "Correct as stated, and importantly self-limited: the lens flags it is a PRINCIPLE applied to the device, not a direct null of every geometry. Noether's theorem is sound; the 'reactionless = self-contradictory' point is a definitional truth for a genuinely closed system. The honest caveat keeps it from over-claiming 'no geometry can ever work.' Consensus + Skeptic agree."
+        },
+        {
+          "claim": "AGAINST [strong]: Every positive result sat at the edge of measurement resolution (uN-mN at hundreds of W) — the regime where thermal drift, outgassing, convection, cable Lorentz forces, and CoM shifts manufacture false thrust; signal-to-systematics near unity; thermal expansion of the mount alone is a sufficient, independently-identified explanation (reinforcing the mount removed the effect).",
+          "support": "supported",
+          "note": "Directly corroborated by the Dresden mechanism (mount warping shifts the balance zero-point; point suspension removed it). 'Extraordinary claim on an ordinary-sized signal' is an accurate characterization of the SNR regime. Multi-lens (Skeptic/Consensus/Experimental-Design). The sufficient-alternative-explanation point is the strongest single rebuttal and it is empirically grounded, not asserted."
+        },
+        {
+          "claim": "AGAINST [moderate]: Reference-class base rate is near-zero — Dean drive (nulled as stick-slip), Kidd gyroscopic drives, plus N-rays/polywater/cold-fusion all followed the same arc (small edge-of-detection signal vs a conservation law -> partial confirmations -> collapse to systematic). Langmuir's pathological-science criteria fit EmDrive almost point-for-point. Vindication ~0 of many (~1%).",
+          "support": "partial",
+          "note": "The historical analogs and Langmuir's criteria are real and the pattern-match is apt (Historian lens). Correctly self-tagged 'outside-view heuristic, not a law' — hence moderate. The specific '~1% / 0-of-many' figure is an informal estimate, not a measured rate, so treat the NUMBER as illustrative rather than precise. Single-lens (Historian only); persuasive as prior-shaping, not as proof about THIS device."
+        },
+        {
+          "claim": "AGAINST [moderate]: Proposed reservoirs inherit their own unproven burden — Eagleworks' 'quantum vacuum plasma' rejected by most physicists (Lorentz-invariant vacuum has no rest frame); McCulloch's MiHsC/quantised inertia is genuine but non-consensus and unconfirmed; no peer-reviewed mechanism has survived scrutiny.",
+          "support": "partial",
+          "note": "Accurate and fairly hedged ('argument from current theory, not proof of impossibility'). It removes the rescue routes rather than proving impossibility — correctly scoped. The QVP critique is standard; MiHsC is correctly labeled non-consensus-but-real. Cross-lens (Consensus/Skeptic/Frontier). Partial because it is a theory-state argument, not an empirical null."
+        },
+        {
+          "claim": "AGAINST [moderate]: Even granting a real effect, constant force-per-power (velocity-independent) eventually produces kinetic energy faster than energy input allows — over-unity in some frame, breaking energy conservation; rescue requires velocity/frame-dependence the basic claim lacks. So 'useful' thrust is a STRONGER claim than 'any' thrust.",
+          "support": "supported",
+          "note": "The frame-dependent kinetic-energy argument is a valid second, independent conservation-law objection (distinct from momentum), correctly aimed at the 'useful net thrust' framing rather than at field-coupling variants. Single-lens (Skeptic) but logically self-contained and sound; tightens the target by separating 'useful' from 'any' thrust."
+        }
+      ],
+      "calibrated_tier": "fringe",
+      "tier_changed": false,
+      "calibration_rationale": "Tier CONFIRMED at 'fringe' for the literal hypothesis as worded (a closed RF cavity producing useful NET REACTIONLESS thrust in vacuum). Calibration is evidence-driven, not vibe: (1) Support density is high — the decisive against-claim (Dresden/Tajmar 2021 controlled null) is independently web-verified against phys.org and the peer-reviewed CEAS Space Journal, and BOTH of its load-bearing facts check out: thrust tracked HEAT not RESONANCE/Q, point-suspension removed it, ~3-order refutation of the claimed signal. (2) Cross-lens consistency is strong — four independent lenses (Consensus/Skeptic/Historian/Experimental-Design) converge on the same empirical null, and the for-side's two STRONG claims do NOT actually contest it; they redirect to a different, weaker hypothesis. (3) Evidence quality clears the bar 'fringe' requires over mere 'speculative': it rests on an empirical controlled null PLUS a sufficient per-artifact mechanism (mount thermal warping), not on authority — exactly the fair standard. The arithmetic anchor (1.2 mN/kW vs 3.3 uN/kW photon recoil ~ 2.5 orders) is verified. The synthesis's HONEST BOUNDARY is upheld and important: what is PROVEN is that the tested geometries/signal-levels were artifacts, NOT that 'no EM cavity can ever work'; and the genuinely distinct, weaker cousin — propellantLESS (not reactionless) thrust coupling to an EXTERNAL reservoir — is only speculative/theoretical, because 'useful thrust without onboard propellant' is already established (sails, tethers, photon recoil). No tier rests on an unsupported claim; the moderate against-points (base rate, reservoir burden) are correctly hedged outside-view arguments that shape the prior without carrying the verdict. Tier therefore holds without needing them.",
+      "flags": [
+        "SCOPE FLAG (most important): the 'fringe' tier attaches ONLY to the literal wording ('reactionless... in vacuum', closed cavity). A genuinely DISTINCT and weaker claim — propellantLESS EM thrust coupling to an external reservoir (structured vacuum / ambient plasma / asymmetric radiation) — is at most speculative/theoretical, NOT fringe, and is a separate open question. Do not let the fringe verdict bleed onto the cousin.",
+        "Single-lens-only points (each rests on ONE lens, treat as prior-shaping not decisive): the base-rate / pathological-science argument (Historian only); the quantum-vacuum / Casimir loophole (Frontier only); the over-unity / frame-dependence argument (Skeptic only). Each is internally sound but not cross-validated.",
+        "WEAK-EVIDENCE warning on the for-side 'multiple groups measured positive signals' claim: positive signals existing is true, but 'independently-measured' overstates — none were high-quality independent CONFIRMATIONS; Dresden reproduced-then-nulled the same artifact class. Supported only as 'a real anomaly existed,' unsupported as 'evidence the effect is real' (the lens's own 'weak' cap is correct).",
+        "NUMBER-PRECISION flag: the '~1% / 0-of-many' vindication base rate is an informal outside-view estimate, not a measured statistic — use as illustrative, not quantitative.",
+        "FAIRNESS note (not a defect, worth stating): the two strong AGAINST claims based on conservation laws (Noether momentum; energy/over-unity) are PRINCIPLES applied to the device, not per-geometry empirical nulls — the lenses correctly self-flag this. The empirical null (Dresden) is what carries the tier; the principles raise the prior against it. The verdict does NOT rest on 'consensus says no.'",
+        "No claim was found UNSUPPORTED (asserted with no backing). The for-side is honest about its own weakness; the against-side's strong claims are empirically grounded. This is a well-behaved argument map — the main risk is a reader collapsing the proven 'these rigs were artifacts' into the unproven 'no EM cavity can ever work.'"
+      ]
+    }
+  }
+}

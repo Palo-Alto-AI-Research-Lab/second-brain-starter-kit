@@ -8,7 +8,7 @@ import re
 from pathlib import Path
 from collections import Counter
 
-POSTS = Path(r"E:/Obsidian/Anton-Knowledge/01-Conversations/Telegram/Arhiv-Golosa/posts")
+POSTS = Path(r"E:/Obsidian/Owner-Knowledge/01-Conversations/Telegram/Arhiv-Golosa/posts")
 SUMMARY_HEAD = re.compile(r'^(Краткое содержание|Обсуждали|Обсуждается|Summary|Резюме|Краткое резюме)', re.I)
 
 def author_of(fm):

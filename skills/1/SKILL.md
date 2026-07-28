@@ -33,7 +33,7 @@ python "$IMPORTS_ROOT\turnstate\turnstate_show.py" --n 12
 Три быстрых детерминированных проверки:
 ```bash
 python "$IMPORTS_ROOT\arch\arch_status.py"
-powershell -NoProfile -ExecutionPolicy Bypass -File "E:\Obsidian\_imports\sync_check\sync_check.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%IMPORTS%\sync_check\sync_check.ps1"
 ```
 **MCP — ТОЛЬКО внутрисессионно** (⚠️ НЕ `claude mcp list` и НЕ второй Telethon-клиент → `AUTH_KEY_DUPLICATED` разлогинит аккаунт; память mcp-health-check [internal]): дёрни по одному дешёвому read-вызову у живых серверов — Telegram `mcp__telegram__get_me` (ждём аккаунт владельца), WhatsApp `mcp__whatsapp__get_my_profile`, n8n `mcp__n8n__n8n_health_check`. Если инструментов сервера нет в сессии — он не загрузился (диагностика — в `/mcp`).
 

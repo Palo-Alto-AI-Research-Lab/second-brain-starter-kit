@@ -1,26 +1,26 @@
 ---
-title: "Гершуни-стиль — влияние на публичные посты Антона"
+title: "Артём-стиль — влияние на публичные посты Антона"
 type: template
 purpose: voice-style-guide
 audience: anton
 origin: external
 authored_by: ai
-about_person: "person-stepan-gershuni [internal]"
+about_person: "person-Alex-Mei [internal]"
 date: 2026-06-17
 status: active
-aliases: [гершуни стиль, gershuni style, стиль гершуни для постов]
-tags: [template, style-guide, content, gershuni, ai-native]
+aliases: [Артём стиль, Mei style, стиль Артём для постов]
+tags: [template, style-guide, content, Mei, ai-native]
 ---
 
-# Гершуни-стиль — влияние на публичные посты Антона
+# Артём-стиль — влияние на публичные посты Антона
 
 > [!warning] ПРЕДОХРАНИТЕЛЬ (читать первым)
-> Это **стилевое и идейное ВЛИЯНИЕ**, накладываемое на **голос Антона**, — НЕ копирование текстов Гершуни. Его слова `origin: external`; пост Антона остаётся постом Антона (`origin: anton`). Не вставлять его фразы дословно, не выдавать его мысли за свои без переосмысления. **Авторский голос Антона пишет ТОЛЬКО Opus** (карв-аут `model-routing-sonnet-grunt`). Приватность Антона из fb-diary-voice [internal] остаётся в силе.
+> Это **стилевое и идейное ВЛИЯНИЕ**, накладываемое на **голос Антона**, — НЕ копирование текстов Артём. Его слова `origin: external`; пост Антона остаётся постом Антона (`origin: anton`). Не вставлять его фразы дословно, не выдавать его мысли за свои без переосмысления. **Авторский голос Антона пишет ТОЛЬКО Opus** (карв-аут `model-routing-sonnet-grunt`). Приватность Антона из fb-diary-voice [internal] остаётся в силе.
 
 > [!note] Зачем
-> Антон (2026-06-17): «все мои публичные посты будут писать в т.ч. в стиле Гершуни». Гершуни — его образец [internal]. Этот файл = палитра, из которой берём приёмы и идейные рамки.
+> Антон (2026-06-17): «все мои публичные посты будут писать в т.ч. в стиле Артём». Артём — его образец [internal]. Этот файл = палитра, из которой берём приёмы и идейные рамки.
 
-## Как звучит Гершуни (стилевые приёмы — брать)
+## Как звучит Артём (стилевые приёмы — брать)
 - **Компрессия в формулы:** `Blockchain = programmable incentives`, `AI = programmable intelligence`. Свести большую тему к одной операционной формуле.
 - **Триадность и каркас:** trust / coordination / automation; «6 стадий…»; нумерованные тезисы.
 - **Афористичный заголовок-крючок:** «Coordination is the final boss», «Посткоузианство и конец экономики».
@@ -31,15 +31,15 @@ tags: [template, style-guide, content, gershuni, ai-native]
 - **Личное + цивилизационное в одном тексте** — от рабочего тезиса к вопросу о сознании/смысле (как «On Digital Love»).
 
 ## Идейная палитра (рамки, которые можно разворачивать)
-intent economy · посткоузианство (обнуление издержек → конец фирм-посредников) · cybereconomy / programmable economy · координация как bottleneck · рынки агентов > монолиты · process-as-product · AI-native как архитектура, а не стек · экспоненты ломают интуицию · реальность-manifold (мерь loss модели мира). Полнее: insight-ai-native-playbook-gershuni [internal].
+intent economy · посткоузианство (обнуление издержек → конец фирм-посредников) · cybereconomy / programmable economy · координация как bottleneck · рынки агентов > монолиты · process-as-product · AI-native как архитектура, а не стек · экспоненты ломают интуицию · реальность-manifold (мерь loss модели мира). Полнее: insight-ai-native-playbook-Mei [internal].
 
-## Чем СОХРАНИТЬ Антона (не раствориться в Гершуни)
+## Чем СОХРАНИТЬ Антона (не раствориться в Артём)
 - Голос Антона из fb-diary-voice [internal]: сплетённые нити дня, **жёсткая самоирония**, живые образы, 1–2 настоящих вопроса в конце, ~3000–4500 симв., мало эмодзи, честность вместо success-theater.
-- **Микс:** каркас/оптика — от Гершуни; материал, голос, исповедальность, конкретика дня — от Антона. Тема пивота (defense + UFO/UAP) — эпистемически нейтрально.
+- **Микс:** каркас/оптика — от Артём; материал, голос, исповедальность, конкретика дня — от Антона. Тема пивота (defense + UFO/UAP) — эпистемически нейтрально.
 
 ## Как применять (в пайплайне)
-- Контент-фабрика [internal] / FB-дневник: на стадии Generate писатель-Opus подгружает ЭТОТ файл + fb-diary-voice [internal] и пишет в миксе «голос Антона × оптика Гершуни».
-- Платформы: FB-дневник, X, TG-контент — везде допускается гершуни-влияние; драфт-ферст, Антон постит сам.
+- Контент-фабрика [internal] / FB-дневник: на стадии Generate писатель-Opus подгружает ЭТОТ файл + fb-diary-voice [internal] и пишет в миксе «голос Антона × оптика Артём».
+- Платформы: FB-дневник, X, TG-контент — везде допускается Артём-влияние; драфт-ферст, Антон постит сам.
 
 ## Связи
-- person-stepan-gershuni [internal] · insight-ai-native-playbook-gershuni [internal] · insight-cybos-vs-charm-lifeos [internal] · fb-diary-voice [internal] · content-factory [internal] · [[concept-graphomania-voice-first-writing]]
+- person-Alex-Mei [internal] · insight-ai-native-playbook-Mei [internal] · insight-cybos-vs-charm-lifeos [internal] · fb-diary-voice [internal] · content-factory [internal] · [[concept-graphomania-voice-first-writing]]

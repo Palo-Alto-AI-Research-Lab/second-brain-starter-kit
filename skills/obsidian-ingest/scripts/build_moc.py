@@ -5,7 +5,7 @@ from pathlib import Path
 from collections import Counter, defaultdict
 
 IMP = Path(r"E:/Obsidian/_imports")
-VAULT = Path(r"E:/Obsidian/Anton-Knowledge")
+VAULT = Path(r"E:/Obsidian/Owner-Knowledge")
 BASE = VAULT / "01-Conversations/Telegram/Arhiv-Golosa"
 recs = [json.loads(l) for l in (IMP / "telegram-archive-classified.jsonl").open(encoding="utf-8")]
 posts = [r for r in recs if r["cls"] == "post"]

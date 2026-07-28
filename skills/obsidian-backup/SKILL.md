@@ -36,7 +36,7 @@ This skill is the operational runbook for Anton's vault data-safety system. The 
 | Scripts | `$IMPORTS_ROOT\{archive_original,backup_to_drive,backup_healthcheck}.py` (+ `backup_to_drive.cmd`, log `backup_to_drive.log`, verdicts in `backup_health\`) |
 | **Offsite copy (cloud)** | `E:\Google Drive on HP Palo Alto\Obsidian-Backup\` — Google account **[email]** (G: shortcut → this folder; Google uploads to cloud) |
 | **Local copy (2nd disk)** | `C:\ObsidianBackup\` |
-| Each copy holds | `vault\Anton-Knowledge-<date>.bundle` (last 14 kept) · `_originals\` · `MIGRATE.md` · `last-backup.txt` |
+| Each copy holds | `vault\Owner-Knowledge-<date>.bundle` (last 14 kept) · `_originals\` · `MIGRATE.md` · `last-backup.txt` |
 
 Path is machine-specific (`Google Drive on HP Palo Alto`); on another machine, `backup_to_drive.py` auto-detects `E:\Google Drive on*`.
 
@@ -74,12 +74,12 @@ Disable-ScheduledTask -TaskName 'Obsidian Backup to Drive'   # pause
 
 ## Restore & migrate (the disaster runbook)
 
-The backup folder (Drive **or** C:) is self-describing — it contains `MIGRATE.md`. The vault lives entirely inside the newest `vault\Anton-Knowledge-<date>.bundle` (full git history in one file).
+The backup folder (Drive **or** C:) is self-describing — it contains `MIGRATE.md`. The vault lives entirely inside the newest `vault\Owner-Knowledge-<date>.bundle` (full git history in one file).
 
 **Migrate the whole vault to a NEW computer:**
 1. Install Git + Obsidian. Sign into Google Drive `[email]` so `Obsidian-Backup\` syncs down (or copy it from `C:\ObsidianBackup`).
 2. Take the **newest** bundle in `Obsidian-Backup\vault\`.
-3. `git clone "Anton-Knowledge-<date>.bundle" Anton-Knowledge` → the result is the full vault repo with history.
+3. `git clone "Owner-Knowledge-<date>.bundle" Owner-Knowledge` → the result is the full vault repo with history.
 4. Open that folder as an Obsidian vault. Copy `_originals\` across too (it's just files).
 
 **Restore a single file / folder:**
@@ -98,7 +98,7 @@ git -C tmp_restore restore --source <hash> -- "<path>"
 - **Stale / missing bundle, but task still Enabled** → the daily job just didn't run (PC was off, etc.). Fix: run `backup_to_drive.py` once. (The watchdog does this automatically.)
 - **Windows task MISSING or DISABLED** → re-enable (`Enable-ScheduledTask -TaskName 'Obsidian Backup to Drive'`) or re-register:
   ```
-  $action   = New-ScheduledTaskAction -Execute 'E:\Obsidian\_imports\backup_to_drive.cmd'
+  $action   = New-ScheduledTaskAction -Execute '%IMPORTS%\backup_to_drive.cmd'
   $trigger  = New-ScheduledTaskTrigger -Daily -At '3:00AM'
   $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Hours 1) -MultipleInstances IgnoreNew
   Register-ScheduledTask -TaskName 'Obsidian Backup to Drive' -Action $action -Trigger $trigger -Settings $settings -Force

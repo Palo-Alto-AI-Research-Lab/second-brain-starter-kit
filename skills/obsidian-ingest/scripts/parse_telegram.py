@@ -7,7 +7,7 @@ import re, json, html as html_lib
 from pathlib import Path
 from datetime import datetime
 
-EXPORT = Path(r"C:/Users/_/Downloads/Telegram Desktop/ChatExport_2026-05-27")
+EXPORT = Path(r"C:$HOME/Downloads/Telegram Desktop/ChatExport_2026-05-27")
 OUT = Path(r"E:/Obsidian/_imports")
 FILES = ["messages.html", "messages2.html", "messages3.html"]
 

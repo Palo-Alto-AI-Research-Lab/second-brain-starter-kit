@@ -24,7 +24,7 @@ description: >
 2. **Журнал принятых решений (волт):** grep по `$OBSIDIAN_VAULT\02-Decisions\`
    (подпапки по доменам) и по файлам `decision-*` в волте.
    ```bash
-   grep -rinl "<тема/ключевые слова>" "E:/Obsidian/Anton-Knowledge/02-Decisions"
+   grep -rinl "<тема/ключевые слова>" "E:/Obsidian/Owner-Knowledge/02-Decisions"
    ```
 3. **Библия (правила для всех акторов):** grep по `reglament-*` / `protocol-*` в волте — нет ли
    уже нормы, закрывающей вопрос.

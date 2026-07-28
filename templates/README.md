@@ -8,7 +8,7 @@ type: template
 
 # 08-Templates
 
-Шаблоны для [Templater](https://github.com/SilentVoid13/Templater). Чтобы они подхватились — в Templater Settings указать `Template folder location: Anton-Knowledge/08-Templates`.
+Шаблоны для [Templater](https://github.com/SilentVoid13/Templater). Чтобы они подхватились — в Templater Settings указать `Template folder location: Owner-Knowledge/08-Templates`.
 
 ## Каталог
 

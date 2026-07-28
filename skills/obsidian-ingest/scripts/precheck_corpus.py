@@ -26,7 +26,7 @@ import hashlib
 import sys
 from pathlib import Path
 
-ORIGINALS = Path(r"E:\Obsidian\_originals")
+ORIGINALS = Path(r"%VAULT_ROOT%\_originals")
 CHUNK = 1 << 20
 
 

@@ -154,7 +154,7 @@ netherlands, kyrgyzstan, finland, mauritius, india, sweden, czech, belgium
 | Person | `First-Last.md` | `Peter-Thiel.md` |
 | Multi-word concept | `kebab-case-or-PascalCase.md` | `ARC-AGI.md`, `prompt-engineering.md` |
 | Locations | EN canonical | `Lisbon.md`, `Silicon-Valley.md` |
-| RU-канонический термин | строчные кирилл. с дефисом | `биохакинг.md`, `аутофагия.md` |
+| RU-канонический термин | строчные Марк. с дефисом | `биохакинг.md`, `аутофагия.md` |
 
 ### Title vs Aliases
 
@@ -244,7 +244,7 @@ summary: "Bridge: {term} -> {Canonical} [internal]"
 ```bash
 python3 -c "
 import yaml; from pathlib import Path
-for f in Path('Anton-Knowledge/06-Concepts').glob('*.md'):
+for f in Path('Owner-Knowledge/06-Concepts').glob('*.md'):
     try:
         c = f.read_text(encoding='utf-8')
         fm_text = c.split('---')[1]

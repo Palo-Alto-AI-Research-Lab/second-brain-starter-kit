@@ -15,7 +15,7 @@ description: >-
 
 > 🧒 **When reporting to Anton:** end with a child-simple "Простыми словами" recap.
 
-**The principle (canon: [concept-creation-rules.md](E:/Obsidian/Anton-Knowledge/08-Templates/concept-creation-rules.md) §11):** an important new idea that only *exists* as a note is an island, not part of the Second Brain. It must be *integrated* into the knowledge graph. Mirror of no-orphan-notes-rule [internal] (passive "≥1 inbound"); this is the active "maximize meaningful connectivity for important nodes" side.
+**The principle (canon: [concept-creation-rules.md](E:/Obsidian/Owner-Knowledge/08-Templates/concept-creation-rules.md) §11):** an important new idea that only *exists* as a note is an island, not part of the Second Brain. It must be *integrated* into the knowledge graph. Mirror of no-orphan-notes-rule [internal] (passive "≥1 inbound"); this is the active "maximize meaningful connectivity for important nodes" side.
 
 **Architecture law (from the DR):** **retrieval first → judgment second → writing last.** The LLM never decides links by reading the whole vault; it gets a bounded, diverse candidate pool, then types relations and proposes edits. Less hallucination, explainable, repeatable.
 
@@ -108,5 +108,5 @@ Between A and B: Anton names a TOPIC, not one note. Run **Mode A steps 2–7 wit
 The DR suggested, and we declined for AK-47: a Local REST API + MCP plugin (Edit targets sections fine), a new vector DB (have e5+reranker), spaCy 3-layer NER (LLM+namesearch suffice), a JSON-schema validation runtime, and a full link-adjacency graph engine (hub counts are enough for v1).
 
 ## See also
-- [concept-creation-rules.md](E:/Obsidian/Anton-Knowledge/08-Templates/concept-creation-rules.md) §1 (when) + §11 (integration) — the canon.
+- [concept-creation-rules.md](E:/Obsidian/Owner-Knowledge/08-Templates/concept-creation-rules.md) §1 (when) + §11 (integration) — the canon.
 - skill `ask` (RAG engine), `dedup` (dupes), `obsidian-ingest` (first-time save of a raw dump), `obsidian-backup` (backup runbook).

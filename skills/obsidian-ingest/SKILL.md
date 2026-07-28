@@ -154,7 +154,7 @@ Anton's standing rule: for any heavy/accelerable compute (embeddings, model infe
 ## Windows / Cyrillic gotchas (learned the hard way)
 
 - **Python `print()` of Cyrillic crashes** on Windows (cp1252 stdout). Write results to UTF-8 files and Read them; keep stdout ASCII-only (counts, slugs).
-- **Don't `rm -rf` inside `E:\Obsidian\`** — Obsidian and the Windows indexer hold file handles ("Device or resource busy"). Delete with `find ... -delete`, or generate into a fresh directory.
+- **Don't `rm -rf` inside `%VAULT_ROOT%\`** — Obsidian and the Windows indexer hold file handles ("Device or resource busy"). Delete with `find ... -delete`, or generate into a fresh directory.
 - **Filenames: transliterate Cyrillic → latin kebab**, date-prefix (`YYYY-MM-DD-slug.md`) so they sort chronologically; de-dup collisions with a numeric suffix.
 - **Escaped pipes in tables:** inside a markdown table, write `alias [internal]` (escaped pipe) so the table doesn't break; Obsidian still resolves it.
 
