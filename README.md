@@ -45,3 +45,12 @@
 Метод открыт — берите, адаптируйте, делитесь. Секретов и персональных данных
 в наборе нет (прогнан автоматическим секрет-сканером). Вопросы и идеи — в
 Issues.
+
+## Связаться с нами
+
+Вопросы, истории с полей или хотите развернуть это у себя:
+
+- 💬 WhatsApp: **+1 341 222 9178**
+- 🐦 X: [@Tony_Stef_](https://x.com/Tony_Stef_)
+- 📣 Telegram: [@ClawRus](https://t.me/ClawRus) (RU) · [@ClawEng](https://t.me/ClawEng) (EN)
+- 🌐 [palo-alto.ai](https://palo-alto.ai) · [Palo Alto AI Research Lab](https://github.com/Palo-Alto-AI-Research-Lab)
