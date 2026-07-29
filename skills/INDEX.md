@@ -112,7 +112,7 @@
 | [`/fb-reply`](fb-reply/SKILL.md) | Read who commented on Anton's recent Facebook posts and post PERSONALIZED replies through his real logged-in Chrome (Claude-in-Chrome MCP = low-ban-ri… |
 | [`/fb-watch`](fb-watch/SKILL.md) | Мониторит стену Facebook Антона на АВТОРСКИЕ посты, к которым ещё НЕТ тизера, и сразу пишет тизеры (RU→@ClawRus, EN→X) — draft-first, пока не взведён … |
 | [`/tg-post`](tg-post/SKILL.md) | Publish a VETTED post to one of OUR OWN Telegram channels/supergroups via Telegram MCP (not Chrome), channel resolved STRICTLY by id from the Channels… |
-| [`/x-post`](x-post/SKILL.md) | Publish a VETTED post/tweet to Anton's X (Twitter) account @lab_x_acct through his real logged-in Chrome (Claude-in-Chrome MCP, live tab — low-ban-ris… |
+| [`/x-post`](x-post/SKILL.md) | Publish a VETTED post/tweet to Anton's X (Twitter) account @Tony_Stef_ through his real logged-in Chrome (Claude-in-Chrome MCP, live tab — low-ban-ris… |
 | [`/tg-slot`](tg-slot/SKILL.md) | Освободить СЛОТ в Telegram под новую группу и сразу в неё войти. У аккаунта жёсткий потолок каналов+супергрупп (500 обычный / 1000 Premium); упёршись … |
 | [`/pipeline`](pipeline/SKILL.md) | Work Anton's lead pipeline — CRM/outreach triage: who needs action TODAY (replied→send Calendly; Calendly sent 24h+ but not booked→booking nudge; awai… |
 

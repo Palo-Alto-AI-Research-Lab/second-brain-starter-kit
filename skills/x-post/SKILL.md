@@ -1,6 +1,6 @@
 ---
 name: x-post
-description: Publish a VETTED post/tweet to Anton's X (Twitter) account @lab_x_acct through his real logged-in Chrome (Claude-in-Chrome MCP, live tab — low-ban-risk path), rate-guarded and draft-first. Trigger on "/x-post", "запости в X", "твитни", "опубликуй в твиттер", "выложи в X", "post to X", "tweet this". Text = Anton's authorial voice (Opus), EN teaser per /episode canon (≤280 chars for a single post). Publishing = OUTBOUND + PUBLIC (Tier-2) → show final draft, wait for explicit "+". Guard = social_guard.py (x ≤6/day + anti-dup). Sibling of /fb-post (same Chrome pattern) and /tg-post. Handle truth = vault 00-System\Channels-Registry.md; ALWAYS verify the logged-in handle in the live tab before posting.
+description: Publish a VETTED post/tweet to Anton's X (Twitter) account @Tony_Stef_ through his real logged-in Chrome (Claude-in-Chrome MCP, live tab — low-ban-risk path), rate-guarded and draft-first. Trigger on "/x-post", "запости в X", "твитни", "опубликуй в твиттер", "выложи в X", "post to X", "tweet this". Text = Anton's authorial voice (Opus), EN teaser per /episode canon (≤280 chars for a single post). Publishing = OUTBOUND + PUBLIC (Tier-2) → show final draft, wait for explicit "+". Guard = social_guard.py (x ≤6/day + anti-dup). Sibling of /fb-post (same Chrome pattern) and /tg-post. Handle truth = vault 00-System\Channels-Registry.md; ALWAYS verify the logged-in handle in the live tab before posting.
 ---
 
 # /x-post — пост в X с аккаунта Антона (Chrome, draft-first)
@@ -23,7 +23,7 @@ python "$USERPROFILE/.claude/scripts/_shared/social_guard.py" check x --text "<�
 > Браузерная работа — локально на этой машине; окно вперёд не тащить.
 > ⛔ IP-гейт (anton 16.07): постинг в X/соцсети с бан-риском — ТОЛЬКО с хаба `HUB-1` (постоянный IP). На другой машине НЕ постить — задачу текстом на хаб. Канон: `reglament-ip-sensitive-deystviya-tolko-s-haba`.
 1. `list_connected_browsers` → нет расширения → блок, скажи Антону (не падать в Playwright).
-2. Вкладка `x.com`. **Сверь залогиненный handle** (аватар/меню профиля) = **@lab_x_acct** из реестра. Другой аккаунт → СТОП, спроси. Не залогинен → блок (логин/2FA не трогаем в X — checkpoint-риск).
+2. Вкладка `x.com`. **Сверь залогиненный handle** (аватар/меню профиля) = **@Tony_Stef_** из реестра. Другой аккаунт → СТОП, спроси. Не залогинен → блок (логин/2FA не трогаем в X — checkpoint-риск).
 3. Композер: `find` «post composer / What's happening». Введи текст (`form_input`). **Кнопку Post не жми** до выполненного гейта §2.
 4. После `+` — Post. Тред: после первого твита кнопка «+» в композере / reply на свой твит.
 5. Скриншот опубликованного + URL твита (клик по timestamp → адресная строка) = доказательство.
