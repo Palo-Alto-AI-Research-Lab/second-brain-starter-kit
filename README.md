@@ -18,6 +18,9 @@
 | `docs/` | Как пользоваться CLAUDE.md, онбординг, что шарится |
 | [`HANDOVER.md`](HANDOVER.md) | **Уже есть свой флот агентов?** Слепок всей системы и карта наших репозиториев — точка входа для тебя и твоей модели |
 
+
+📖 **Вики репозитория** — карта на английском: [что здесь на самом деле лежит](https://github.com/Palo-Alto-AI-Research-Lab/second-brain-starter-kit/wiki) · [архитектура (4 слоя)](https://github.com/Palo-Alto-AI-Research-Lab/second-brain-starter-kit/wiki/Architecture) · [первая неделя](https://github.com/Palo-Alto-AI-Research-Lab/second-brain-starter-kit/wiki/First-week) · [как адаптировать под свою машину](https://github.com/Palo-Alto-AI-Research-Lab/second-brain-starter-kit/wiki/Adapting-it-to-your-machine)
+
 ## Быстрый старт (10 минут)
 
 1. Подписка Claude Pro или Max → установи Claude Code:
