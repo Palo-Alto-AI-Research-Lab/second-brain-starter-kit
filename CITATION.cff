@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use second-brain-starter-kit in research or software, please cite it as below."
+title: "Second Brain Starter Kit: Claude Code as a personal second brain and working assistant"
+type: software
+authors:
+  - family-names: Dziatkovskii
+    given-names: Anton
+    orcid: "https://orcid.org/0000-0001-7408-3054"
+    affiliation: "Palo Alto AI Research Lab"
+repository-code: "https://github.com/Palo-Alto-AI-Research-Lab/second-brain-starter-kit"
+url: "https://github.com/Palo-Alto-AI-Research-Lab/second-brain-starter-kit"
+license: MIT
+keywords:
+  - second brain
+  - personal knowledge management
+  - AI agents
+  - Claude Code
+  - CRM
+  - Obsidian
+abstract: >-
+  A portable starter kit for running an LLM coding agent as a personal second brain
+  and working assistant: a seed message for the first session, bootstrap instructions
+  written for the agent itself, working principles, a library of slash-command skills,
+  note templates, and a markdown CRM where each contact is a file with a warmth-scoring
+  engine and a gated outbound path. Published as method rather than data — the authors'
+  daily system with personal content removed and examples replaced by invented ones.
